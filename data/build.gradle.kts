@@ -1,8 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.ksp)
 }
-
 android {
     namespace = "com.fredprojects.data"
     compileSdk = 34
@@ -28,8 +28,17 @@ android {
         jvmTarget = "17"
     }
 }
-
 dependencies {
+    // network
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+    // database
+    ksp(libs.androidx.room.compiler)
+    implementation (libs.androidx.room.ktx)
+    implementation(libs.androidx.room.runtime)
+    // test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
+    // domain module
+    implementation(project(":domain"))
 }
