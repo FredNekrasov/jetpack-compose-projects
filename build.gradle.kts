@@ -3,8 +3,7 @@ plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.jetbrains.kotlin.android) apply false
     alias(libs.plugins.jetbrains.kotlin.jvm) apply false
-    // presentation module
-    alias(libs.plugins.compose.compiler) apply false
+    // DI
     alias(libs.plugins.hilt) apply false
     alias(libs.plugins.kapt) apply false
     // data module

@@ -1,8 +1,10 @@
 [versions]
 # plugins
 agp = "8.5.0"
-kotlin = "2.0.0"
-kspVersion = "2.0.0-1.0.22"
+#noinspection GradleDependency
+kotlin = "1.9.24"
+#noinspection GradleDependency
+kspVersion = "1.9.24-1.0.20"
 # libraries
 hiltAndroid = "2.51"
 hilt = "1.2.0"
@@ -20,8 +22,8 @@ retrofit = "2.11.0"
 coroutines = "1.8.1"
 ## test
 junit = "4.13.2"
-junitVersion = "1.1.5"
-espressoCore = "3.5.1"
+junitVersion = "1.2.0"
+espressoCore = "3.6.0"
 
 [libraries]
 ## hilt DI
@@ -65,7 +67,6 @@ kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-cor
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ## hilt DI
 kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroid" }
