@@ -1,7 +1,9 @@
 [versions]
 # plugins
 agp = "8.5.1"
+#noinspection GradleDependency
 kotlin = "1.9.22"
+#noinspection GradleDependency
 ksp = "1.9.22-1.0.17"
 # libraries
 ## app/presentation
