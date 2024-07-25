@@ -29,7 +29,7 @@ class MathRepository(
      * @see ConnectionStatus
      */
     override fun getData(data: String): Flow<ConnectionStatus<MathModel>> = flow {
-        val solutions = dao.getAll().map { it.toDomain() }
+        val solutions = dao.getByExpression(data)?.let { listOf(it.toDomain()) } ?: dao.getAll().map { it.toDomain() }
         emit(ConnectionStatus.Loading(solutions))
         val response = api.getResult(data).execute()
         if (response.isSuccessful) {
