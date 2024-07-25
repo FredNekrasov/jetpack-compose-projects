@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.jumps.list
+package com.fredprojects.helloworld.presentation.features.jumps
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -19,9 +19,8 @@ import com.fredprojects.helloworld.data.mappers.toLocalDate
 import com.fredprojects.helloworld.domain.features.jumps.models.JumpData
 import com.fredprojects.helloworld.domain.features.jumps.utils.JumpStatus
 import com.fredprojects.helloworld.presentation.core.*
-import com.fredprojects.helloworld.presentation.features.jumps.JDIconButton
-import com.fredprojects.helloworld.presentation.features.jumps.list.vm.JDEvents
-import com.fredprojects.helloworld.presentation.features.jumps.list.vm.JDState
+import com.fredprojects.helloworld.presentation.features.jumps.vm.JDEvents
+import com.fredprojects.helloworld.presentation.features.jumps.vm.JDState
 import java.time.LocalDate
 
 @Composable

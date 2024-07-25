@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.clients.anime.vm
+package com.fredprojects.helloworld.presentation.features.clients.anime
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

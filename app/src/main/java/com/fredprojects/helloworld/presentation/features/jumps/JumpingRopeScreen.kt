@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.jumps.rope
+package com.fredprojects.helloworld.presentation.features.jumps
 
 import android.hardware.*
 import androidx.compose.foundation.background
@@ -14,9 +14,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.window.Dialog
 import com.fredprojects.helloworld.R
 import com.fredprojects.helloworld.presentation.core.*
-import com.fredprojects.helloworld.presentation.features.jumps.JDIconButton
-import com.fredprojects.helloworld.presentation.features.jumps.rope.vm.JREvents
-import com.fredprojects.helloworld.presentation.features.jumps.rope.vm.JRState
+import com.fredprojects.helloworld.presentation.features.jumps.vm.JREvents
+import com.fredprojects.helloworld.presentation.features.jumps.vm.JRState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlin.math.sqrt

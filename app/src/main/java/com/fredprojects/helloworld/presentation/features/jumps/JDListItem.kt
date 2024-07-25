@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.jumps.list
+package com.fredprojects.helloworld.presentation.features.jumps
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons

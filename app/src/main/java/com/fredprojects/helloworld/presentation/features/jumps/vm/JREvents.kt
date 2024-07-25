@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.jumps.rope.vm
+package com.fredprojects.helloworld.presentation.features.jumps.vm
 
 /**
  * JREvents is used to send events to the view model

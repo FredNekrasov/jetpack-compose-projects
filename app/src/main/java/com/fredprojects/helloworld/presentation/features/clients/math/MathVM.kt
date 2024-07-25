@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.clients.math.vm
+package com.fredprojects.helloworld.presentation.features.clients.math
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

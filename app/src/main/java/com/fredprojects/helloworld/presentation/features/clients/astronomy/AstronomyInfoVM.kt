@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.clients.astronomy.vm
+package com.fredprojects.helloworld.presentation.features.clients.astronomy
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
