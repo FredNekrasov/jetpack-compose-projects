@@ -4,6 +4,10 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
 
+/**
+ * toLocalDate is used to convert a string to a LocalDate in the format "yyyy-MM-dd".
+ * if the string is not in the format "yyyy-MM-dd" it will return null.
+ */
 fun String.toLocalDate() = try {
     if (this.contains(Regex("""^\d{4}-\d{2}-\d{2}$"""))) {
         val localDate = LocalDate.parse(this, DateTimeFormatter.ofPattern("yyyy-MM-dd"))
