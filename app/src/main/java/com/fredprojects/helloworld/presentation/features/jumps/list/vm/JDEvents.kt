@@ -7,7 +7,7 @@ sealed class JDEvents {
     data class Sort(val sortType: SortType) : JDEvents()
     data class DeleteJD(val jumpData: JumpData) : JDEvents()
     data class UpsertJD(val jumpData: JumpData) : JDEvents()
-    data class GetJD(val jumpData: JumpData) : JDEvents()
+    data class GetJD(val jumpDataId: Int) : JDEvents()
     data object ToggleSortSection : JDEvents()
     data object SwitchingDialog : JDEvents()
 }

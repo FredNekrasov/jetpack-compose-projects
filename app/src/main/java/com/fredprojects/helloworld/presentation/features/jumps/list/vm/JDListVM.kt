@@ -18,7 +18,7 @@ class JDListVM(
     fun onEvent(event: JDEvents) {
         when(event) {
             is JDEvents.DeleteJD -> deleteJD(event.jumpData)
-            is JDEvents.GetJD -> getJDById(event.jumpData)
+            is JDEvents.GetJD -> getJDById(event.jumpDataId)
             is JDEvents.Sort -> getSortedJDs(event.sortType)
             JDEvents.SwitchingDialog -> jdStateMSF.value = jdState.value.copy(isShowDialog = !jdState.value.isShowDialog)
             JDEvents.ToggleSortSection -> jdStateMSF.value = jdState.value.copy(isSortingSectionVisible = !jdState.value.isSortingSectionVisible)
@@ -30,9 +30,9 @@ class JDListVM(
             useCases.delete(jumpData)
         }
     }
-    private fun getJDById(jumpData: JumpData) {
+    private fun getJDById(jumpDataId: Int) {
         viewModelScope.launch {
-            jdStateMSF.emit(jdState.value.copy(jd = jumpData))
+            jdStateMSF.emit(jdState.value.copy(jd = useCases.getData.getById(jumpDataId)))
         }
     }
     private fun getSortedJDs(sortType: SortType) {
@@ -47,7 +47,5 @@ class JDListVM(
             jdStateMSF.emit(jdState.value.copy(jdStatus = useCases.upsert(jumpData)))
         }
     }
-    init {
-        getSortedJDs(SortType.Descending)
-    }
+    init { getSortedJDs(SortType.Descending) }
 }

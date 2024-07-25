@@ -16,8 +16,7 @@ import com.fredprojects.helloworld.presentation.features.jumps.list.vm.JDState
 @Composable
 fun JDListScreen(
     state: JDState,
-    onEvent: (JDEvents) -> Unit,
-    modifier: Modifier = Modifier
+    onEvent: (JDEvents) -> Unit
 ) {
     Column(Modifier.fillMaxSize(), Arrangement.Center, Alignment.CenterHorizontally) {
         AnimatedVisibility(
@@ -27,14 +26,14 @@ fun JDListScreen(
         ) {
             SortingSection(state.sortType) { onEvent(JDEvents.Sort(it)) }
         }
-        LazyColumn(modifier, horizontalAlignment = Alignment.CenterHorizontally) {
+        LazyColumn(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
             items(state.jds) { jumpData ->
                 Spacer(Modifier.height(8.dp))
                 JDListItem(
                     jumpData = jumpData,
                     onDeleteClick = { onEvent(JDEvents.DeleteJD(jumpData)) },
                     Modifier.fillMaxWidth().padding(8.dp).clickable {
-                        onEvent(JDEvents.GetJD(jumpData))
+                        onEvent(JDEvents.GetJD(jumpData.id ?: 0))
                         onEvent(JDEvents.SwitchingDialog)
                     }
                 )
