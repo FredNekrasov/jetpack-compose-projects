@@ -1,23 +1,17 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.jetbrains.kotlin.compose)
 }
 android {
-    namespace = "com.fredprojects.helloworld"
+    namespace = "com.fredprojects.helloworld.presentation"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.fredprojects.helloworld"
         minSdk = 29
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        consumerProguardFiles("consumer-rules.pro")
     }
     buildTypes {
         release {
@@ -35,11 +29,6 @@ android {
     buildFeatures {
         compose = true
     }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
 }
 composeCompiler {
     enableStrongSkippingMode = true
@@ -47,18 +36,14 @@ composeCompiler {
 }
 dependencies {
     // DI Koin
-    implementation(libs.bundles.koin)
+    implementation(libs.koin.androidx.compose)
     // default dependencies
     implementation(libs.bundles.androidx)
     implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.bundles.compose.app)
-    //test
-    testImplementation(libs.bundles.test)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.bundles.android.test)
-    debugImplementation(libs.bundles.compose.debug)
+    implementation(libs.bundles.compose.presentation)
+    // test
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
 
     implementation(project(":domain"))
-    implementation(project(":data"))
-    implementation(project(":presentation"))
 }
