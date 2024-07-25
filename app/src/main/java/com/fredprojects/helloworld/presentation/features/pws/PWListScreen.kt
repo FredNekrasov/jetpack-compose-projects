@@ -15,8 +15,8 @@ import com.fredprojects.helloworld.presentation.features.pws.vm.PWState
 @Composable
 fun PWListScreen(
     state: PWState,
-    onEvent: (PWEvents) -> Unit,
-    onAddOrEdit: (Int?) -> Unit
+    onAddOrEdit: (Int?) -> Unit,
+    onEvent: (PWEvents) -> Unit
 ) {
     Column(Modifier.fillMaxSize(), Arrangement.Center, Alignment.CenterHorizontally) {
         AnimatedVisibility(

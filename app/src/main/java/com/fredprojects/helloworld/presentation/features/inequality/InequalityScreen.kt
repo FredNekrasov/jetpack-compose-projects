@@ -18,8 +18,8 @@ import com.fredprojects.helloworld.presentation.core.FredHeaderText
  */
 @Composable
 fun InequalityScreen(
-    calculate: (Float?, Float?) -> Unit,
-    state: Any
+    state: Any,
+    calculate: (Float?, Float?) -> Unit
 ) {
     Column(Modifier.fillMaxSize(), Arrangement.Center, Alignment.CenterHorizontally) {
         FredHeaderText("ax + b < 0", MaterialTheme.typography.headlineSmall)

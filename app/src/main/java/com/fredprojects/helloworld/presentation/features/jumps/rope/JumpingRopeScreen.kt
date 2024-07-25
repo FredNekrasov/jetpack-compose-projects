@@ -24,8 +24,7 @@ import kotlin.math.sqrt
 @Composable
 fun JumpingRopeScreen(
     state: JRState,
-    onEvent: (JREvents) -> Unit,
-    navigate: (String) -> Unit
+    onEvent: (JREvents) -> Unit
 ) {
     val scope = rememberCoroutineScope()
     val xFlow = MutableStateFlow(0f)
@@ -63,10 +62,7 @@ fun JumpingRopeScreen(
         FredText("z: $z")
         FredText("timestamp: $t")
         FredText("${stringResource(R.string.count)}: $countOfJumps")
-        FredButton({
-            onEvent(JREvents.InsertJD(countOfJumps))
-            navigate("")
-        }, stringResource(R.string.save))
+        FredButton({ onEvent(JREvents.InsertJD(countOfJumps)) }, stringResource(R.string.save))
         FredButton({ onEvent(JREvents.SwitchingDialog) }, stringResource(R.string.jump))
     }
     if (state.isShowDialog) JumpDialog({ onEvent(JREvents.SwitchingDialog) }, countOfJumps)
