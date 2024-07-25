@@ -14,20 +14,16 @@ import com.fredprojects.helloworld.presentation.core.*
 import com.fredprojects.helloworld.presentation.features.fibonacci.binder.FibonacciBinder
 
 @Composable
-internal fun FibScreen(
-    calculate: (String) -> Unit,
-    fibonacciSequences: List<FibonacciBinder>,
-    cancel: Action
-) {
+fun FibScreen(fibonacciSequences: List<FibonacciBinder>, calculate: (String) -> Unit) {
     var number by rememberSaveable { mutableStateOf("") }
     Column(Modifier.fillMaxSize(), Arrangement.Center, Alignment.CenterHorizontally) {
         FredNumericTextField(number, { number = it }, R.string.fibEnterNumber)
         FredButton({ calculate(number) }, stringResource(R.string.displayResult))
-        FibSequenceList(fibonacciSequences, cancel)
+        FibSequenceList(fibonacciSequences)
     }
 }
 @Composable
-private fun FibSequenceList(fibonacciSequences: List<FibonacciBinder>, cancel: Action) {
+private fun FibSequenceList(fibonacciSequences: List<FibonacciBinder>) {
     LazyColumn {
         items(fibonacciSequences) {
             val result = it.result.collectAsState().value
@@ -38,7 +34,7 @@ private fun FibSequenceList(fibonacciSequences: List<FibonacciBinder>, cancel: A
             }
             Row(verticalAlignment = Alignment.CenterVertically) {
                 FredText(text, Modifier.padding(start = 8.dp, end = 8.dp))
-                if (result.first == CalculationStatus.INIT) FredButton(cancel, stringResource(R.string.cancel))
+                if (result.first == CalculationStatus.INIT) FredButton({ it.cancel() }, stringResource(R.string.cancel))
             }
         }
     }
