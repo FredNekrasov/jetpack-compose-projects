@@ -9,7 +9,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.*
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.fredprojects.helloworld.R
+import com.fredprojects.helloworld.presentation.R
 import com.fredprojects.helloworld.presentation.features.clients.anime.*
 import com.fredprojects.helloworld.presentation.features.clients.astronomy.*
 import com.fredprojects.helloworld.presentation.features.clients.math.*
