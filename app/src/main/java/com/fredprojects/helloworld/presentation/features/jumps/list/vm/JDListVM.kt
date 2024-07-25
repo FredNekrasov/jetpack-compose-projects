@@ -5,14 +5,11 @@ import androidx.lifecycle.viewModelScope
 import com.fredprojects.helloworld.domain.core.utils.SortType
 import com.fredprojects.helloworld.domain.features.jumps.models.JumpData
 import com.fredprojects.helloworld.domain.features.jumps.useCases.JDUseCases
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class JDListVM @Inject constructor(
+class JDListVM(
     private val useCases: JDUseCases
 ) : ViewModel() {
     private val jdStateMSF = MutableStateFlow(JDState())

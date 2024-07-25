@@ -3,14 +3,11 @@ package com.fredprojects.helloworld.presentation.features.pws.vm
 import androidx.lifecycle.*
 import com.fredprojects.helloworld.domain.features.pws.models.PracticalWork
 import com.fredprojects.helloworld.domain.features.pws.useCases.PWUseCases
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class UpsertPWVM @Inject constructor(
+class UpsertPWVM(
     private val useCases: PWUseCases,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {

@@ -6,14 +6,11 @@ import com.fredprojects.helloworld.domain.core.utils.SortType
 import com.fredprojects.helloworld.domain.features.pws.models.PracticalWork
 import com.fredprojects.helloworld.domain.features.pws.useCases.PWUseCases
 import com.fredprojects.helloworld.domain.features.pws.utils.SortingPW
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class PWListVM @Inject constructor(
+class PWListVM(
     private val useCases: PWUseCases
 ) : ViewModel()  {
     private val pwStateMSF = MutableStateFlow(PWState())

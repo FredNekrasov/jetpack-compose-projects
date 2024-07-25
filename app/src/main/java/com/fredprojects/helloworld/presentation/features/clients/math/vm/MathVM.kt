@@ -5,14 +5,11 @@ import androidx.lifecycle.viewModelScope
 import com.fredprojects.helloworld.domain.core.repositories.IClientRepository
 import com.fredprojects.helloworld.domain.core.utils.ConnectionStatus
 import com.fredprojects.helloworld.domain.features.clients.common.MathModel
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class MathVM @Inject constructor(
+class MathVM(
     private val repository: IClientRepository<MathModel>
 ) : ViewModel() {
     private val mathInfoMSF = MutableStateFlow<ConnectionStatus<MathModel>>(ConnectionStatus.Loading(emptyList()))

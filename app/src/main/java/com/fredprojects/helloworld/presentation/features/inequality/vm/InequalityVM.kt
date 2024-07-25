@@ -1,16 +1,15 @@
 package com.fredprojects.helloworld.presentation.features.inequality.vm
 
-import androidx.lifecycle.*
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.fredprojects.helloworld.R
 import com.fredprojects.helloworld.domain.features.inequality.useCases.InequalityUseCase
 import com.fredprojects.helloworld.domain.features.inequality.utils.InequalityStatus
-import com.fredprojects.helloworld.R
-import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class InequalityVM @Inject constructor(
+class InequalityVM(
     private val inequalityUseCase: InequalityUseCase
 ) : ViewModel() {
     private val solutionMSF = MutableStateFlow<Any>("")

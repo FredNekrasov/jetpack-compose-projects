@@ -4,14 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fredprojects.helloworld.domain.features.jumps.models.JumpData
 import com.fredprojects.helloworld.domain.features.jumps.useCases.JDUseCases
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class JumpingRopeVM @Inject constructor(
+class JumpingRopeVM(
     private val useCases: JDUseCases
 ) : ViewModel() {
     private val jrStateMSF = MutableStateFlow(JRState())
