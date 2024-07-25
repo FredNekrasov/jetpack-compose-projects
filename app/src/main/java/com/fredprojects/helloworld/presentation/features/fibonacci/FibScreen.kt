@@ -1,17 +1,17 @@
 package com.fredprojects.helloworld.presentation.features.fibonacci
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.fredprojects.helloworld.domain.features.fibonacci.utils.CalculationStatus
 import com.fredprojects.helloworld.R
+import com.fredprojects.helloworld.domain.features.fibonacci.utils.CalculationStatus
 import com.fredprojects.helloworld.presentation.core.*
-import com.fredprojects.helloworld.presentation.features.fibonacci.binder.FibonacciBinder
 
 @Composable
 fun FibScreen(fibonacciSequences: List<FibonacciBinder>, calculate: (String) -> Unit) {
