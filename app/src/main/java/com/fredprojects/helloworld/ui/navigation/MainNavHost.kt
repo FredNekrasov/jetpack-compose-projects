@@ -1,12 +1,10 @@
 package com.fredprojects.helloworld.ui.navigation
 
-import android.content.res.Configuration
 import android.net.Uri
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.*
 import androidx.navigation.compose.NavHost
@@ -27,8 +25,7 @@ import com.fredprojects.helloworld.presentation.features.jumps.rope.JumpingRopeS
 import com.fredprojects.helloworld.presentation.features.jumps.rope.vm.JREvents
 import com.fredprojects.helloworld.presentation.features.jumps.rope.vm.JumpingRopeVM
 import com.fredprojects.helloworld.presentation.features.pws.PWListScreen
-import com.fredprojects.helloworld.presentation.features.pws.landscape.LandscapeUpsertPWScreen
-import com.fredprojects.helloworld.presentation.features.pws.portrait.PortraitUpsertPWScreen
+import com.fredprojects.helloworld.presentation.features.pws.UpsertPWScreen
 import com.fredprojects.helloworld.presentation.features.pws.vm.*
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
@@ -79,19 +76,11 @@ fun MainNavHost(
                     }
                 )
             ) {
-                if(LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                    LandscapeUpsertPWScreen(
-                        state = upsertPWVM.upsertPWState.collectAsState().value,
-                        goBack = { navController.navigateUp() },
-                        onTakePicture = onTakePicture
-                    ) { upsertPWVM.upsert(it) }
-                } else {
-                    PortraitUpsertPWScreen(
-                        state = upsertPWVM.upsertPWState.collectAsState().value,
-                        goBack = { navController.navigateUp() },
-                        onTakePicture = onTakePicture
-                    ) { upsertPWVM.upsert(it) }
-                }
+                UpsertPWScreen(
+                    state = upsertPWVM.upsertPWState.collectAsState().value,
+                    goBack = { navController.navigateUp() },
+                    onTakePicture
+                ) { upsertPWVM.upsert(it) }
             }
             composable(Routes.JUMPING_ROPE) {
                 JumpingRopeScreen(jumpingRopeVM.jrState.collectAsState().value) {
