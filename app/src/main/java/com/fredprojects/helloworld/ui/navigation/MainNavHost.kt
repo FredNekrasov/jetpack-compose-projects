@@ -10,20 +10,13 @@ import androidx.navigation.*
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.fredprojects.helloworld.R
-import com.fredprojects.helloworld.presentation.features.clients.anime.AQScreen
-import com.fredprojects.helloworld.presentation.features.clients.anime.vm.AnimeQuotesVM
-import com.fredprojects.helloworld.presentation.features.clients.astronomy.AstronomyInfoScreen
-import com.fredprojects.helloworld.presentation.features.clients.astronomy.vm.AstronomyInfoVM
-import com.fredprojects.helloworld.presentation.features.clients.math.MathInfoScreen
-import com.fredprojects.helloworld.presentation.features.clients.math.vm.MathVM
-import com.fredprojects.helloworld.presentation.features.inequality.InequalityScreen
-import com.fredprojects.helloworld.presentation.features.inequality.vm.InequalityVM
-import com.fredprojects.helloworld.presentation.features.jumps.list.JDListScreen
-import com.fredprojects.helloworld.presentation.features.jumps.list.vm.JDEvents
-import com.fredprojects.helloworld.presentation.features.jumps.list.vm.JDListVM
-import com.fredprojects.helloworld.presentation.features.jumps.rope.JumpingRopeScreen
-import com.fredprojects.helloworld.presentation.features.jumps.rope.vm.JREvents
-import com.fredprojects.helloworld.presentation.features.jumps.rope.vm.JumpingRopeVM
+import com.fredprojects.helloworld.presentation.features.clients.anime.*
+import com.fredprojects.helloworld.presentation.features.clients.astronomy.*
+import com.fredprojects.helloworld.presentation.features.clients.math.*
+import com.fredprojects.helloworld.presentation.features.inequality.*
+import com.fredprojects.helloworld.presentation.features.jumps.JDListScreen
+import com.fredprojects.helloworld.presentation.features.jumps.JumpingRopeScreen
+import com.fredprojects.helloworld.presentation.features.jumps.vm.*
 import com.fredprojects.helloworld.presentation.features.pws.PWListScreen
 import com.fredprojects.helloworld.presentation.features.pws.UpsertPWScreen
 import com.fredprojects.helloworld.presentation.features.pws.vm.*
@@ -76,11 +69,7 @@ fun MainNavHost(
                     }
                 )
             ) {
-                UpsertPWScreen(
-                    state = upsertPWVM.upsertPWState.collectAsState().value,
-                    goBack = { navController.navigateUp() },
-                    onTakePicture
-                ) { upsertPWVM.upsert(it) }
+                UpsertPWScreen(state = upsertPWVM.upsertPWState.collectAsState().value, navController::navigateUp, onTakePicture) { upsertPWVM.upsert(it) }
             }
             composable(Routes.JUMPING_ROPE) {
                 JumpingRopeScreen(jumpingRopeVM.jrState.collectAsState().value) {
