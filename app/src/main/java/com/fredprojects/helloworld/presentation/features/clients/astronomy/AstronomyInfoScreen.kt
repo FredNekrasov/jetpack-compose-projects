@@ -13,7 +13,6 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.fredprojects.helloworld.R
-import com.fredprojects.helloworld.domain.core.utils.ActionStatus
 import com.fredprojects.helloworld.domain.core.utils.ConnectionStatus
 import com.fredprojects.helloworld.domain.features.clients.astronomy.models.AstronomyInfo
 import com.fredprojects.helloworld.presentation.core.*
