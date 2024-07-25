@@ -44,6 +44,7 @@ fun LandscapeUpsertPWScreen(
     var isMarkCorrect by rememberSaveable { mutableStateOf(true) }
     var photo by rememberSaveable { mutableStateOf(state.pw?.image ?: "") }
     Scaffold(
+        modifier = Modifier.fillMaxSize(),
         floatingActionButton = {
             FredFloatingActionButton(
                 onClick = {
