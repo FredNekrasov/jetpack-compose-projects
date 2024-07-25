@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name">Hello World</string>
     <string name="fibMessageHeader">Calculations</string>
     <string name="fibMessageDescription">The answers that were received during the calculations</string>
     <string name="fibServiceError">Error: the service is not responding</string>
