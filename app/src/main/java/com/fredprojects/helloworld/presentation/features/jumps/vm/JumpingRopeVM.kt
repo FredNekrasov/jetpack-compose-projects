@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.jumps.rope.vm
+package com.fredprojects.helloworld.presentation.features.jumps.vm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

@@ -1,12 +1,12 @@
 package com.fredprojects.helloworld.di
 
 import com.fredprojects.helloworld.data.di.DMQualifiers
-import com.fredprojects.helloworld.presentation.features.clients.anime.vm.AnimeQuotesVM
-import com.fredprojects.helloworld.presentation.features.clients.astronomy.vm.AstronomyInfoVM
-import com.fredprojects.helloworld.presentation.features.clients.math.vm.MathVM
-import com.fredprojects.helloworld.presentation.features.inequality.vm.InequalityVM
-import com.fredprojects.helloworld.presentation.features.jumps.list.vm.JDListVM
-import com.fredprojects.helloworld.presentation.features.jumps.rope.vm.JumpingRopeVM
+import com.fredprojects.helloworld.presentation.features.clients.anime.AnimeQuotesVM
+import com.fredprojects.helloworld.presentation.features.clients.astronomy.AstronomyInfoVM
+import com.fredprojects.helloworld.presentation.features.clients.math.MathVM
+import com.fredprojects.helloworld.presentation.features.inequality.InequalityVM
+import com.fredprojects.helloworld.presentation.features.jumps.vm.JDListVM
+import com.fredprojects.helloworld.presentation.features.jumps.vm.JumpingRopeVM
 import com.fredprojects.helloworld.presentation.features.pws.vm.PWListVM
 import com.fredprojects.helloworld.presentation.features.pws.vm.UpsertPWVM
 import org.koin.androidx.viewmodel.dsl.viewModel

@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.jumps.list
+package com.fredprojects.helloworld.presentation.features.jumps
 
 import androidx.compose.animation.*
 import androidx.compose.foundation.clickable
@@ -9,9 +9,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.fredprojects.helloworld.presentation.features.jumps.SortingSection
-import com.fredprojects.helloworld.presentation.features.jumps.list.vm.JDEvents
-import com.fredprojects.helloworld.presentation.features.jumps.list.vm.JDState
+import com.fredprojects.helloworld.presentation.features.jumps.vm.JDEvents
+import com.fredprojects.helloworld.presentation.features.jumps.vm.JDState
 
 @Composable
 fun JDListScreen(

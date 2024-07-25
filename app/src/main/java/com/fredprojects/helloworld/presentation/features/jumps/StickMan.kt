@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.jumps.rope
+package com.fredprojects.helloworld.presentation.features.jumps
 
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas

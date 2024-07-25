@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.inequality.vm
+package com.fredprojects.helloworld.presentation.features.inequality
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

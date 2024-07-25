@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.jumps.list.vm
+package com.fredprojects.helloworld.presentation.features.jumps.vm
 
 import com.fredprojects.helloworld.domain.core.utils.SortType
 import com.fredprojects.helloworld.domain.features.jumps.models.JumpData

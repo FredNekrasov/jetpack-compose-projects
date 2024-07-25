@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.jumps.rope.vm
+package com.fredprojects.helloworld.presentation.features.jumps.vm
 
 import com.fredprojects.helloworld.domain.features.jumps.models.JumpData
 import com.fredprojects.helloworld.domain.features.jumps.utils.JumpStatus

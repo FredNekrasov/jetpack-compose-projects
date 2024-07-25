@@ -125,8 +125,8 @@ fun FredCard(
 @Composable
 fun FredTopBar(
     condition: Boolean,
-    goBack: Action,
-    openDrawer: Action
+    openDrawer: Action,
+    goBack: Action
 ) {
     TopAppBar(
         title = { FredText(text = stringResource(R.string.app_name)) },

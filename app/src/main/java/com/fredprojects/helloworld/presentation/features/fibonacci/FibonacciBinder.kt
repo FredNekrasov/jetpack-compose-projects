@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.fibonacci.binder
+package com.fredprojects.helloworld.presentation.features.fibonacci
 
 import android.os.Binder
 import com.fredprojects.helloworld.domain.features.fibonacci.useCases.FibonacciUseCase
