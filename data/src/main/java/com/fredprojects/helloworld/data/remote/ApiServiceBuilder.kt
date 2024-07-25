@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 /**
  * ApiServiceBuilder is used to create the Retrofit services
  */
-fun provideRetrofit(baseUrl: String): Retrofit = Retrofit.Builder()
+private fun provideRetrofit(baseUrl: String): Retrofit = Retrofit.Builder()
     .baseUrl(baseUrl)
     .addConverterFactory(GsonConverterFactory.create())
     .build()
