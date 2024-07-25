@@ -13,7 +13,6 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.fredprojects.helloworld.R
-import com.fredprojects.helloworld.domain.core.utils.ActionStatus
 import com.fredprojects.helloworld.domain.core.utils.ConnectionStatus
 import com.fredprojects.helloworld.domain.features.clients.astronomy.models.AstronomyInfo
 import com.fredprojects.helloworld.presentation.core.*
@@ -25,13 +24,15 @@ fun AstronomyInfoScreen(
 ) {
     Column(Modifier.fillMaxSize(), Arrangement.Center, Alignment.CenterHorizontally) {
         Spacer(Modifier.height(16.dp))
-        AstronomyScreenContent(state.status, onSearch)
+        AstronomyScreenContent(onSearch)
+        Spacer(Modifier.height(2.dp))
+        FredText(stringResource(state.status.getString()))
+        Spacer(Modifier.height(2.dp))
         if(LocalConfiguration.current.orientation == Configuration.ORIENTATION_PORTRAIT) AstronomyInfoScreenContentPortrait(state) else AstronomyInfoScreenContentLandscape(state)
     }
 }
 @Composable
 private fun AstronomyScreenContent(
-    status: ActionStatus,
     onSearch: (String, String, String) -> Unit
 ) {
     var ra by rememberSaveable { mutableStateOf("") }
@@ -52,9 +53,6 @@ private fun AstronomyScreenContent(
         },
         stringResource(R.string.search)
     )
-    Spacer(Modifier.height(2.dp))
-    FredText(stringResource(status.getString()))
-
 }
 @Composable
 private fun AstronomyInfoScreenContentPortrait(state: ConnectionStatus<AstronomyInfo>) {
