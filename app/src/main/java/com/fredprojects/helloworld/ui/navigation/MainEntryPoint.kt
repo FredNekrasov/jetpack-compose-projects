@@ -14,8 +14,8 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun MainEntryPoint(
+    onTakePicture: () -> Uri,
     fibonacciScreen: @Composable () -> Unit,
-    onTakePicture: () -> Uri
 ) {
     val controller = rememberNavController()
     val drawerState = rememberDrawerState(DrawerValue.Closed)
