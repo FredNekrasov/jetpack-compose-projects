@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.jetbrains.kotlin.compose)
 }
 android {
     namespace = "com.fredprojects.helloworld.presentation"
@@ -25,8 +26,24 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    buildFeatures {
+        compose = true
+    }
+}
+composeCompiler {
+    enableStrongSkippingMode = true
+    reportsDestination = layout.buildDirectory.dir("compose_compiler")
 }
 dependencies {
+    // DI Koin
+    implementation(libs.koin.androidx.compose)
+    // default dependencies
+    implementation(libs.bundles.androidx)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.bundles.compose.presentation)
+    // test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
+
+    implementation(project(":domain"))
 }

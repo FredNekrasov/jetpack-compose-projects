@@ -51,7 +51,7 @@ dependencies {
     // default dependencies
     implementation(libs.bundles.androidx)
     implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.bundles.compose)
+    implementation(libs.bundles.compose.app)
     //test
     testImplementation(libs.bundles.test)
     androidTestImplementation(platform(libs.androidx.compose.bom))
@@ -60,4 +60,5 @@ dependencies {
 
     implementation(project(":domain"))
     implementation(project(":data"))
+    implementation(project(":presentation"))
 }

@@ -66,7 +66,8 @@ retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-
 # app/presentation
 androidx = ["androidx-core-ktx", "androidx-lifecycle-runtime-ktx", "androidx-lifecycle-viewmodel-ktx"]
 koin = ["koin-core", "koin-android", "koin-androidx-compose"]
-compose = ["androidx-activity-compose", "androidx-ui", "androidx-ui-graphics", "androidx-ui-tooling-preview", "androidx-material3", "androidx-material-icons-extended", "androidx-navigation-compose", "coil-compose"]
+compose-app = ["androidx-activity-compose", "androidx-ui", "androidx-ui-graphics", "androidx-ui-tooling-preview", "androidx-material3", "androidx-navigation-compose"]
+compose-presentation = ["androidx-ui", "androidx-ui-graphics", "androidx-material3", "androidx-material-icons-extended", "coil-compose"]
 compose-debug = ["androidx-ui-tooling", "androidx-ui-test-manifest"]
 test = ["junit", "koin-test", "kotlinx-coroutines-test"]
 android-test = ["androidx-junit", "androidx-ui-test-junit4", "androidx-espresso-core"]
