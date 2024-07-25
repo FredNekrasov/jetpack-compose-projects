@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import com.fredprojects.helloworld.presentation.core.FredText
 
 @Composable
-internal fun AnswerFibScreen(result: String) {
+fun AnswerFibScreen(result: String) {
     Column(
         Modifier.fillMaxSize().verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center,
