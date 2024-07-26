@@ -35,10 +35,9 @@ composeCompiler {
     reportsDestination = layout.buildDirectory.dir("compose_compiler")
 }
 dependencies {
-    // DI Koin
-    implementation(libs.koin.androidx.compose)
     // default dependencies
     implementation(libs.bundles.androidx)
+    implementation(libs.androidx.lifecycle.viewmodel.savedstate)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.bundles.compose.presentation)
     // test
