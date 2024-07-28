@@ -15,7 +15,7 @@ import com.fredprojects.helloworld.presentation.core.Action
 import com.fredprojects.helloworld.presentation.core.FredRadioButton
 
 @Composable
-internal fun SortingSection(
+internal fun JDSortingSection(
     sortType: SortType,
     onSortingChange: (SortType) -> Unit
 ) {
