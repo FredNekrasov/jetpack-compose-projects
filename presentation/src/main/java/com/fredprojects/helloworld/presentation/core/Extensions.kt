@@ -16,6 +16,7 @@ fun ActionStatus.getString() = when(this) {
     ActionStatus.NO_DATA -> R.string.noData
     ActionStatus.SERIALIZATION_ERROR -> R.string.serializationError
     ActionStatus.UNKNOWN -> R.string.unknownError
+    ActionStatus.NOTHING -> R.string.empty
 }
 fun String.toLocalDate() = try {
     if (this.contains(Regex("""^\d{4}-\d{2}-\d{2}$"""))) {
@@ -25,4 +26,4 @@ fun String.toLocalDate() = try {
 } catch (e: DateTimeParseException) {
     null
 }
-fun Context.displayToast(message: String) = Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+fun Context.displayToast(messageId: Int) = Toast.makeText(this, getText(messageId), Toast.LENGTH_SHORT).show()

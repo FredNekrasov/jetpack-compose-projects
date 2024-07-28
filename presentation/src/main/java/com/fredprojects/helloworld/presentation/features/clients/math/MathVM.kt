@@ -20,7 +20,7 @@ class MathVM(
      * @see mathInfoMSF is used to emit data to the state flow
      * @see mathInfo is used to display data in the view
      */
-    private val mathInfoMSF = MutableStateFlow<ConnectionStatus<MathModel>>(ConnectionStatus.Loading(emptyList()))
+    private val mathInfoMSF = MutableStateFlow<ConnectionStatus<MathModel>>(ConnectionStatus.Nothing())
     val mathInfo = mathInfoMSF.asStateFlow()
     /**
      * getMathInfo is used to get data from the server and emit it to the state flow

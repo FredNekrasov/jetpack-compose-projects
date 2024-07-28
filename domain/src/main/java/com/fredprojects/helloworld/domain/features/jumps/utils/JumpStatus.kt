@@ -6,10 +6,12 @@ package com.fredprojects.helloworld.domain.features.jumps.utils
  * @property INCORRECT_DATE if the date is incorrect
  * @property INCORRECT_COUNT if the count is incorrect
  * @property INCORRECT_DATA if the data is incorrect
+ * @property NOTHING if there is no status
  */
 enum class JumpStatus {
     SUCCESS,
     INCORRECT_DATE,
     INCORRECT_COUNT,
-    INCORRECT_DATA
+    INCORRECT_DATA,
+    NOTHING
 }

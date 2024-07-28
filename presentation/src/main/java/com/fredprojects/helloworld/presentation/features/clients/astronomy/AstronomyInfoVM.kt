@@ -20,7 +20,7 @@ class AstronomyInfoVM(
      * @see astronomyInfoMSF is used to emit data to the state flow
      * @see astronomyInfo is used to display data in the view
      */
-    private val astronomyInfoMSF = MutableStateFlow<ConnectionStatus<AstronomyInfo>>(ConnectionStatus.Loading(emptyList()))
+    private val astronomyInfoMSF = MutableStateFlow<ConnectionStatus<AstronomyInfo>>(ConnectionStatus.Nothing())
     val astronomyInfo = astronomyInfoMSF.asStateFlow()
     /**
      * getAstronomyInfo is used to get data from the server and emit it to the state flow

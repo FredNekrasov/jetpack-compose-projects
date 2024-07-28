@@ -2,6 +2,7 @@ package com.fredprojects.helloworld.domain.core.utils
 
 /**
  * ActionStatus represents the status of an action that can be performed.
+ * @property NOTHING means that the action has no status.
  * @property LOADING means that the action is in progress.
  * @property SUCCESS means that the action was successfully completed.
  * @property CONNECTION_ERROR means that the action failed due to a connection error.
@@ -11,6 +12,7 @@ package com.fredprojects.helloworld.domain.core.utils
  * @property UNKNOWN means that the action failed for an unknown reason.
  */
 enum class ActionStatus {
+    NOTHING,
     LOADING,
     SUCCESS,
     CONNECTION_ERROR,
