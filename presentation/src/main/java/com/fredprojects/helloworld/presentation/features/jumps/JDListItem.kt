@@ -19,7 +19,7 @@ internal fun JDListItem(jumpData: JumpData, onDeleteClick: Action, modifier: Mod
         FredCard(Modifier.matchParentSize(), MaterialTheme.colorScheme.error, MaterialTheme.colorScheme.onError)
         Column(Modifier.fillMaxSize().padding(16.dp).padding(end = 32.dp)) {
             FredText("${stringResource(R.string.date)}: ${jumpData.date}")
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(2.dp))
             FredText("${stringResource(R.string.count)}: ${jumpData.count}")
         }
         FredIconButton(onDeleteClick, Icons.Default.Delete, Modifier.align(Alignment.BottomEnd))
