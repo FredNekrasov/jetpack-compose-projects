@@ -1,7 +1,6 @@
 package com.fredprojects.helloworld.presentation.features.pws
 
 import android.content.res.Configuration.ORIENTATION_LANDSCAPE
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
@@ -13,7 +12,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
-import coil.compose.rememberAsyncImagePainter
+import coil.compose.AsyncImage
 import com.fredprojects.helloworld.domain.features.pws.models.PracticalWork
 import com.fredprojects.helloworld.presentation.R
 import com.fredprojects.helloworld.presentation.core.*
@@ -36,37 +35,37 @@ internal fun PWListItem(
 }
 @Composable
 private fun PortraitPWListItemContent(pw: PracticalWork) {
-    Column(Modifier.fillMaxSize().padding(16.dp).padding(end = 32.dp)) {
+    Column(Modifier.fillMaxWidth().padding(16.dp).padding(end = 32.dp)) {
         FredText("${stringResource(R.string.pw)}: ${pw.pwName}")
-        Spacer(modifier = Modifier.height(4.dp))
+        Spacer(modifier = Modifier.height(2.dp))
         FredText("${stringResource(R.string.student)}: ${pw.student}")
-        Spacer(modifier = Modifier.height(4.dp))
+        Spacer(modifier = Modifier.height(2.dp))
         FredText("${stringResource(R.string.variant)}: ${pw.variant}")
-        Spacer(modifier = Modifier.height(4.dp))
+        Spacer(modifier = Modifier.height(2.dp))
         FredText("${stringResource(R.string.lvl)}: ${pw.level}")
-        Spacer(modifier = Modifier.height(4.dp))
+        Spacer(modifier = Modifier.height(2.dp))
         FredText("${stringResource(R.string.date)}: ${pw.date}")
-        Spacer(modifier = Modifier.height(4.dp))
+        Spacer(modifier = Modifier.height(2.dp))
         FredText("${stringResource(R.string.mark)}: ${pw.mark}")
-        Image(rememberAsyncImagePainter(pw.image.toUri()), pw.image, Modifier.wrapContentSize())
+        AsyncImage(pw.image.toUri(), pw.image, Modifier.wrapContentHeight())
     }
 }
 @Composable
 private fun LandscapePWListItemContent(pw: PracticalWork) {
-    Row(Modifier.fillMaxWidth(), Arrangement.SpaceEvenly, Alignment.CenterVertically) {
-        Column(Modifier.fillMaxSize().padding(16.dp)) {
+    Row(Modifier.fillMaxWidth().padding(16.dp).padding(end = 32.dp), Arrangement.SpaceEvenly, Alignment.CenterVertically) {
+        Column(Modifier.fillMaxHeight()) {
             FredText("${stringResource(R.string.pw)}: ${pw.pwName}")
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(2.dp))
             FredText("${stringResource(R.string.student)}: ${pw.student}")
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(2.dp))
             FredText("${stringResource(R.string.variant)}: ${pw.variant}")
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(2.dp))
             FredText("${stringResource(R.string.lvl)}: ${pw.level}")
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(2.dp))
             FredText("${stringResource(R.string.date)}: ${pw.date}")
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(2.dp))
             FredText("${stringResource(R.string.mark)}: ${pw.mark}")
         }
-        Image(rememberAsyncImagePainter(pw.image.toUri()), pw.image, Modifier.wrapContentSize().padding(16.dp).padding(end = 32.dp))
+        AsyncImage(pw.image.toUri(), pw.image, Modifier.wrapContentWidth().padding(16.dp))
     }
 }
