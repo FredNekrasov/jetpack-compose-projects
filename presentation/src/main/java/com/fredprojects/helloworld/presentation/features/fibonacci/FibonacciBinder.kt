@@ -28,7 +28,6 @@ class FibonacciBinder(
      */
     fun calculate(number: Int) {
         job = scope.launch {
-            delay(1000)
             resultMSF.emit(fibonacciUseCase(number))
         }
     }
