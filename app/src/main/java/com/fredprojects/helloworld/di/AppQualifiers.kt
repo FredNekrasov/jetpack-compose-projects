@@ -13,6 +13,5 @@ object AppQualifiers {
     const val JUMPING_ROPE_VM = "jumpingRopeVM"
     const val INEQUALITY_VM = "inequalityVM"
     const val MATH_VM = "mathVM"
-    const val ANIME_QUOTES_VM = "animeQuotesVM"
     const val ASTRONOMY_INFO_VM = "astronomyInfoVM"
 }

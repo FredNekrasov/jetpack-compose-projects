@@ -1,7 +1,6 @@
 package com.fredprojects.helloworld.di
 
 import com.fredprojects.helloworld.data.di.DMQualifiers
-import com.fredprojects.helloworld.presentation.features.clients.anime.AnimeQuotesVM
 import com.fredprojects.helloworld.presentation.features.clients.astronomy.AstronomyInfoVM
 import com.fredprojects.helloworld.presentation.features.clients.math.MathVM
 import com.fredprojects.helloworld.presentation.features.inequality.InequalityVM
@@ -33,10 +32,6 @@ val presentationModule = module {
     viewModel {
         InequalityVM(get(named(AppQualifiers.INEQUALITY_USE_CASE)))
     }.withOptions { qualifier = qualifier(AppQualifiers.INEQUALITY_VM) }
-
-    viewModel {
-        AnimeQuotesVM(get(_q(DMQualifiers.AQ_REPOSITORY)))
-    }.withOptions { qualifier = qualifier(AppQualifiers.ANIME_QUOTES_VM) }
 
     viewModel {
         AstronomyInfoVM(get(_q(DMQualifiers.ASTRONOMY_INFO_REPOSITORY)))

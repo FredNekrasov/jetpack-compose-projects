@@ -9,6 +9,5 @@ object Routes {
     const val JUMPING_ROPE = "jumping rope screen"
     const val ASTRONOMY = "astronomy screen"
     const val MATH = "math screen"
-    const val ANIME_QUOTES = "anime quotes screen"
-    val navItems = listOf(INEQUALITY, FIBONACCI, PW_LIST, UPSERT_PW, JD_LIST, JUMPING_ROPE, ASTRONOMY, MATH, ANIME_QUOTES)
+    val navItems = listOf(INEQUALITY, FIBONACCI, PW_LIST, UPSERT_PW, JD_LIST, JUMPING_ROPE, ASTRONOMY, MATH)
 }

@@ -5,7 +5,6 @@ import com.fredprojects.helloworld.data.repositories.*
 import com.fredprojects.helloworld.domain.core.repositories.IClientRepository
 import com.fredprojects.helloworld.domain.core.repositories.IRepository
 import com.fredprojects.helloworld.domain.features.clients.astronomy.repository.IAstronomyRepository
-import com.fredprojects.helloworld.domain.features.clients.common.AnimeQuote
 import com.fredprojects.helloworld.domain.features.clients.common.MathModel
 import com.fredprojects.helloworld.domain.features.jumps.models.JumpData
 import com.fredprojects.helloworld.domain.features.pws.models.PracticalWork
@@ -22,13 +21,6 @@ internal val repositoryModule = module {
     single<IRepository<PracticalWork>> {
         PWRepository(get<HelloWorldDb>(named(DMQualifiers.HELLO_WORLD_DB)).pwDao)
     }.withOptions { qualifier = qualifier(DMQualifiers.PW_REPOSITORY) }
-
-    single<IClientRepository<AnimeQuote>> {
-        AQRepository(
-            get<HelloWorldDb>(named(DMQualifiers.HELLO_WORLD_DB)).aqDao,
-            get(named(DMQualifiers.AQ_SERVICE))
-        )
-    }.withOptions { qualifier = qualifier(DMQualifiers.AQ_REPOSITORY) }
 
     single<IClientRepository<MathModel>> {
         MathRepository(

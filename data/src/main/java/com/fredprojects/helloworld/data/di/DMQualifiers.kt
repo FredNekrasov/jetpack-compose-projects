@@ -3,7 +3,6 @@ package com.fredprojects.helloworld.data.di
 object DMQualifiers {
     const val HELLO_WORLD_DB = "helloWorldDB"
     // services
-    const val AQ_SERVICE = "aqService"
     const val MATH_SERVICE = "mathService"
     const val ASTRONOMY_INFO_SERVICE = "astronomyInfoService"
     // repositories

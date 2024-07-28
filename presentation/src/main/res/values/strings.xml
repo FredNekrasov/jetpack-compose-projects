@@ -14,11 +14,6 @@
     <string name="enterCount">Enter the count of jumps</string>
     <string name="save">Save</string>
     <!-- for clients -->
-    <string name="anime">anime</string>
-    <string name="enterAnime">Enter the name of the anime</string>
-    <string name="character">character</string>
-    <string name="quote">quote</string>
-
     <string name="enterRA">Enter the right ascension</string>
     <string name="enterDec">Enter the declination</string>
     <string name="enterRadius">Enter the radius</string>
