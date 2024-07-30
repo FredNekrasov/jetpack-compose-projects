@@ -19,7 +19,7 @@ import com.fredprojects.helloworld.data.local.entities.*
  */
 @Database(
     entities = [PWEntity::class, JDEntity::class, MathEntity::class, AstronomyInfoEntity::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class HelloWorldDb : RoomDatabase() {
