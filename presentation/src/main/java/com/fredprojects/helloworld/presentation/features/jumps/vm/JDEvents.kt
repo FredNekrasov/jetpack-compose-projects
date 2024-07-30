@@ -10,7 +10,6 @@ import com.fredprojects.helloworld.domain.features.jumps.models.JumpData
  * @property UpsertJD the data that should be inserted or updated
  * @property GetJD the id of the data that should be edited
  * @property ToggleSortSection the visibility of the sorting section
- * @property SwitchingDialog the visibility of the dialog
  */
 sealed class JDEvents {
     data class Sort(val sortType: SortType) : JDEvents()
@@ -18,5 +17,4 @@ sealed class JDEvents {
     data class UpsertJD(val jumpData: JumpData) : JDEvents()
     data class GetJD(val jumpDataId: Int) : JDEvents()
     data object ToggleSortSection : JDEvents()
-    data object SwitchingDialog : JDEvents()
 }
