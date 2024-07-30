@@ -3,9 +3,11 @@ package com.fredprojects.helloworld.presentation.core
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
-import androidx.compose.material3.*
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -17,8 +19,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.*
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.fredprojects.helloworld.presentation.R
@@ -26,30 +28,59 @@ import com.fredprojects.helloworld.presentation.R
 typealias Action = () -> Unit
 // text fields
 @Composable
-fun FredHeaderText(text: String, textStyle: TextStyle, modifier: Modifier = Modifier) {
-    Text(text, modifier, fontFamily = FontFamily.Serif, style = textStyle)
+fun FredHeaderText(
+    text: String,
+    textStyle: TextStyle,
+    modifier: Modifier = Modifier,
+    color: Color = Color.Unspecified
+) {
+    Text(
+        text,
+        modifier,
+        color = color,
+        fontFamily = FontFamily.Serif,
+        textAlign = TextAlign.Center,
+        style = textStyle
+    )
 }
 @Composable
-fun FredText(text: String, modifier: Modifier = Modifier) {
-    Text(text, modifier, fontFamily = FontFamily.Serif)
+fun FredText(
+    text: String,
+    modifier: Modifier = Modifier,
+    color: Color = Color.Unspecified
+) {
+    Text(
+        text,
+        modifier,
+        color = color,
+        fontFamily = FontFamily.Serif,
+        textAlign = TextAlign.Justify
+    )
 }
 @Composable
 fun FredNumericTextField(
     value: String,
     onValueChange: (String) -> Unit,
     labelId: Int,
-    errorId: Int = R.string.error,
     isValueCorrect: Boolean = true,
     imeAction: ImeAction = ImeAction.Done,
-    keyboardType: KeyboardType = KeyboardType.Number
+    keyboardType: KeyboardType = KeyboardType.NumberPassword
 ) {
-    OutlinedTextField(
+    TextField(
         value,
         { if(((it.toIntOrNull() != null) && (it.toInt() >= 0)) || (it == "")) onValueChange(it) },
-        label = { FredText(text = stringResource(labelId)) },
-        supportingText = { if(!isValueCorrect) FredText(text = stringResource(errorId)) },
+        label = { FredText(stringResource(labelId)) },
+        isError = !isValueCorrect,
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = imeAction),
-        isError = isValueCorrect
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            textColor = MaterialTheme.colors.onBackground,
+            backgroundColor = MaterialTheme.colors.background,
+            cursorColor = MaterialTheme.colors.onBackground,
+            focusedBorderColor = MaterialTheme.colors.onBackground,
+            unfocusedBorderColor = MaterialTheme.colors.onBackground,
+            focusedLabelColor = MaterialTheme.colors.onBackground,
+            unfocusedLabelColor = MaterialTheme.colors.onBackground
+        )
     )
 }
 @Composable
@@ -57,48 +88,72 @@ fun FredTextField(
     value: String,
     onValueChange: (String) -> Unit,
     labelId: Int,
-    errorId: Int,
     isValueCorrect: Boolean,
     imeAction: ImeAction = ImeAction.Next,
     keyboardType: KeyboardType = KeyboardType.Text
 ) {
-    OutlinedTextField(
+    TextField(
         value,
         onValueChange,
-        label = { FredText(text = stringResource(labelId)) },
-        supportingText = { if(!isValueCorrect) FredText(text = stringResource(errorId)) },
+        label = { FredText(stringResource(labelId))},
+        isError = !isValueCorrect,
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = imeAction),
-        isError = isValueCorrect
+        shape = MaterialTheme.shapes.small,
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            textColor = MaterialTheme.colors.onBackground,
+            backgroundColor = MaterialTheme.colors.background,
+            cursorColor = MaterialTheme.colors.onBackground,
+            focusedBorderColor = MaterialTheme.colors.onBackground,
+            unfocusedBorderColor = MaterialTheme.colors.onBackground,
+            focusedLabelColor = MaterialTheme.colors.onBackground,
+            unfocusedLabelColor = MaterialTheme.colors.onBackground
+        )
     )
 }
 // buttons
 @Composable
 fun FredButton(onClick: Action, text: String, modifier: Modifier = Modifier) {
-    Button(onClick, modifier) { Text(text) }
+    Button(
+        onClick,
+        modifier,
+        colors = ButtonDefaults.buttonColors(MaterialTheme.colors.onBackground, MaterialTheme.colors.background)
+    ) { FredText(text) }
 }
 @Composable
 fun FredRadioButton(text: String, selected: Boolean, onSelect: Action) {
     Row(verticalAlignment = Alignment.CenterVertically) {
-        RadioButton(selected = selected, onClick = onSelect)
-        Spacer(Modifier.width(2.dp))
-        Text(text = text)
+        RadioButton(
+            selected = selected,
+            onClick = onSelect,
+            colors = RadioButtonDefaults.colors(MaterialTheme.colors.primary, MaterialTheme.colors.onBackground)
+        )
+        FredText(text)
     }
 }
 @Composable
 fun FredIconButton(
-    onClick: Action, icon: ImageVector, modifier: Modifier = Modifier
+    onClick: Action,
+    icon: ImageVector,
+    modifier: Modifier = Modifier,
+    tint: Color = MaterialTheme.colors.background
 ) {
-    IconButton(onClick, modifier) { Icon(icon, icon.toString()) }
+    IconButton(onClick, modifier) { Icon(icon, icon.toString(), tint = tint) }
 }
 @Composable
-fun FredFloatingActionButton(onClick: Action, icon: ImageVector) {
-    FloatingActionButton(onClick) { Icon(icon, icon.toString()) }
+fun FredFloatingActionButton(icon: ImageVector, onClick: Action) {
+    FloatingActionButton(
+        onClick,
+        backgroundColor = MaterialTheme.colors.onBackground,
+        contentColor = MaterialTheme.colors.background
+    ) {
+        Icon(icon, icon.toString())
+    }
 }
 // other
 @Composable
 fun FredCard(
     modifier: Modifier,
-    mainColor: Color,
+    primaryColor: Color,
     secondaryColor: Color,
     cornerRadius: Dp = 10.dp,
     cutCornerSize: Dp = 30.dp
@@ -112,7 +167,7 @@ fun FredCard(
             close()
         }
         clipPath(clipPath) {
-            drawRoundRect(color = mainColor, size = size, cornerRadius = CornerRadius(cornerRadius.toPx()))
+            drawRoundRect(color = primaryColor, size = size, cornerRadius = CornerRadius(cornerRadius.toPx()))
             drawRoundRect(
                 color = secondaryColor, topLeft = Offset(size.width - cutCornerSize.toPx(), - 100f),
                 size = Size(cutCornerSize.toPx() + 100f, cutCornerSize.toPx() + 100f),
@@ -121,31 +176,18 @@ fun FredCard(
         }
     }
 }
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FredTopBar(
-    condition: Boolean,
-    openDrawer: Action,
-    goBack: Action
-) {
+fun FredTopBar(isAction: Boolean, action: Action, isArrowUp: Boolean = false) {
     TopAppBar(
-        title = { FredText(text = stringResource(R.string.app_name)) },
-        navigationIcon = {
-            if(condition) FredIconButton(goBack, icon = Icons.Default.ArrowBackIosNew) else FredIconButton(openDrawer, icon = Icons.Default.Menu)
-        },
+        title = { FredHeaderText(stringResource(R.string.app_name), textStyle = MaterialTheme.typography.h5) },
+        navigationIcon = { if(!isAction) FredIconButton(action, Icons.AutoMirrored.Default.KeyboardArrowLeft) },
         actions = {
-            if(condition) FredIconButton(openDrawer, icon = Icons.Default.Menu)
-        }
-    )
-}
-@Composable
-fun FredNavigationDrawerItem(text: String, selected: Boolean, onClick: Action) {
-    NavigationDrawerItem(
-        label = { FredText(text) },
-        selected,
-        onClick,
-        Modifier.fillMaxWidth(),
-        shape = MaterialTheme.shapes.small,
-        colors = NavigationDrawerItemDefaults.colors()
+            when {
+                isAction && !isArrowUp -> FredIconButton(action, Icons.Default.KeyboardArrowDown)
+                isAction && isArrowUp -> FredIconButton(action, Icons.Default.KeyboardArrowUp)
+            }
+        },
+        backgroundColor = MaterialTheme.colors.onBackground,
+        contentColor = MaterialTheme.colors.background
     )
 }
