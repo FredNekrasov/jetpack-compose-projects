@@ -12,6 +12,8 @@
     <string name="jump">Jump</string>
     <string name="count">Count of jumps</string>
     <string name="enterCount">Enter the count of jumps</string>
+    <string name="enterDate">Enter the completion date</string>
+    <string name="incorrectDate">The date should be less than now and in the format (yyyy-mm-dd). Min year: 2020</string>
     <string name="save">Save</string>
     <!-- for clients -->
     <string name="enterRA">Enter the right ascension</string>
@@ -31,13 +33,14 @@
     <string name="enterStudent">Enter the student\'s name/surname</string>
     <string name="enterVariant">Enter the variant number</string>
     <string name="enterLVL">Enter the level number</string>
+    <string name="enterPWDate">Enter the completion date (dd.mm.yyyy)</string>
     <string name="enterMark">Enter the mark of the practical work</string>
     <!-- errors -->
     <string name="incorrectPW">The pwName should not be empty</string>
     <string name="incorrectStudent">The student name should not be empty</string>
     <string name="incorrectVariant">The variant must not be an empty</string>
     <string name="incorrectLVL">The level must not be an empty</string>
-    <string name="incorrectDate">The date should be less than now. Min year: 2020</string>
+    <string name="incorrectPWDate">The date should be less than now. Min year: 2020</string>
     <string name="incorrectMark">The mark must not be an empty</string>
     <!-- common -->
     <string name="displayResult">display the result of solving the task</string>
@@ -47,7 +50,6 @@
     <string name="descendingSort">Descending</string>
     <string name="search">Search for records</string>
     <string name="deletedRecord">The record has been deleted</string>
-    <string name="enterDate">Enter the completion date (yyyy-mm-dd)</string>
     <string name="date">Date</string>
     <string name="wait">Wait for the result</string>
     <string name="error">Error: The values are empty or incorrect</string>
