@@ -17,9 +17,9 @@ class UpsertJDUseCase(
      * @return the status of the operation
      */
     suspend operator fun invoke(jumpData: JumpData): JumpStatus = when {
-        !jumpData.isValid() -> JumpStatus.INCORRECT_DATA
         !jumpData.isCountCorrect() -> JumpStatus.INCORRECT_COUNT
         !jumpData.isDateCorrect() -> JumpStatus.INCORRECT_DATE
+        !jumpData.isValid() -> JumpStatus.INCORRECT_DATA
         else -> {
             repository.upsert(jumpData)
             JumpStatus.SUCCESS
