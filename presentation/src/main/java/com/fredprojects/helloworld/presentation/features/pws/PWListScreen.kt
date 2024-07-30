@@ -5,38 +5,57 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Add
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.fredprojects.helloworld.presentation.R
+import com.fredprojects.helloworld.presentation.core.FredFloatingActionButton
+import com.fredprojects.helloworld.presentation.core.FredTopBar
 import com.fredprojects.helloworld.presentation.features.pws.vm.PWEvents
 import com.fredprojects.helloworld.presentation.features.pws.vm.PWState
+import kotlinx.coroutines.launch
 
 @Composable
 fun PWListScreen(
     state: PWState,
-    onAddOrEdit: (Int?) -> Unit,
-    onEvent: (PWEvents) -> Unit
+    onEvent: (PWEvents) -> Unit,
+    toUpsertPWScreen: (Int?) -> Unit
 ) {
-    Column(Modifier.fillMaxSize(), Arrangement.Center, Alignment.CenterHorizontally) {
-        AnimatedVisibility(
-            state.isSortingSectionVisible,
-            enter = fadeIn() + slideInVertically(),
-            exit = fadeOut() + slideOutVertically()
-        ) {
-            SortingSection(state.sortingPW) { onEvent(PWEvents.Sort(it)) }
-        }
-        Spacer(Modifier.height(8.dp))
-        PWSearchBar({ onEvent(PWEvents.SearchPW(it)) }, Modifier.fillMaxWidth())
-        Spacer(Modifier.height(8.dp))
-        LazyColumn(Modifier.fillMaxSize()) {
-            items(state.pws) { pw ->
-                PWListItem(
-                    pw = pw,
-                    modifier = Modifier.fillMaxWidth().clickable { onAddOrEdit(pw.id) },
-                    onDelete = { onEvent(PWEvents.DeletePW(pw)) }
-                )
-                Spacer(Modifier.height(2.dp))
+    val scaffoldState = rememberScaffoldState()
+    val scope = rememberCoroutineScope()
+    val deleteMessage = stringResource(R.string.deletedRecord)
+    val cancel = stringResource(R.string.cancel)
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        scaffoldState = scaffoldState,
+        topBar = { FredTopBar(true, { onEvent(PWEvents.ToggleSortSection) }, state.isSortingSectionVisible) },
+        floatingActionButton = { FredFloatingActionButton(Icons.Outlined.Add) { toUpsertPWScreen(null) } }
+    ) { innerPadding ->
+        Column(Modifier.fillMaxSize().padding(innerPadding), horizontalAlignment = Alignment.CenterHorizontally) {
+            AnimatedVisibility(
+                state.isSortingSectionVisible,
+                enter = fadeIn() + slideInVertically(),
+                exit = fadeOut() + slideOutVertically()
+            ) { SortingSection(state.sortingPW) { onEvent(PWEvents.Sort(it)) } }
+            Spacer(Modifier.height(4.dp))
+            PWSearchBar { onEvent(PWEvents.SearchPW(it)) }
+            Spacer(Modifier.height(4.dp))
+            LazyColumn(Modifier.fillMaxWidth()) {
+                items(state.pws) { pw ->
+                    PWListItem(pw, Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 2.dp).clickable { toUpsertPWScreen(pw.id) }) {
+                        onEvent(PWEvents.DeletePW(pw))
+                        scope.launch {
+                            val result = scaffoldState.snackbarHostState.showSnackbar(deleteMessage, actionLabel = cancel)
+                            if(result == SnackbarResult.ActionPerformed) onEvent(PWEvents.RestorePW)
+                        }
+                    }
+                }
             }
         }
     }
