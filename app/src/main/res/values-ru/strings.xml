@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hello World</string>
+    <string name="fibMessageHeader">Расчеты</string>
+    <string name="fibMessageDescription">Ответы, которые были получены в ходе расчетов</string>
+    <string name="fibServiceError">Ошибка: служба не отвечает</string>
+</resources>
