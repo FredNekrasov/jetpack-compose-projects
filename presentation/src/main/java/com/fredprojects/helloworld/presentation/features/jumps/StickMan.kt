@@ -8,39 +8,38 @@ import androidx.compose.ui.*
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.*
 import kotlin.math.*
 
 @Composable
-internal fun StickMan(countOfJumps: Int) {
+internal fun StickMan(jumps: Int) {
     val jump = remember { Animatable(0f) }
     val angle = remember { Animatable(0f) }
     val ropeAngle = remember { Animatable(0f) }
     Column(Modifier.wrapContentSize(), Arrangement.Center, Alignment.CenterHorizontally) {
-        if (countOfJumps > 0) {
-            LaunchedEffect(countOfJumps) {
+        if (jumps > 0) {
+            LaunchedEffect(jumps) {
                 launch {
-                    repeat(countOfJumps) {
+                    repeat(jumps) {
                         async { angle.animateTo(91f / 180f * PI.toFloat(), tween(1000)) }.await()
                         async { angle.animateTo(0f / 180f * PI.toFloat(), tween(1000)) }.await()
                     }
                 }
                 launch {
-                    repeat(countOfJumps) {
+                    repeat(jumps) {
                         async { jump.animateTo(50f, tween(1000)) }.await()
                         async { jump.animateTo(0f, tween(1000)) }.await()
                     }
                 }
                 launch {
-                    repeat(countOfJumps) {
+                    repeat(jumps) {
                         async { ropeAngle.animateTo(400f, tween(1000)) }.await()
                         async { ropeAngle.animateTo(-300f, tween(1000)) }.await()
                     }
                 }
             }
         }
-        Canvas(Modifier.wrapContentSize().padding(8.dp)) {
+        Canvas(Modifier.fillMaxWidth(0.5f).aspectRatio(1f)) {
             val height = jump.value
             val rightLeg = Offset((size.width/2)+25, size.height - height)
             val leftLeg = Offset((size.width/2)-25, size.height - height)

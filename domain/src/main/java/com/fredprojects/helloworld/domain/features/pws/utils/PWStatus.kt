@@ -10,6 +10,7 @@ package com.fredprojects.helloworld.domain.features.pws.utils
  * @property INCORRECT_DATE if the date is incorrect
  * @property INCORRECT_MARK if the mark is incorrect
  * @property INCORRECT_IMAGE if the image is incorrect
+ * @property NOTHING if the practical work was not verified
  */
 enum class PWStatus {
     SUCCESS,
@@ -19,5 +20,6 @@ enum class PWStatus {
     INCORRECT_VARIANT,
     INCORRECT_DATE,
     INCORRECT_MARK,
-    INCORRECT_IMAGE
+    INCORRECT_IMAGE,
+    NOTHING
 }

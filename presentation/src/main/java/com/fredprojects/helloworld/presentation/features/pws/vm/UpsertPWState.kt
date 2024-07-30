@@ -10,5 +10,5 @@ import com.fredprojects.helloworld.domain.features.pws.utils.PWStatus
  */
 data class UpsertPWState(
     val pw: PracticalWork? = null,
-    val status: PWStatus = PWStatus.SUCCESS
+    val status: PWStatus = PWStatus.NOTHING
 )

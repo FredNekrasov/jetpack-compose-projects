@@ -29,8 +29,10 @@ class JDListVM(
         when(event) {
             is JDEvents.DeleteJD -> deleteJD(event.jumpData)
             is JDEvents.GetJD -> getJDById(event.jumpDataId)
-            is JDEvents.Sort -> getSortedJDs(event.sortType)
-            JDEvents.SwitchingDialog -> jdStateMSF.value = jdState.value.copy(isShowDialog = !jdState.value.isShowDialog)
+            is JDEvents.Sort -> {
+                if (jdState.value.sortType == event.sortType) return
+                getSortedJDs(event.sortType)
+            }
             JDEvents.ToggleSortSection -> jdStateMSF.value = jdState.value.copy(isSortingSectionVisible = !jdState.value.isSortingSectionVisible)
             is JDEvents.UpsertJD -> upsertJD(event.jumpData)
         }
@@ -58,7 +60,6 @@ class JDListVM(
      * @param sortType is the type of sorting
      */
     private fun getSortedJDs(sortType: SortType) {
-        if (jdState.value.sortType == sortType) return
         getDataJob?.cancel()
         getDataJob = useCases.getData(sortType).onEach {
             jdStateMSF.emit(jdState.value.copy(jds = it, sortType = sortType))

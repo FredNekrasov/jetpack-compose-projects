@@ -11,13 +11,11 @@ import com.fredprojects.helloworld.domain.features.jumps.utils.JumpStatus
  * @param jdStatus the status of the jump data
  * @param sortType the sort type of the jump data list by date
  * @param isSortingSectionVisible the visibility of the sorting section
- * @param isShowDialog the visibility of the dialog
  */
 data class JDState(
     val jds: List<JumpData> = emptyList(),
     val jd: JumpData? = null,
-    val jdStatus: JumpStatus = JumpStatus.SUCCESS,
+    val jdStatus: JumpStatus = JumpStatus.NOTHING,
     val sortType: SortType = SortType.Descending,
-    val isSortingSectionVisible: Boolean = false,
-    val isShowDialog: Boolean = false
+    val isSortingSectionVisible: Boolean = false
 )

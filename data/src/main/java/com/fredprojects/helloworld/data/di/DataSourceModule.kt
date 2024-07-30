@@ -9,15 +9,13 @@ import org.koin.dsl.module
 
 internal val dataSourceModule = module {
     single(createdAtStart = true) {
-        Room.databaseBuilder(get(), HelloWorldDb::class.java, HelloWorldDb.DB_NAME).build()
-    }.withOptions { qualifier(DMQualifiers.HELLO_WORLD_DB) }
-    single(createdAtStart = true) { createAQService() }.withOptions {
-        qualifier(DMQualifiers.AQ_SERVICE)
-    }
+        Room.databaseBuilder(get(), HelloWorldDb::class.java, HelloWorldDb.DB_NAME)
+            .fallbackToDestructiveMigration().build()
+    }.withOptions { qualifier = qualifier(DMQualifiers.HELLO_WORLD_DB) }
     single(createdAtStart = true) { createMathService() }.withOptions {
-        qualifier(DMQualifiers.MATH_SERVICE)
+        qualifier = qualifier(DMQualifiers.MATH_SERVICE)
     }
     single(createdAtStart = true) { createAstronomyInfoService() }.withOptions {
-        qualifier(DMQualifiers.ASTRONOMY_INFO_SERVICE)
+        qualifier = qualifier(DMQualifiers.ASTRONOMY_INFO_SERVICE)
     }
 }

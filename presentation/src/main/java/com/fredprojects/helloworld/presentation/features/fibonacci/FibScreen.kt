@@ -3,6 +3,7 @@ package com.fredprojects.helloworld.presentation.features.fibonacci
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -14,11 +15,20 @@ import com.fredprojects.helloworld.domain.features.fibonacci.utils.CalculationSt
 import com.fredprojects.helloworld.presentation.core.*
 
 @Composable
-fun FibScreen(fibonacciSequences: List<FibonacciBinder>, calculate: (String) -> Unit) {
+fun FibScreen(fibonacciSequences: List<FibonacciBinder>, calculate: (Int) -> Unit) {
     var number by rememberSaveable { mutableStateOf("") }
+    var isNumberCorrect by rememberSaveable { mutableStateOf(true) }
     Column(Modifier.fillMaxSize(), Arrangement.Center, Alignment.CenterHorizontally) {
         FredNumericTextField(number, { number = it }, R.string.fibEnterNumber)
-        FredButton({ calculate(number) }, stringResource(R.string.displayResult))
+        if(!isNumberCorrect) FredText(stringResource(R.string.error), color = MaterialTheme.colors.error)
+        Spacer(Modifier.height(4.dp))
+        FredButton(
+            {
+                isNumberCorrect = number.isNotEmpty() && (number.toIntOrNull() != null)
+                if(isNumberCorrect) calculate(number.toInt())
+            },
+            stringResource(R.string.displayResult)
+        )
         FibSequenceList(fibonacciSequences)
     }
 }
@@ -26,6 +36,7 @@ fun FibScreen(fibonacciSequences: List<FibonacciBinder>, calculate: (String) -> 
 private fun FibSequenceList(fibonacciSequences: List<FibonacciBinder>) {
     LazyColumn {
         items(fibonacciSequences) {
+            Spacer(Modifier.height(4.dp))
             val result = it.result.collectAsState().value
             val text = when(result.first) {
                 CalculationStatus.SUCCESS -> result.second.toString()

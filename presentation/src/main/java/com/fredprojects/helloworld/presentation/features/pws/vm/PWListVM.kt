@@ -32,8 +32,11 @@ class PWListVM(
             is PWEvents.DeletePW -> deletePW(event.pw)
             PWEvents.RestorePW -> restorePW()
             is PWEvents.SearchPW -> findPWsByValue(event.value)
-            is PWEvents.Sort -> getSortedPWs(event.sortingPW)
             PWEvents.ToggleSortSection -> pwStateMSF.value = pwState.value.copy(isSortingSectionVisible = !pwState.value.isSortingSectionVisible)
+            is PWEvents.Sort -> {
+                if ((pwState.value.sortingPW::class == event.sortingPW::class) && (pwState.value.sortingPW.sortType == event.sortingPW.sortType)) return
+                getSortedPWs(event.sortingPW)
+            }
         }
     }
     /**
@@ -41,7 +44,6 @@ class PWListVM(
      * @param sortingPW is the sorting type of the practical works
      */
     private fun getSortedPWs(sortingPW: SortingPW) {
-        if ((pwState.value.sortingPW::class == sortingPW::class) && (pwState.value.sortingPW.sortType == sortingPW.sortType)) return
         getDataJob?.cancel()
         getDataJob = useCases.getPWs(sortingPW).onEach {
             pwStateMSF.emit(pwState.value.copy(pws = it, sortingPW = sortingPW))

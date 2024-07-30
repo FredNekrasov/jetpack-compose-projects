@@ -2,7 +2,7 @@ package com.fredprojects.helloworld.presentation.features.jumps
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -15,7 +15,7 @@ import com.fredprojects.helloworld.presentation.core.Action
 import com.fredprojects.helloworld.presentation.core.FredRadioButton
 
 @Composable
-internal fun SortingSection(
+internal fun JDSortingSection(
     sortType: SortType,
     onSortingChange: (SortType) -> Unit
 ) {
@@ -28,7 +28,7 @@ internal fun SortingSection(
 internal fun JDIconButton(onClick: Action, icon: ImageVector) {
     IconButton(
         onClick,
-        Modifier.padding(4.dp).border(2.dp, MaterialTheme.colorScheme.onBackground, MaterialTheme.shapes.small)
+        Modifier.padding(4.dp).border(2.dp, MaterialTheme.colors.onBackground, MaterialTheme.shapes.small)
     ) {
         Icon(icon, icon.toString())
     }

@@ -12,13 +12,10 @@
     <string name="jump">Jump</string>
     <string name="count">Count of jumps</string>
     <string name="enterCount">Enter the count of jumps</string>
+    <string name="enterDate">Enter the completion date</string>
+    <string name="incorrectDate">The date should be less than now and in the format (yyyy-mm-dd). Min year: 2020</string>
     <string name="save">Save</string>
     <!-- for clients -->
-    <string name="anime">anime</string>
-    <string name="enterAnime">Enter the name of the anime</string>
-    <string name="character">character</string>
-    <string name="quote">quote</string>
-
     <string name="enterRA">Enter the right ascension</string>
     <string name="enterDec">Enter the declination</string>
     <string name="enterRadius">Enter the radius</string>
@@ -33,30 +30,31 @@
     <string name="takePicture">Take a picture</string>
     <!-- inputs -->
     <string name="enterPW">Enter the name of the practical work</string>
-    <string name="enterStudent">Enter the student\'s name and surname</string>
-    <string name="enterVariant">Enter the number of the practical work variant</string>
-    <string name="enterLVL">Enter the number of the practical work level</string>
+    <string name="enterStudent">Enter the student\'s name/surname</string>
+    <string name="enterVariant">Enter the variant number</string>
+    <string name="enterLVL">Enter the level number</string>
+    <string name="enterPWDate">Enter the completion date (dd.mm.yyyy)</string>
     <string name="enterMark">Enter the mark of the practical work</string>
     <!-- errors -->
-    <string name="incorrectPW">The title of the practical work should not be empty</string>
-    <string name="incorrectStudent">The name of the student should not be empty</string>
-    <string name="incorrectVariant">The variant number must not be an empty or negative number</string>
-    <string name="incorrectLVL">The level number must not be an empty or negative number</string>
-    <string name="incorrectDate">The date should be in the range from 01.01.2019 to now</string>
-    <string name="incorrectMark">The mark must not be an empty or negative number</string>
+    <string name="incorrectPW">The pwName should not be empty</string>
+    <string name="incorrectStudent">The student name should not be empty</string>
+    <string name="incorrectVariant">The variant must not be an empty</string>
+    <string name="incorrectLVL">The level must not be an empty</string>
+    <string name="incorrectPWDate">The date should be less than now. Min year: 2020</string>
+    <string name="incorrectMark">The mark must not be an empty</string>
     <!-- common -->
     <string name="displayResult">display the result of solving the task</string>
-    <string name="add">Add a new record</string>
-    <string name="update">Edit a record</string>
+    <string name="upsert">Adding or editing a record</string>
+    <string name="update">Editing a record</string>
     <string name="ascendingSort">Ascending</string>
     <string name="descendingSort">Descending</string>
     <string name="search">Search for records</string>
     <string name="deletedRecord">The record has been deleted</string>
-    <string name="enterDate">Enter the completion date (dd.mm.yyyy)</string>
     <string name="date">Date</string>
     <string name="wait">Wait for the result</string>
-    <string name="error">Error: The values are null or incorrect</string>
+    <string name="error">Error: The values are empty or incorrect</string>
     <string name="success">The data was successfully received</string>
+    <string name="empty"> </string>
     <!-- errors -->
     <string name="noInternet">there is no internet connection</string>
     <string name="noData">no data</string>
