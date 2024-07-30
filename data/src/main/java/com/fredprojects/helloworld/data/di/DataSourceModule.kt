@@ -9,7 +9,8 @@ import org.koin.dsl.module
 
 internal val dataSourceModule = module {
     single(createdAtStart = true) {
-        Room.databaseBuilder(get(), HelloWorldDb::class.java, HelloWorldDb.DB_NAME).build()
+        Room.databaseBuilder(get(), HelloWorldDb::class.java, HelloWorldDb.DB_NAME)
+            .fallbackToDestructiveMigration().build()
     }.withOptions { qualifier = qualifier(DMQualifiers.HELLO_WORLD_DB) }
     single(createdAtStart = true) { createMathService() }.withOptions {
         qualifier = qualifier(DMQualifiers.MATH_SERVICE)
