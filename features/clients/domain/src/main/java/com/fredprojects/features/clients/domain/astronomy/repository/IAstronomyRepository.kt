@@ -1,7 +1,7 @@
-package com.fredprojects.helloworld.domain.features.clients.astronomy.repository
+package com.fredprojects.features.clients.domain.astronomy.repository
 
-import com.fredprojects.helloworld.domain.core.utils.ConnectionStatus
-import com.fredprojects.helloworld.domain.features.clients.astronomy.models.AstronomyInfo
+import com.fredprojects.features.clients.domain.astronomy.models.AstronomyInfo
+import com.fredprojects.features.clients.domain.utils.ConnectionStatus
 import kotlinx.coroutines.flow.Flow
 
 /**

@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.domain.features.clients.common
+package com.fredprojects.features.clients.domain.math.models
 
 /**
  * MathModel is used to store solution of math expression.

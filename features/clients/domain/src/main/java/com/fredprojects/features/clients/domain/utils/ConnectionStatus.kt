@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.domain.core.utils
+package com.fredprojects.features.clients.domain.utils
 
 /**
  * ConnectionStatus represents the status of the connection to the server and the list of data received.
