@@ -26,7 +26,6 @@ include(":data")
 include(":presentation")
 
 include(":core:database")
-include(":core:network")
 include(":core:ui")
 
 include(":features:clients:domain")
