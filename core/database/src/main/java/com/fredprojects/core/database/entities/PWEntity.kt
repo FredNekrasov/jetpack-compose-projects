@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.data.local.entities
+package com.fredprojects.core.database.entities
 
 import androidx.room.*
 

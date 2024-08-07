@@ -1,9 +1,9 @@
-package com.fredprojects.helloworld.data.local
+package com.fredprojects.core.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.fredprojects.helloworld.data.local.dao.*
-import com.fredprojects.helloworld.data.local.entities.*
+import com.fredprojects.core.database.dao.*
+import com.fredprojects.core.database.entities.*
 
 /**
  * The HelloWorldDb is used to store the data for the app.
