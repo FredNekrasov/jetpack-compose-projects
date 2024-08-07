@@ -30,6 +30,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:database"))
+    implementation(project(":features:pws:domain"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
 }

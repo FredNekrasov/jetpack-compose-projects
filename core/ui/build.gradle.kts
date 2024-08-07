@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.jetbrains.kotlin.compose)
 }
 
 android {
@@ -27,9 +28,17 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    buildFeatures {
+        compose = true
+    }
 }
-
+composeCompiler {
+    enableStrongSkippingMode = true
+    reportsDestination = layout.buildDirectory.dir("compose_compiler")
+}
 dependencies {
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.bundles.compose.presentation)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
 }

@@ -30,6 +30,10 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:database"))
+    implementation(project(":features:clients:domain"))
+    implementation(libs.koin.core)
+    implementation(libs.bundles.retrofit)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
 }

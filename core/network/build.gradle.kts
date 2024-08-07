@@ -30,6 +30,8 @@ android {
 }
 
 dependencies {
+    implementation(libs.koin.core)
+    implementation(libs.bundles.retrofit)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
 }
