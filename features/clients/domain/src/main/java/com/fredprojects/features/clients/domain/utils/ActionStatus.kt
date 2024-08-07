@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.domain.core.utils
+package com.fredprojects.features.clients.domain.utils
 
 /**
  * ActionStatus represents the status of an action that can be performed.
