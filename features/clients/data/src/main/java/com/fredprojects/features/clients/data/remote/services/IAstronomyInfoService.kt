@@ -1,6 +1,6 @@
-package com.fredprojects.helloworld.data.remote.services
+package com.fredprojects.features.clients.data.remote.services
 
-import com.fredprojects.helloworld.data.remote.dto.AstronomyInfoDto
+import com.fredprojects.features.clients.data.remote.dto.AstronomyInfoDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 

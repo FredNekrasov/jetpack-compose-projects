@@ -1,6 +1,6 @@
-package com.fredprojects.helloworld.data.remote.services
+package com.fredprojects.features.clients.data.remote.services
 
-import com.fredprojects.helloworld.domain.features.clients.common.MathModel
+import com.fredprojects.features.clients.domain.math.models.MathModel
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

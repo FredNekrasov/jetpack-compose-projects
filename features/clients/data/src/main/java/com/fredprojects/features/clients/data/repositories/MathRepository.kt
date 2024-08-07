@@ -1,13 +1,12 @@
-package com.fredprojects.helloworld.data.repositories
+package com.fredprojects.features.clients.data.repositories
 
-import com.fredprojects.helloworld.data.local.dao.IMathDao
-import com.fredprojects.helloworld.data.mappers.toDomain
-import com.fredprojects.helloworld.data.mappers.toEntity
-import com.fredprojects.helloworld.data.remote.services.IMathService
-import com.fredprojects.helloworld.domain.core.repositories.IClientRepository
-import com.fredprojects.helloworld.domain.core.utils.ActionStatus.*
-import com.fredprojects.helloworld.domain.core.utils.ConnectionStatus
-import com.fredprojects.helloworld.domain.features.clients.common.MathModel
+import com.fredprojects.core.database.dao.IMathDao
+import com.fredprojects.features.clients.data.mappers.*
+import com.fredprojects.features.clients.data.remote.services.IMathService
+import com.fredprojects.features.clients.domain.math.models.MathModel
+import com.fredprojects.features.clients.domain.math.repository.IMathRepository
+import com.fredprojects.features.clients.domain.utils.ActionStatus.*
+import com.fredprojects.features.clients.domain.utils.ConnectionStatus
 import com.google.gson.JsonSyntaxException
 import kotlinx.coroutines.flow.*
 import retrofit2.HttpException
@@ -21,20 +20,20 @@ import retrofit2.HttpException
 class MathRepository(
     private val dao: IMathDao,
     private val api: IMathService
-) : IClientRepository<MathModel> {
+) : IMathRepository {
     /**
      * Fetches data from the remote source and stores it in the local database.
-     * @param data the expression
+     * @param expression the expression
      * @return Flow<ConnectionStatus<List<MathModel>>>
      * @see ConnectionStatus
      */
-    override fun getData(data: String): Flow<ConnectionStatus<MathModel>> = flow {
-        val solutions = dao.getByExpression(data)?.let { listOf(it.toDomain()) } ?: dao.getAll().map { it.toDomain() }
+    override fun getData(expression: String): Flow<ConnectionStatus<MathModel>> = flow {
+        val solutions = dao.getByExpression(expression)?.let { listOf(it.toDomain()) } ?: dao.getAll().map { it.toDomain() }
         emit(ConnectionStatus.Loading(solutions))
-        val response = api.getResult(data).execute()
+        val response = api.getResult(expression).execute()
         if (response.isSuccessful) {
             val body = response.body() ?: return@flow emit(ConnectionStatus.Error(solutions, NO_DATA))
-            dao.deleteByExpression(data)
+            dao.deleteByExpression(expression)
             dao.insert(body.toEntity())
             emit(ConnectionStatus.Success(listOf(body)))
         } else emit(ConnectionStatus.Error(solutions, CONNECTION_ERROR))

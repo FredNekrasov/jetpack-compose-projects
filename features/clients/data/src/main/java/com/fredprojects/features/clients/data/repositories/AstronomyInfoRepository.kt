@@ -1,13 +1,12 @@
-package com.fredprojects.helloworld.data.repositories
+package com.fredprojects.features.clients.data.repositories
 
-import com.fredprojects.helloworld.data.local.dao.IAstronomyInfoDao
-import com.fredprojects.helloworld.data.mappers.toDomain
-import com.fredprojects.helloworld.data.mappers.toEntity
-import com.fredprojects.helloworld.data.remote.services.IAstronomyInfoService
-import com.fredprojects.helloworld.domain.core.utils.ActionStatus.*
-import com.fredprojects.helloworld.domain.core.utils.ConnectionStatus
-import com.fredprojects.helloworld.domain.features.clients.astronomy.models.AstronomyInfo
-import com.fredprojects.helloworld.domain.features.clients.astronomy.repository.IAstronomyRepository
+import com.fredprojects.core.database.dao.IAstronomyInfoDao
+import com.fredprojects.features.clients.data.mappers.*
+import com.fredprojects.features.clients.data.remote.services.IAstronomyInfoService
+import com.fredprojects.features.clients.domain.astronomy.models.AstronomyInfo
+import com.fredprojects.features.clients.domain.astronomy.repository.IAstronomyRepository
+import com.fredprojects.features.clients.domain.utils.ActionStatus.*
+import com.fredprojects.features.clients.domain.utils.ConnectionStatus
 import com.google.gson.JsonSyntaxException
 import kotlinx.coroutines.flow.*
 import retrofit2.HttpException

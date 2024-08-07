@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.data.remote.dto
+package com.fredprojects.features.clients.data.remote.dto
 
 /**
  * AstronomyInfoDto is used to parse the JSON data returned from the API
