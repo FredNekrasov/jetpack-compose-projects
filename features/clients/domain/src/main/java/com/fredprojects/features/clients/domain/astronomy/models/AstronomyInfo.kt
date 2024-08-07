@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.domain.features.clients.astronomy.models
+package com.fredprojects.features.clients.domain.astronomy.models
 
 /**
  * AstronomyInfo is used to store data of the astronomy information.
