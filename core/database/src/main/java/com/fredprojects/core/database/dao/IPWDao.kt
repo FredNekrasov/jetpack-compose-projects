@@ -1,7 +1,7 @@
-package com.fredprojects.helloworld.data.local.dao
+package com.fredprojects.core.database.dao
 
 import androidx.room.*
-import com.fredprojects.helloworld.data.local.entities.PWEntity
+import com.fredprojects.core.database.entities.PWEntity
 import kotlinx.coroutines.flow.Flow
 
 /**

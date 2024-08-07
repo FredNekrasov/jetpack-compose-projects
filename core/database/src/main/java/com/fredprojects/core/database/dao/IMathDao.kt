@@ -1,7 +1,7 @@
-package com.fredprojects.helloworld.data.local.dao
+package com.fredprojects.core.database.dao
 
 import androidx.room.*
-import com.fredprojects.helloworld.data.local.entities.MathEntity
+import com.fredprojects.core.database.entities.MathEntity
 
 /**
  * IMathDao is an interface that defines the methods that can be used to access and manipulate data in the database.
