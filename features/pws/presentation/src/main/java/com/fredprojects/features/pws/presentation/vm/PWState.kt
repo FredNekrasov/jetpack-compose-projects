@@ -1,8 +1,8 @@
-package com.fredprojects.helloworld.presentation.features.pws.vm
+package com.fredprojects.features.pws.presentation.vm
 
-import com.fredprojects.helloworld.domain.core.utils.SortType
-import com.fredprojects.helloworld.domain.features.pws.models.PracticalWork
-import com.fredprojects.helloworld.domain.features.pws.utils.SortingPW
+import com.fredprojects.features.pws.domain.models.PracticalWork
+import com.fredprojects.features.pws.domain.utils.SortType
+import com.fredprojects.features.pws.domain.utils.SortingPW
 
 /**
  * PWState represents the state of the practical works.

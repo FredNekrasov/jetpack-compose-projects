@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.pws
+package com.fredprojects.features.pws.presentation
 
 import android.content.res.Configuration.ORIENTATION_LANDSCAPE
 import androidx.compose.foundation.layout.*
@@ -13,9 +13,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import coil.compose.AsyncImage
-import com.fredprojects.helloworld.domain.features.pws.models.PracticalWork
-import com.fredprojects.helloworld.presentation.R
-import com.fredprojects.helloworld.presentation.core.*
+import com.fredprojects.core.ui.R
+import com.fredprojects.core.ui.*
+import com.fredprojects.features.pws.domain.models.PracticalWork
 
 @Composable
 internal fun PWListItem(pw: PracticalWork, modifier: Modifier, onDelete: Action) {

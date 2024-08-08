@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.pws
+package com.fredprojects.features.pws.presentation
 
 import android.net.Uri
 import androidx.compose.foundation.layout.*
@@ -18,11 +18,11 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import coil.compose.AsyncImage
-import com.fredprojects.helloworld.domain.features.pws.models.PracticalWork
-import com.fredprojects.helloworld.domain.features.pws.utils.PWStatus
-import com.fredprojects.helloworld.presentation.R
-import com.fredprojects.helloworld.presentation.core.*
-import com.fredprojects.helloworld.presentation.features.pws.vm.UpsertPWState
+import com.fredprojects.core.ui.R
+import com.fredprojects.core.ui.*
+import com.fredprojects.features.pws.domain.models.PracticalWork
+import com.fredprojects.features.pws.domain.utils.PWStatus
+import com.fredprojects.features.pws.presentation.vm.UpsertPWState
 
 @Composable
 fun UpsertPWScreen(
