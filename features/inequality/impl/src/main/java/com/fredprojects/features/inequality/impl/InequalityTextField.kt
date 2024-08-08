@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.inequality
+package com.fredprojects.features.inequality.impl
 
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import com.fredprojects.helloworld.presentation.core.FredText
+import com.fredprojects.core.ui.FredText
 
 @Composable
 internal fun InequalityTextField(

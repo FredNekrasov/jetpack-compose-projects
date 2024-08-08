@@ -1,10 +1,10 @@
-package com.fredprojects.helloworld.presentation.features.inequality
+package com.fredprojects.features.inequality.impl
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fredprojects.helloworld.presentation.R
-import com.fredprojects.helloworld.domain.features.inequality.useCases.InequalityUseCase
-import com.fredprojects.helloworld.domain.features.inequality.utils.InequalityStatus
+import com.fredprojects.features.inequality.api.useCases.InequalityUseCase
+import com.fredprojects.features.inequality.api.utils.InequalityStatus
+import com.fredprojects.core.ui.R
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
