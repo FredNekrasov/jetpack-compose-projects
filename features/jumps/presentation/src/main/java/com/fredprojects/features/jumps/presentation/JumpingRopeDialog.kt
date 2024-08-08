@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.jumps
+package com.fredprojects.features.jumps.presentation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -10,8 +10,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import com.fredprojects.helloworld.presentation.core.Action
-import com.fredprojects.helloworld.presentation.core.FredIconButton
+import com.fredprojects.core.ui.Action
+import com.fredprojects.core.ui.FredIconButton
 
 @Composable
 fun JumpingRopeDialog(countOfJumps: Int, closeDialog: Action) {

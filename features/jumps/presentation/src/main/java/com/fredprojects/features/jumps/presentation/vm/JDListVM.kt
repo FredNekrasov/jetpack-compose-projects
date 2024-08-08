@@ -1,9 +1,9 @@
-package com.fredprojects.helloworld.presentation.features.jumps.vm
+package com.fredprojects.features.jumps.presentation.vm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fredprojects.helloworld.domain.core.utils.SortType
-import com.fredprojects.helloworld.domain.features.jumps.models.JumpData
+import com.fredprojects.features.jumps.domain.models.JumpData
+import com.fredprojects.features.jumps.domain.utils.SortType
 import com.fredprojects.helloworld.domain.features.jumps.useCases.JDUseCases
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*
@@ -28,7 +28,7 @@ class JDListVM(
     fun onEvent(event: JDEvents) {
         when(event) {
             is JDEvents.DeleteJD -> deleteJD(event.jumpData)
-            is JDEvents.GetJD -> getJDById(event.jumpDataId)
+            is JDEvents.GetJD -> jdStateMSF.value = jdState.value.copy(jd = event.jumpData)
             is JDEvents.Sort -> {
                 if (jdState.value.sortType == event.sortType) return
                 getSortedJDs(event.sortType)
@@ -44,15 +44,6 @@ class JDListVM(
     private fun deleteJD(jumpData: JumpData) {
         viewModelScope.launch {
             useCases.delete(jumpData)
-        }
-    }
-    /**
-     * The getJDById is used to get a jump data from the database
-     * @param jumpDataId is the id of the jump data
-     */
-    private fun getJDById(jumpDataId: Int) {
-        viewModelScope.launch {
-            jdStateMSF.emit(jdState.value.copy(jd = useCases.getData.getById(jumpDataId)))
         }
     }
     /**

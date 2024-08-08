@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.jumps
+package com.fredprojects.features.jumps.presentation
 
 import androidx.compose.animation.*
 import androidx.compose.foundation.clickable
@@ -7,17 +7,17 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.fredprojects.helloworld.presentation.R
-import com.fredprojects.helloworld.presentation.core.*
-import com.fredprojects.helloworld.presentation.features.jumps.vm.JDEvents
-import com.fredprojects.helloworld.presentation.features.jumps.vm.JDState
+import com.fredprojects.core.ui.*
+import com.fredprojects.core.ui.R
+import com.fredprojects.features.jumps.presentation.vm.JDEvents
+import com.fredprojects.features.jumps.presentation.vm.JDState
 import kotlinx.coroutines.launch
 
 @Composable
@@ -51,7 +51,7 @@ fun JDListScreen(
                             scope.launch { snackbarHostState.showSnackbar(deleteMessage) }
                         },
                         Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 2.dp).clickable {
-                            onEvent(JDEvents.GetJD(jumpData.id ?: -1))
+                            onEvent(JDEvents.GetJD(jumpData))
                             isShowDialog = true
                         }
                     )

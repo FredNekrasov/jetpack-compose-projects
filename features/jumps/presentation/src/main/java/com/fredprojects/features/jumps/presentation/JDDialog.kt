@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.jumps
+package com.fredprojects.features.jumps.presentation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -15,12 +15,14 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import com.fredprojects.helloworld.domain.features.jumps.models.JumpData
-import com.fredprojects.helloworld.domain.features.jumps.utils.JumpStatus
-import com.fredprojects.helloworld.presentation.R
-import com.fredprojects.helloworld.presentation.core.*
-import com.fredprojects.helloworld.presentation.features.jumps.vm.JDState
+import com.fredprojects.core.ui.R
+import com.fredprojects.core.ui.*
+import com.fredprojects.features.jumps.domain.models.JumpData
+import com.fredprojects.features.jumps.domain.utils.JumpStatus
+import com.fredprojects.features.jumps.presentation.vm.JDState
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeParseException
 
 @Composable
 fun JDDialog(jumpDataState: JDState, closeDialog: Action, upsertJD: (JumpData) -> Unit) {
@@ -71,4 +73,12 @@ fun JDDialog(jumpDataState: JDState, closeDialog: Action, upsertJD: (JumpData) -
             }
         }
     }
+}
+private fun String.toLocalDate() = try {
+    if (this.contains(Regex("""^\d{4}-\d{2}-\d{2}$"""))) {
+        val localDate = LocalDate.parse(this, DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+        if (localDate <= LocalDate.now()) localDate else null
+    } else null
+} catch (e: DateTimeParseException) {
+    null
 }
