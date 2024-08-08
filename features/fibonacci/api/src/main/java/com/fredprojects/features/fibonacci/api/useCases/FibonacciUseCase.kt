@@ -1,6 +1,6 @@
-package com.fredprojects.helloworld.domain.features.fibonacci.useCases
+package com.fredprojects.features.fibonacci.api.useCases
 
-import com.fredprojects.helloworld.domain.features.fibonacci.utils.CalculationStatus
+import com.fredprojects.features.fibonacci.api.utils.CalculationStatus
 import kotlinx.coroutines.yield
 import java.math.BigInteger
 

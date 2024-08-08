@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.domain.features.fibonacci.utils
+package com.fredprojects.features.fibonacci.api.utils
 
 /**
  * The CalculationStatus is the status of the Fibonacci sequence calculation
