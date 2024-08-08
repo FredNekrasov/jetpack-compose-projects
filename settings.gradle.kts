@@ -22,7 +22,6 @@ dependencyResolutionManagement {
 rootProject.name = "HelloWorld"
 include(":app")
 include(":domain")
-include(":presentation")
 
 include(":core:database")
 include(":core:ui")
