@@ -1,8 +1,8 @@
-package com.fredprojects.helloworld.presentation.features.pws.vm
+package com.fredprojects.features.pws.presentation.vm
 
 import androidx.lifecycle.*
-import com.fredprojects.helloworld.domain.features.pws.models.PracticalWork
-import com.fredprojects.helloworld.domain.features.pws.useCases.PWUseCases
+import com.fredprojects.features.pws.domain.models.PracticalWork
+import com.fredprojects.features.pws.domain.useCases.PWUseCases
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch

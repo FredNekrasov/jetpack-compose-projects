@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.pws
+package com.fredprojects.features.pws.presentation
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -15,10 +15,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
-import com.fredprojects.helloworld.domain.core.utils.SortType
-import com.fredprojects.helloworld.domain.features.pws.utils.SortingPW
-import com.fredprojects.helloworld.presentation.R
-import com.fredprojects.helloworld.presentation.core.*
+import com.fredprojects.core.ui.*
+import com.fredprojects.core.ui.R
+import com.fredprojects.features.pws.domain.utils.SortType
+import com.fredprojects.features.pws.domain.utils.SortingPW
 
 @Composable
 internal fun SortingSection(

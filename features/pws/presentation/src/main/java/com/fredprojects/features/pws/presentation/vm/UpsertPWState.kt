@@ -1,7 +1,7 @@
-package com.fredprojects.helloworld.presentation.features.pws.vm
+package com.fredprojects.features.pws.presentation.vm
 
-import com.fredprojects.helloworld.domain.features.pws.models.PracticalWork
-import com.fredprojects.helloworld.domain.features.pws.utils.PWStatus
+import com.fredprojects.features.pws.domain.models.PracticalWork
+import com.fredprojects.features.pws.domain.utils.PWStatus
 
 /**
  * UpsertPWState is used to insert or update a PracticalWork and its status after the operation is completed

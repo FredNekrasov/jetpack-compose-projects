@@ -1,11 +1,11 @@
-package com.fredprojects.helloworld.presentation.features.pws.vm
+package com.fredprojects.features.pws.presentation.vm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fredprojects.helloworld.domain.core.utils.SortType
-import com.fredprojects.helloworld.domain.features.pws.models.PracticalWork
-import com.fredprojects.helloworld.domain.features.pws.useCases.PWUseCases
-import com.fredprojects.helloworld.domain.features.pws.utils.SortingPW
+import com.fredprojects.features.pws.domain.models.PracticalWork
+import com.fredprojects.features.pws.domain.useCases.PWUseCases
+import com.fredprojects.features.pws.domain.utils.SortType
+import com.fredprojects.features.pws.domain.utils.SortingPW
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
