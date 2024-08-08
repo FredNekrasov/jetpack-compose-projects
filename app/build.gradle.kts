@@ -59,6 +59,5 @@ dependencies {
     debugImplementation(libs.bundles.compose.debug)
 
     implementation(project(":domain"))
-    implementation(project(":data"))
     implementation(project(":presentation"))
 }
