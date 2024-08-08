@@ -32,6 +32,7 @@ android {
 dependencies {
     implementation(project(":core:database"))
     implementation(project(":features:jumps:domain"))
+    implementation(libs.kotlinx.coroutines.core)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
 }
