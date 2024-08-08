@@ -57,6 +57,4 @@ dependencies {
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.bundles.android.test)
     debugImplementation(libs.bundles.compose.debug)
-
-    implementation(project(":domain"))
 }
