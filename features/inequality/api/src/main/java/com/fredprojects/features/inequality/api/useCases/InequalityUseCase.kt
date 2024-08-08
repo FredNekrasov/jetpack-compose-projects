@@ -1,6 +1,6 @@
-package com.fredprojects.helloworld.domain.features.inequality.useCases
+package com.fredprojects.features.inequality.api.useCases
 
-import com.fredprojects.helloworld.domain.features.inequality.utils.InequalityStatus
+import com.fredprojects.features.inequality.api.utils.InequalityStatus
 
 /**
  * InequalityUseCase represents the use case for solving inequality in the form of ax + b < 0

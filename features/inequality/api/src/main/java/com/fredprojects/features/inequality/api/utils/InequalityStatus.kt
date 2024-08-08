@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.domain.features.inequality.utils
+package com.fredprojects.features.inequality.api.utils
 
 /**
  * InequalityStatus represents the status of the inequality solution
