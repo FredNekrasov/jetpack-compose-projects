@@ -1,8 +1,8 @@
-package com.fredprojects.helloworld.presentation.features.fibonacci
+package com.fredprojects.features.fibonacci.impl
 
 import android.os.Binder
-import com.fredprojects.helloworld.domain.features.fibonacci.useCases.FibonacciUseCase
-import com.fredprojects.helloworld.domain.features.fibonacci.utils.CalculationStatus
+import com.fredprojects.features.fibonacci.api.useCases.FibonacciUseCase
+import com.fredprojects.features.fibonacci.api.utils.CalculationStatus
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

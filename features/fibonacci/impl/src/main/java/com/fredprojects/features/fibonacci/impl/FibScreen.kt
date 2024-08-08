@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.fibonacci
+package com.fredprojects.features.fibonacci.impl
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -10,9 +10,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.fredprojects.helloworld.presentation.R
-import com.fredprojects.helloworld.domain.features.fibonacci.utils.CalculationStatus
-import com.fredprojects.helloworld.presentation.core.*
+import com.fredprojects.core.ui.R
+import com.fredprojects.core.ui.*
+import com.fredprojects.features.fibonacci.api.utils.CalculationStatus
 
 @Composable
 fun FibScreen(fibonacciSequences: List<FibonacciBinder>, calculate: (Int) -> Unit) {

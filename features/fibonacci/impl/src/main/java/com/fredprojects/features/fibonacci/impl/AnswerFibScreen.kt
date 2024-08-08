@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.fibonacci
+package com.fredprojects.features.fibonacci.impl
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -9,7 +9,7 @@ import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.fredprojects.helloworld.presentation.core.*
+import com.fredprojects.core.ui.*
 
 @Composable
 fun AnswerFibScreen(result: String, goBack: Action) {
