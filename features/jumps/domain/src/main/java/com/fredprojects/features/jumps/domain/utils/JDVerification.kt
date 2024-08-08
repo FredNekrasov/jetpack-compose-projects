@@ -1,6 +1,6 @@
-package com.fredprojects.helloworld.domain.features.jumps.utils
+package com.fredprojects.features.jumps.domain.utils
 
-import com.fredprojects.helloworld.domain.features.jumps.models.JumpData
+import com.fredprojects.features.jumps.domain.models.JumpData
 import java.time.LocalDate
 
 fun JumpData.isCountCorrect() = count > 0

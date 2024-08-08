@@ -1,15 +1,15 @@
-package com.fredprojects.helloworld.domain.features.jumps.useCases.crud
+package com.fredprojects.features.jumps.domain.useCases.crud
 
-import com.fredprojects.helloworld.domain.core.repositories.IRepository
-import com.fredprojects.helloworld.domain.features.jumps.models.JumpData
-import com.fredprojects.helloworld.domain.features.jumps.utils.*
+import com.fredprojects.features.jumps.domain.models.JumpData
+import com.fredprojects.features.jumps.domain.repositories.IJDRepository
+import com.fredprojects.features.jumps.domain.utils.*
 
 /**
  * UpsertJDUseCase is used to insert or update data in the database
  * @param repository the repository used to insert or update data in the database
  */
 class UpsertJDUseCase(
-    private val repository: IRepository<JumpData>
+    private val repository: IJDRepository
 ) {
     /**
      * invoke is used to insert or update data in the database

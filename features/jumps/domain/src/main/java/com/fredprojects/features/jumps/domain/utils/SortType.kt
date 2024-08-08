@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.domain.core.utils
+package com.fredprojects.features.jumps.domain.utils
 
 /**
  * Sort type

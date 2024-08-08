@@ -1,8 +1,7 @@
-package com.fredprojects.helloworld.domain.features.jumps.useCases.crud
+package com.fredprojects.features.jumps.domain.useCases.crud
 
-import com.fredprojects.helloworld.domain.core.repositories.IRepository
-import com.fredprojects.helloworld.domain.core.utils.SortType
-import com.fredprojects.helloworld.domain.features.jumps.models.JumpData
+import com.fredprojects.features.jumps.domain.repositories.IJDRepository
+import com.fredprojects.features.jumps.domain.utils.SortType
 import kotlinx.coroutines.flow.map
 
 /**
@@ -10,7 +9,7 @@ import kotlinx.coroutines.flow.map
  * @param repository the repository used to get data from the database
  */
 class GetJDUseCase(
-    private val repository: IRepository<JumpData>
+    private val repository: IJDRepository
 ) {
     /**
      * invoke is used to get data from the database
@@ -23,10 +22,4 @@ class GetJDUseCase(
             SortType.Descending -> jumpDataList.sortedByDescending { it.date }
         }
     }
-    /**
-     * getById is used to get data from the database
-     * @param id the id of the data to be retrieved
-     * @return the data received from the database
-     */
-    suspend fun getById(id: Int): JumpData? = repository.getRecordById(id)
 }
