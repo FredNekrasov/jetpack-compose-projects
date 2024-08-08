@@ -1,10 +1,10 @@
-package com.fredprojects.helloworld.presentation.features.clients.math
+package com.fredprojects.features.clients.presentation.math
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fredprojects.helloworld.domain.core.repositories.IClientRepository
-import com.fredprojects.helloworld.domain.core.utils.ConnectionStatus
-import com.fredprojects.helloworld.domain.features.clients.common.MathModel
+import com.fredprojects.features.clients.domain.math.models.MathModel
+import com.fredprojects.features.clients.domain.math.repository.IMathRepository
+import com.fredprojects.features.clients.domain.utils.ConnectionStatus
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
  * @param repository the repository used to get data from the server
  */
 class MathVM(
-    private val repository: IClientRepository<MathModel>
+    private val repository: IMathRepository
 ) : ViewModel() {
     /**
      * @see mathInfoMSF is used to emit data to the state flow

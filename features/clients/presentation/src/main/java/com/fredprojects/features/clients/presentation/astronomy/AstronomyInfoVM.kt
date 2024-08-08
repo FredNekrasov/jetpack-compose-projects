@@ -1,10 +1,10 @@
-package com.fredprojects.helloworld.presentation.features.clients.astronomy
+package com.fredprojects.features.clients.presentation.astronomy
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fredprojects.helloworld.domain.core.utils.ConnectionStatus
-import com.fredprojects.helloworld.domain.features.clients.astronomy.models.AstronomyInfo
-import com.fredprojects.helloworld.domain.features.clients.astronomy.repository.IAstronomyRepository
+import com.fredprojects.features.clients.domain.astronomy.models.AstronomyInfo
+import com.fredprojects.features.clients.domain.astronomy.repository.IAstronomyRepository
+import com.fredprojects.features.clients.domain.utils.ConnectionStatus
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch

@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.clients.astronomy
+package com.fredprojects.features.clients.presentation.astronomy
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
@@ -6,8 +6,8 @@ import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.fredprojects.helloworld.domain.features.clients.astronomy.models.AstronomyInfo
-import com.fredprojects.helloworld.presentation.core.*
+import com.fredprojects.core.ui.*
+import com.fredprojects.features.clients.domain.astronomy.models.AstronomyInfo
 
 @Composable
 internal fun AstronomyInfoListItem(info: AstronomyInfo, modifier: Modifier) {
