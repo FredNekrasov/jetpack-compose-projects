@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.inequality
+package com.fredprojects.features.inequality.impl
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
@@ -9,9 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
-import com.fredprojects.helloworld.presentation.R
-import com.fredprojects.helloworld.presentation.core.FredButton
-import com.fredprojects.helloworld.presentation.core.FredHeaderText
+import com.fredprojects.core.ui.*
+import com.fredprojects.core.ui.R
 
 /**
  * Inequality Screen represents the screen for solving inequality in the form of ax + b < 0
