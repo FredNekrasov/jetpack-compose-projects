@@ -1,15 +1,15 @@
-package com.fredprojects.helloworld.domain.features.pws.useCases.crud
+package com.fredprojects.features.pws.domain.useCases.crud
 
-import com.fredprojects.helloworld.domain.core.repositories.IRepository
-import com.fredprojects.helloworld.domain.features.pws.models.PracticalWork
-import com.fredprojects.helloworld.domain.features.pws.utils.*
+import com.fredprojects.features.pws.domain.models.PracticalWork
+import com.fredprojects.features.pws.domain.repository.IPWRepository
+import com.fredprojects.features.pws.domain.utils.*
 
 /**
  * UpsertPWUseCase is used to insert or update a PracticalWork
  * @param repository is the repository used to insert or update the PracticalWork
  */
 class UpsertPWUseCase(
-    private val repository: IRepository<PracticalWork>
+    private val repository: IPWRepository
 ) {
     /**
      * invoke is used to insert or update a PracticalWork

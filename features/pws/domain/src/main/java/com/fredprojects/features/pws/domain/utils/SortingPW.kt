@@ -1,6 +1,4 @@
-package com.fredprojects.helloworld.domain.features.pws.utils
-
-import com.fredprojects.helloworld.domain.core.utils.SortType
+package com.fredprojects.features.pws.domain.utils
 
 /**
  * SortingPW is used to sort the data.

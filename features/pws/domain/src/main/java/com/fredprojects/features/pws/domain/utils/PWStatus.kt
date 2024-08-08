@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.domain.features.pws.utils
+package com.fredprojects.features.pws.domain.utils
 
 /**
  * PWStatus represents the status of the PracticalWork
