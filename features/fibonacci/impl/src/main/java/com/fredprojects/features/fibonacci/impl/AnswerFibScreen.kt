@@ -13,7 +13,11 @@ import com.fredprojects.core.ui.*
 
 @Composable
 fun AnswerFibScreen(result: String, goBack: Action) {
-    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()), Arrangement.Center, Alignment.CenterHorizontally) {
+    Column(
+        modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState()),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         FredText(result)
         FredIconButton(
             goBack,
