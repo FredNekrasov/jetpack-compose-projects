@@ -1,7 +1,7 @@
-package com.fredprojects.helloworld.data.mappers
+package com.fredprojects.features.pws.data.mappers
 
-import com.fredprojects.helloworld.data.local.entities.PWEntity
-import com.fredprojects.helloworld.domain.features.pws.models.PracticalWork
+import com.fredprojects.core.database.entities.PWEntity
+import com.fredprojects.features.pws.domain.models.PracticalWork
 
 fun PracticalWork.toEntity() = PWEntity(
     pwName, student, variant, level, date, mark, image, id

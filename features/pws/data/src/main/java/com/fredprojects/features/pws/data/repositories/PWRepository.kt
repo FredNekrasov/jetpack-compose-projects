@@ -1,10 +1,9 @@
-package com.fredprojects.helloworld.data.repositories
+package com.fredprojects.features.pws.data.repositories
 
-import com.fredprojects.helloworld.data.local.dao.IPWDao
-import com.fredprojects.helloworld.data.mappers.toDomain
-import com.fredprojects.helloworld.data.mappers.toEntity
-import com.fredprojects.helloworld.domain.core.repositories.IRepository
-import com.fredprojects.helloworld.domain.features.pws.models.PracticalWork
+import com.fredprojects.core.database.dao.IPWDao
+import com.fredprojects.features.pws.data.mappers.*
+import com.fredprojects.features.pws.domain.models.PracticalWork
+import com.fredprojects.features.pws.domain.repository.IPWRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -14,19 +13,19 @@ import kotlinx.coroutines.flow.map
  */
 class PWRepository(
     private val dao: IPWDao
-) : IRepository<PracticalWork> {
+) : IPWRepository {
     /**
      * Upsert a practical work into database.
-     * @param item [PracticalWork]
+     * @param pw [PracticalWork]
      * @see [IPWDao.upsert]
      */
-    override suspend fun upsert(item: PracticalWork) = dao.upsert(item.toEntity())
+    override suspend fun upsert(pw: PracticalWork) = dao.upsert(pw.toEntity())
     /**
      * Delete a practical work from database.
-     * @param item [PracticalWork]
+     * @param pw [PracticalWork]
      * @see [IPWDao.delete]
      */
-    override suspend fun delete(item: PracticalWork) = dao.delete(item.toEntity())
+    override suspend fun delete(pw: PracticalWork) = dao.delete(pw.toEntity())
     /**
      * Get all practical works from database.
      * @see [IPWDao.getAll]
