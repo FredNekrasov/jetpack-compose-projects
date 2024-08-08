@@ -1,14 +1,14 @@
-package com.fredprojects.helloworld.domain.features.jumps.useCases.crud
+package com.fredprojects.features.jumps.domain.useCases.crud
 
-import com.fredprojects.helloworld.domain.core.repositories.IRepository
-import com.fredprojects.helloworld.domain.features.jumps.models.JumpData
+import com.fredprojects.features.jumps.domain.models.JumpData
+import com.fredprojects.features.jumps.domain.repositories.IJDRepository
 
 /**
  * DeleteJDUseCase is used to delete data in the database
  * @param repository the repository used to delete data
  */
 class DeleteJDUseCase(
-    private val repository: IRepository<JumpData>
+    private val repository: IJDRepository
 ) {
     /**
      * operator fun invoke is used to delete data in the database

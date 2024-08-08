@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.domain.features.jumps.utils
+package com.fredprojects.features.jumps.domain.utils
 
 /**
  * JumpStatus represents the status of the JumpData

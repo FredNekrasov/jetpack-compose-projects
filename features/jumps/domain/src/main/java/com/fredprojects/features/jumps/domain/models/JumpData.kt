@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.domain.features.jumps.models
+package com.fredprojects.features.jumps.domain.models
 
 import java.time.LocalDate
 

@@ -1,6 +1,6 @@
 package com.fredprojects.helloworld.domain.features.jumps.useCases
 
-import com.fredprojects.helloworld.domain.features.jumps.useCases.crud.*
+import com.fredprojects.features.jumps.domain.useCases.crud.*
 
 data class JDUseCases(
     val getData: GetJDUseCase,
