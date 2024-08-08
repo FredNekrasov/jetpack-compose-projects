@@ -1,8 +1,8 @@
-package com.fredprojects.helloworld.presentation.features.jumps.vm
+package com.fredprojects.features.jumps.presentation.vm
 
-import com.fredprojects.helloworld.domain.core.utils.SortType
-import com.fredprojects.helloworld.domain.features.jumps.models.JumpData
-import com.fredprojects.helloworld.domain.features.jumps.utils.JumpStatus
+import com.fredprojects.features.jumps.domain.models.JumpData
+import com.fredprojects.features.jumps.domain.utils.JumpStatus
+import com.fredprojects.features.jumps.domain.utils.SortType
 
 /**
  * JDState is used to store data of the jumps

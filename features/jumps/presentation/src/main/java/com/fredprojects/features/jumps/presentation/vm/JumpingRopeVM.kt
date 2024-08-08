@@ -1,10 +1,10 @@
-package com.fredprojects.helloworld.presentation.features.jumps.vm
+package com.fredprojects.features.jumps.presentation.vm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fredprojects.helloworld.domain.features.jumps.models.JumpData
+import com.fredprojects.features.jumps.domain.models.JumpData
+import com.fredprojects.features.jumps.domain.utils.JumpStatus
 import com.fredprojects.helloworld.domain.features.jumps.useCases.JDUseCases
-import com.fredprojects.helloworld.domain.features.jumps.utils.JumpStatus
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
