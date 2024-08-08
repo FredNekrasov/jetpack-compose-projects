@@ -1,6 +1,6 @@
-package com.fredprojects.helloworld.domain.features.pws.useCases
+package com.fredprojects.features.pws.domain.useCases
 
-import com.fredprojects.helloworld.domain.features.pws.useCases.crud.*
+import com.fredprojects.features.pws.domain.useCases.crud.*
 
 //Скопируйте часть Model из результата практической работы «Особенности ООП в Kotlin», реализуйте интерфейс с тем же функционалом в Android (Jetpack Compose) с использованием паттерна MVVM.
 //Реализуйте использование Hilt для реализации Dependency Injection в результате прошлой практической работы

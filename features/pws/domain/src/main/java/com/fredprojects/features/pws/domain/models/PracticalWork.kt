@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.domain.features.pws.models
+package com.fredprojects.features.pws.domain.models
 
 /**
  * PracticalWork is used to store data of the practical works.

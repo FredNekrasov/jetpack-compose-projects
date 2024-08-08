@@ -1,6 +1,6 @@
-package com.fredprojects.helloworld.domain.features.pws.utils
+package com.fredprojects.features.pws.domain.utils
 
-import com.fredprojects.helloworld.domain.features.pws.models.PracticalWork
+import com.fredprojects.features.pws.domain.models.PracticalWork
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException

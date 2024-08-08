@@ -1,14 +1,14 @@
-package com.fredprojects.helloworld.domain.features.pws.useCases.crud
+package com.fredprojects.features.pws.domain.useCases.crud
 
-import com.fredprojects.helloworld.domain.core.repositories.IRepository
-import com.fredprojects.helloworld.domain.features.pws.models.PracticalWork
+import com.fredprojects.features.pws.domain.models.PracticalWork
+import com.fredprojects.features.pws.domain.repository.IPWRepository
 
 /**
  * DeletePWUseCase is used to delete data in the database
  * @param repository the repository used to delete data
  */
 class DeletePWUseCase(
-    private val repository: IRepository<PracticalWork>
+    private val repository: IPWRepository
 ) {
     /**
      * delete data in the database

@@ -1,9 +1,8 @@
-package com.fredprojects.helloworld.domain.features.pws.useCases.crud
+package com.fredprojects.features.pws.domain.useCases.crud
 
-import com.fredprojects.helloworld.domain.core.repositories.IRepository
-import com.fredprojects.helloworld.domain.core.utils.SortType
-import com.fredprojects.helloworld.domain.features.pws.models.PracticalWork
-import com.fredprojects.helloworld.domain.features.pws.utils.SortingPW
+import com.fredprojects.features.pws.domain.models.PracticalWork
+import com.fredprojects.features.pws.domain.repository.IPWRepository
+import com.fredprojects.features.pws.domain.utils.*
 import kotlinx.coroutines.flow.map
 
 /**
@@ -11,7 +10,7 @@ import kotlinx.coroutines.flow.map
  * @param repository the repository used to get the list of practical works
  */
 class GetPWUseCase(
-    private val repository: IRepository<PracticalWork>
+    private val repository: IPWRepository
 ) {
     /**
      * Invoke the use case to get the list of practical works.
