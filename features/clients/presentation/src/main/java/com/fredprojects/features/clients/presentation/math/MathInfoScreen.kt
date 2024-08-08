@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.clients.math
+package com.fredprojects.features.clients.presentation.math
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
@@ -12,10 +12,11 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
-import com.fredprojects.helloworld.domain.core.utils.ConnectionStatus
-import com.fredprojects.helloworld.domain.features.clients.common.MathModel
-import com.fredprojects.helloworld.presentation.R
-import com.fredprojects.helloworld.presentation.core.*
+import com.fredprojects.core.ui.R
+import com.fredprojects.core.ui.*
+import com.fredprojects.features.clients.domain.math.models.MathModel
+import com.fredprojects.features.clients.domain.utils.ConnectionStatus
+import com.fredprojects.features.clients.presentation.getString
 
 @Composable
 fun MathInfoScreen(

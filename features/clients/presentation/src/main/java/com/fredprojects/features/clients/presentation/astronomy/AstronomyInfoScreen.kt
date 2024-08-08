@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.presentation.features.clients.astronomy
+package com.fredprojects.features.clients.presentation.astronomy
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -12,10 +12,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import com.fredprojects.helloworld.domain.core.utils.ConnectionStatus
-import com.fredprojects.helloworld.domain.features.clients.astronomy.models.AstronomyInfo
-import com.fredprojects.helloworld.presentation.R
-import com.fredprojects.helloworld.presentation.core.*
+import com.fredprojects.core.ui.*
+import com.fredprojects.core.ui.R
+import com.fredprojects.features.clients.domain.astronomy.models.AstronomyInfo
+import com.fredprojects.features.clients.domain.utils.ConnectionStatus
+import com.fredprojects.features.clients.presentation.getString
 
 @Composable
 fun AstronomyInfoScreen(
