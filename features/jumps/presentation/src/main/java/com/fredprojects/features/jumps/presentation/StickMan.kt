@@ -39,7 +39,7 @@ internal fun StickMan(jumps: Int) {
                 }
             }
         }
-        Canvas(Modifier.fillMaxWidth(0.5f).aspectRatio(1f)) {
+        Canvas(Modifier.fillMaxWidth(0.5f).aspectRatio(0.8f)) {
             val height = jump.value
             val rightLeg = Offset((size.width/2)+25, size.height - height)
             val leftLeg = Offset((size.width/2)-25, size.height - height)

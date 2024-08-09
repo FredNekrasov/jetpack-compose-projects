@@ -65,7 +65,7 @@ fun UpsertPWScreen(
             FredTextField(date, { date = it }, R.string.enterDate, keyboardType = KeyboardType.Decimal)
             FredNumericTextField(mark, { mark = it }, R.string.enterMark)
             TakePhotoButton { photo = onTakePicture().toString() }
-            AsyncImage(photo.toUri(), photo, Modifier.wrapContentWidth().padding(16.dp))
+            AsyncImage(photo.toUri(), photo, Modifier.fillMaxSize(0.5f).padding(16.dp))
         }
     }
 }

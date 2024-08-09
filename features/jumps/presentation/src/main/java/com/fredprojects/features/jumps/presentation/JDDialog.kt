@@ -42,11 +42,12 @@ fun JDDialog(
             Spacer(Modifier.height(4.dp))
             FredNumericTextField(countOfJumps, { countOfJumps = it }, R.string.enterCount, isValuesCorrect, ImeAction.Next)
             FredTextField(date, { date = it }, R.string.enterDate, isValuesCorrect, ImeAction.Done, KeyboardType.Phone)
-            if(!isValuesCorrect) FredHeaderText(
-                "${stringResource(R.string.error)}\n${stringResource(R.string.incorrectDate)}",
-                textStyle = MaterialTheme.typography.body2,
-                color = MaterialTheme.colors.error
-            )
+            if(!isValuesCorrect) {
+                FredHeaderText(
+                    "${stringResource(R.string.error)}\n${stringResource(R.string.incorrectDate)}",
+                    textStyle = MaterialTheme.typography.body2, color = MaterialTheme.colors.error
+                )
+            }
             Spacer(Modifier.height(4.dp))
             Row(Modifier.fillMaxWidth(), Arrangement.SpaceBetween, Alignment.CenterVertically) {
                 JDIconButton({ onEvent(JDEvents.SwitchingDialog) }, Icons.AutoMirrored.Default.KeyboardArrowLeft)
