@@ -10,5 +10,5 @@ object Routes {
     private const val ASTRONOMY = "astronomy information"
     private const val MATH = "math"
     const val MAIN_SCREEN = "main screen"
-    val mainScreenItems = listOf(FIBONACCI, INEQUALITY, PW_LIST, JD_LIST, ASTRONOMY, MATH)
+    val mainScreenItems = listOf(FIBONACCI, INEQUALITY, PW_LIST, JD_LIST, MATH, ASTRONOMY)
 }
