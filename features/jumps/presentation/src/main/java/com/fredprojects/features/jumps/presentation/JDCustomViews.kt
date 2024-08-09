@@ -26,13 +26,13 @@ internal fun JDSortingSection(
 @Composable
 internal fun JDIconButton(onClick: Action, icon: ImageVector) {
     IconButton(
-        onClick,
-        Modifier.padding(4.dp).border(
+        onClick = onClick,
+        modifier = Modifier.padding(4.dp).border(
             width = 2.dp,
             color = MaterialTheme.colors.onBackground,
             shape = MaterialTheme.shapes.small
         )
     ) {
-        Icon(icon, icon.toString())
+        Icon(imageVector = icon, contentDescription = icon.toString())
     }
 }
