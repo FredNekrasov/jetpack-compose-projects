@@ -5,7 +5,6 @@ import android.content.*
 import android.os.IBinder
 import androidx.activity.ComponentActivity
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
@@ -71,7 +70,7 @@ fun MainScreen(activityContext: ComponentActivity, navigateTo: (String) -> Unit)
 private fun MainScrollableTabRow(currentPage: Int, animateScrollToPage: (Int) -> Unit) {
     ScrollableTabRow(
         selectedTabIndex = currentPage,
-        modifier = Modifier.fillMaxWidth().border(TabRowDefaults.DividerThickness, MaterialTheme.colors.onBackground),
+        modifier = Modifier.fillMaxWidth(),
         backgroundColor = MaterialTheme.colors.background,
         contentColor = MaterialTheme.colors.onBackground
     ) {
