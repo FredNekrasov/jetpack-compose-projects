@@ -5,22 +5,23 @@ import android.content.pm.PackageManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.*
 import androidx.core.content.FileProvider
 import androidx.navigation.NavType
 import androidx.navigation.compose.*
 import androidx.navigation.navArgument
+import com.fredprojects.core.ui.*
+import com.fredprojects.core.ui.R
+import com.fredprojects.features.fibonacci.impl.AnswerFibScreen
+import com.fredprojects.features.pws.domain.utils.PWStatus
+import com.fredprojects.features.pws.presentation.UpsertPWScreen
+import com.fredprojects.features.pws.presentation.vm.UpsertPWVM
 import com.fredprojects.helloworld.FibSequenceService
-import com.fredprojects.helloworld.presentation.core.Action
-import com.fredprojects.helloworld.presentation.core.displayToast
-import com.fredprojects.helloworld.presentation.features.fibonacci.AnswerFibScreen
-import com.fredprojects.helloworld.presentation.features.pws.UpsertPWScreen
-import com.fredprojects.helloworld.presentation.features.pws.vm.UpsertPWVM
+import com.fredprojects.helloworld.ui.displayToast
+import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.compose.koinViewModel
 import java.io.File
 import java.util.UUID
-import com.fredprojects.helloworld.presentation.R as PR
 
 @Composable
 fun HWNavHost(
@@ -28,7 +29,6 @@ fun HWNavHost(
     jumpingRopeScreen: @Composable (Action) -> Unit
 ) {
     val controller = rememberNavController()
-    val upsertPWVM: UpsertPWVM = koinViewModel()
     NavHost(navController = controller, startDestination = Routes.MAIN_SCREEN) {
         composable(Routes.MAIN_SCREEN) {
             MainScreen(activityContext, controller::navigate)
@@ -43,14 +43,30 @@ fun HWNavHost(
             )
         }
         composable(Routes.UPSERT_PW + "?id={id}", listOf(navArgument("id") { type = NavType.IntType; defaultValue = -1 })) {
+            val upsertPWVM: UpsertPWVM = koinViewModel()
             val launcher = rememberLauncherForActivityResult(ActivityResultContracts.TakePicture()) {
-                if(!it) activityContext.displayToast(PR.string.error)
+                if(!it) activityContext.displayToast(R.string.error)
             }
             UpsertPWScreen(upsertPWVM.upsertPWState.collectAsState().value, controller::navigateUp, upsertPWVM::upsert) {
                 val file = File(activityContext.filesDir, "fred${UUID.randomUUID()}.jpg")
                 val uri = FileProvider.getUriForFile(activityContext, "fredProjectsHW.provider", file)
                 if(activityContext.checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) launcher.launch(uri)
                 uri
+            }
+            LaunchedEffect(key1 = true) {
+                upsertPWVM.upsertPWState.collectLatest {
+                    when(it.status) {
+                        PWStatus.SUCCESS -> controller.navigateUp()
+                        PWStatus.INCORRECT_PW_NAME -> activityContext.displayToast(R.string.incorrectPW)
+                        PWStatus.INCORRECT_STUDENT -> activityContext.displayToast(R.string.incorrectStudent)
+                        PWStatus.INCORRECT_LEVEL -> activityContext.displayToast(R.string.incorrectLVL)
+                        PWStatus.INCORRECT_VARIANT -> activityContext.displayToast(R.string.incorrectVariant)
+                        PWStatus.INCORRECT_DATE -> activityContext.displayToast(R.string.incorrectDate)
+                        PWStatus.INCORRECT_MARK -> activityContext.displayToast(R.string.incorrectMark)
+                        PWStatus.INCORRECT_IMAGE -> activityContext.displayToast(R.string.takePicture)
+                        PWStatus.NOTHING -> Unit
+                    }
+                }
             }
         }
     }
