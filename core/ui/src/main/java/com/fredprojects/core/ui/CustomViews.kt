@@ -88,7 +88,7 @@ fun FredTextField(
     value: String,
     onValueChange: (String) -> Unit,
     labelId: Int,
-    isValueCorrect: Boolean,
+    isValueCorrect: Boolean = true,
     imeAction: ImeAction = ImeAction.Next,
     keyboardType: KeyboardType = KeyboardType.Text
 ) {
