@@ -20,12 +20,12 @@ fun InequalityScreen(
     state: Any,
     calculate: (Float?, Float?) -> Unit
 ) {
+    var a by rememberSaveable { mutableStateOf("") }
+    var b by rememberSaveable { mutableStateOf("") }
     Column(Modifier.fillMaxSize(), Arrangement.Center, Alignment.CenterHorizontally) {
         FredHeaderText("ax + b < 0", textStyle =  MaterialTheme.typography.h5)
         Spacer(Modifier.height(8.dp))
-        var a by rememberSaveable { mutableStateOf("") }
         InequalityTextField(a, { a = it }, "a", ImeAction.Next)
-        var b by rememberSaveable { mutableStateOf("") }
         InequalityTextField(b, { b = it }, "b", ImeAction.Done)
         Spacer(Modifier.height(8.dp))
         FredHeaderText(if(state is Int) stringResource(state) else state.toString(), MaterialTheme.typography.subtitle1)
