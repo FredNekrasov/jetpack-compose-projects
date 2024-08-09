@@ -1,7 +1,6 @@
 package com.fredprojects.features.jumps.presentation.vm
 
 import com.fredprojects.features.jumps.domain.models.JumpData
-import com.fredprojects.features.jumps.domain.utils.JumpStatus
 import com.fredprojects.features.jumps.domain.utils.SortType
 
 /**
