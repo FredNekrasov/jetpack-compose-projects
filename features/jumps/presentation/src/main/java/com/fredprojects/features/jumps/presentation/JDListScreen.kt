@@ -9,7 +9,6 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -29,7 +28,6 @@ fun JDListScreen(
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
     val deleteMessage = stringResource(R.string.deletedRecord)
-    var isShowDialog by rememberSaveable { mutableStateOf(false) }
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = { FredTopBar(true, { onEvent(JDEvents.ToggleSortSection) }, state.isSortingSectionVisible) },
@@ -43,7 +41,7 @@ fun JDListScreen(
                 exit = fadeOut() + slideOutVertically()
             ) { JDSortingSection(state.sortType) { onEvent(JDEvents.Sort(it)) } }
             LazyColumn(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                items(state.jds) { jumpData ->
+                items(state.jds, key = { it.hashCode() }) { jumpData ->
                     JDListItem(
                         jumpData = jumpData,
                         onDeleteClick = {
@@ -52,12 +50,11 @@ fun JDListScreen(
                         },
                         Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 2.dp).clickable {
                             onEvent(JDEvents.GetJD(jumpData))
-                            isShowDialog = true
+                            onEvent(JDEvents.SwitchingDialog)
                         }
                     )
                 }
             }
         }
     }
-    if(isShowDialog) JDDialog(state, closeDialog = { isShowDialog = false }) { onEvent(JDEvents.UpsertJD(it)) }
 }

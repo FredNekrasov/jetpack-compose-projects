@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld.domain.features.jumps.useCases
+package com.fredprojects.features.jumps.domain.useCases
 
 import com.fredprojects.features.jumps.domain.useCases.crud.*
 

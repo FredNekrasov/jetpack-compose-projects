@@ -7,9 +7,9 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.IBinder
 import androidx.core.app.*
-import com.fredprojects.helloworld.di.AppQualifiers
-import com.fredprojects.helloworld.presentation.R as PR
-import com.fredprojects.helloworld.presentation.features.fibonacci.FibonacciBinder
+import com.fredprojects.features.fibonacci.api.useCases.FibonacciUseCase
+import com.fredprojects.core.ui.R as PR
+import com.fredprojects.features.fibonacci.impl.FibonacciBinder
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import org.koin.android.ext.android.get
@@ -18,7 +18,7 @@ import kotlin.random.Random
 
 class FibSequenceService : Service() {
     override fun onBind(intent: Intent): IBinder {
-        val fibonacciBinder = FibonacciBinder(get(named(AppQualifiers.FIBONACCI_USE_CASE)))
+        val fibonacciBinder = FibonacciBinder(get(named<FibonacciUseCase>()))
         fibonacciBinder.calculate(intent.getIntExtra(NUMBER, -1))
         sendResult(fibonacciBinder)
         return fibonacciBinder

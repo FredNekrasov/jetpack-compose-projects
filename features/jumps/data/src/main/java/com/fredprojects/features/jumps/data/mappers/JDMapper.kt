@@ -6,12 +6,12 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
 
-fun JumpData.toEntity() = JDEntity(
+internal fun JumpData.toEntity() = JDEntity(
     count = count,
     date = date.toString(),
     id = id
 )
-fun JDEntity.toDomain() = JumpData(
+internal fun JDEntity.toDomain() = JumpData(
     count = count,
     date = date.toLocalDate() ?: LocalDate.now(),
     id = id

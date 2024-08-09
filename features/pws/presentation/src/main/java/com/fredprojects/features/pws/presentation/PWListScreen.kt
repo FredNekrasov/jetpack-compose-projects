@@ -3,8 +3,7 @@ package com.fredprojects.features.pws.presentation
 import androidx.compose.animation.*
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Add
@@ -46,7 +45,7 @@ fun PWListScreen(
             PWSearchBar { onEvent(PWEvents.SearchPW(it)) }
             Spacer(Modifier.height(4.dp))
             LazyColumn(Modifier.fillMaxWidth()) {
-                items(state.pws) { pw ->
+                items(state.pws, key = { it.hashCode() }) { pw ->
                     PWListItem(pw, Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 2.dp).clickable { toUpsertPWScreen(pw.id) }) {
                         onEvent(PWEvents.DeletePW(pw))
                         scope.launch {

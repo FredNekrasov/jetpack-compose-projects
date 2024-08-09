@@ -1,5 +1,8 @@
 package com.fredprojects.helloworld.ui.navigation
 
+import androidx.compose.runtime.Immutable
+
+@Immutable
 object Routes {
     private const val INEQUALITY = "inequality"
     const val FIBONACCI = "fibonacci"
@@ -10,5 +13,5 @@ object Routes {
     private const val ASTRONOMY = "astronomy information"
     private const val MATH = "math"
     const val MAIN_SCREEN = "main screen"
-    val mainScreenItems = listOf(FIBONACCI, INEQUALITY, PW_LIST, JD_LIST, ASTRONOMY, MATH)
+    val mainScreenItems = arrayOf(FIBONACCI, INEQUALITY, PW_LIST, JD_LIST, MATH, ASTRONOMY)
 }

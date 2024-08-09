@@ -35,7 +35,7 @@ fun FibScreen(fibonacciSequences: List<FibonacciBinder>, calculate: (Int) -> Uni
 @Composable
 private fun FibSequenceList(fibonacciSequences: List<FibonacciBinder>) {
     LazyColumn {
-        items(fibonacciSequences) {
+        items(fibonacciSequences, key = { it.hashCode() }) {
             Spacer(Modifier.height(4.dp))
             val result = it.result.collectAsState().value
             val text = when(result.first) {

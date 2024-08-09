@@ -28,11 +28,4 @@ interface IJDDao {
      */
     @Query("SELECT * FROM jumps")
     fun getAll(): Flow<List<JDEntity>>
-    /**
-     * getJDE is used to get data from the database.
-     * @param id is the id of the data to be retrieved from the database.
-     * @return JDEntity
-     */
-    @Query("SELECT * FROM jumps WHERE id = :id")
-    suspend fun getById(id: Int): JDEntity?
 }

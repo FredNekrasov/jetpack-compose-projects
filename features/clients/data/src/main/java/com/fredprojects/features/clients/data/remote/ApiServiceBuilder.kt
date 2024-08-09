@@ -12,6 +12,5 @@ private fun provideRetrofit(baseUrl: String): Retrofit = Retrofit.Builder()
     .baseUrl(baseUrl)
     .addConverterFactory(GsonConverterFactory.create())
     .build()
-fun createAstronomyInfoService(): IAstronomyInfoService = provideRetrofit(IAstronomyInfoService.BASE_URL).create(
-    IAstronomyInfoService::class.java)
-fun createMathService(): IMathService = provideRetrofit(IMathService.BASE_URL).create(IMathService::class.java)
+internal fun createAstronomyInfoService(): IAstronomyInfoService = provideRetrofit(IAstronomyInfoService.BASE_URL).create(IAstronomyInfoService::class.java)
+internal fun createMathService(): IMathService = provideRetrofit(IMathService.BASE_URL).create(IMathService::class.java)

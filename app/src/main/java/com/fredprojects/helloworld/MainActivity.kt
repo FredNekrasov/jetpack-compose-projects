@@ -19,12 +19,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.lifecycleScope
-import com.fredprojects.helloworld.di.AppQualifiers
-import com.fredprojects.helloworld.domain.features.jumps.utils.JumpStatus
-import com.fredprojects.helloworld.presentation.core.FredButton
-import com.fredprojects.helloworld.presentation.core.FredText
-import com.fredprojects.helloworld.presentation.features.jumps.JumpingRopeDialog
-import com.fredprojects.helloworld.presentation.features.jumps.vm.JumpingRopeVM
+import com.fredprojects.core.ui.R as PR
+import com.fredprojects.core.ui.*
+import com.fredprojects.features.jumps.domain.utils.JumpStatus
+import com.fredprojects.features.jumps.presentation.JumpingRopeDialog
+import com.fredprojects.features.jumps.presentation.vm.JumpingRopeVM
 import com.fredprojects.helloworld.ui.navigation.HWNavHost
 import com.fredprojects.helloworld.ui.theme.HelloWorldTheme
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -68,7 +67,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             HelloWorldTheme {
                 Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-                    val jumpingRopeVM: JumpingRopeVM = koinViewModel(named(AppQualifiers.JUMPING_ROPE_VM))
+                    val jumpingRopeVM: JumpingRopeVM = koinViewModel(named<JumpingRopeVM>())
                     HWNavHost(activityContext = this) { goBack ->
                         val x = xMSF.collectAsState().value
                         val y = yMSF.collectAsState().value
@@ -85,9 +84,9 @@ class MainActivity : ComponentActivity() {
                             FredText("x: $x")
                             FredText("y: $y")
                             FredText("z: $z")
-                            FredText("${stringResource(com.fredprojects.helloworld.presentation.R.string.count)}: $numberOfJumps")
-                            FredButton({ jumpingRopeVM.insertJD(numberOfJumps) }, stringResource(com.fredprojects.helloworld.presentation.R.string.save))
-                            FredButton({ isShowDialog = !isShowDialog }, stringResource(com.fredprojects.helloworld.presentation.R.string.jump))
+                            FredText("${stringResource(PR.string.count)}: $numberOfJumps")
+                            FredButton({ jumpingRopeVM.insertJD(numberOfJumps) }, stringResource(PR.string.save))
+                            FredButton({ isShowDialog = !isShowDialog }, stringResource(PR.string.jump))
                             LaunchedEffect(key1 = true) {
                                 jumpingRopeVM.jrState.collectLatest { if(it == JumpStatus.SUCCESS) goBack() }
                             }

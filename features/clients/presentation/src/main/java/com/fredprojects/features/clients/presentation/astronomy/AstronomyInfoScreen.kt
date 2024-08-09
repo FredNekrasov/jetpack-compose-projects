@@ -27,7 +27,7 @@ fun AstronomyInfoScreen(
         AstronomyInfoScreenTextFields(onSearch)
         FredText(stringResource(state.status.getString()))
         LazyColumn(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.SpaceEvenly) {
-            items(state.list) {
+            items(state.list, key = { it.hashCode() }) {
                 AstronomyInfoListItem(it, Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 2.dp))
             }
         }
@@ -36,31 +36,25 @@ fun AstronomyInfoScreen(
 @Composable
 private fun AstronomyInfoScreenTextFields(onSearch: (String, String, String) -> Unit) {
     var ra by rememberSaveable { mutableStateOf("") }
-    var isRACorrect by rememberSaveable { mutableStateOf(true) }
     var dec by rememberSaveable { mutableStateOf("") }
-    var isDecCorrect by rememberSaveable { mutableStateOf(true) }
     var radius by rememberSaveable { mutableStateOf("") }
-    var isRadiusCorrect by rememberSaveable { mutableStateOf(true) }
-    FredTextField(ra, { ra = it }, R.string.enterRA, isRACorrect)
-    if(!isRACorrect) FredText(stringResource(R.string.error), color = MaterialTheme.colors.error)
-    FredTextField(dec, { dec = it }, R.string.enterDec, isDecCorrect)
-    if(!isDecCorrect) FredText(stringResource(R.string.error), color = MaterialTheme.colors.error)
+    var isValuesCorrect by rememberSaveable { mutableStateOf(true) }
+    FredTextField(ra, { ra = it }, R.string.enterRA, isValuesCorrect)
+    FredTextField(dec, { dec = it }, R.string.enterDec, isValuesCorrect)
     FredTextField(
         radius,
         { if((it.toFloatOrNull() != null) || it.isEmpty() || (it == "-")) radius = it },
         R.string.enterRadius,
-        isRadiusCorrect,
+        isValuesCorrect,
         ImeAction.Done,
         KeyboardType.Decimal
     )
-    if(!isRadiusCorrect) FredText(stringResource(R.string.error), color = MaterialTheme.colors.error)
+    if(!isValuesCorrect) FredText(stringResource(R.string.error), color = MaterialTheme.colors.error)
     Spacer(Modifier.height(4.dp))
     FredButton(
         {
-            isRACorrect = ra.isNotEmpty()
-            isDecCorrect = dec.isNotEmpty()
-            isRadiusCorrect = radius.isNotEmpty() && (radius.toFloatOrNull() != null)
-            if(isRACorrect && isDecCorrect && isRadiusCorrect) onSearch(ra, dec, radius)
+            isValuesCorrect = ra.isNotBlank() && dec.isNotBlank() && (radius.isNotBlank() && (radius.toFloatOrNull() != null))
+            if(isValuesCorrect) onSearch(ra, dec, radius)
         },
         stringResource(R.string.search)
     )

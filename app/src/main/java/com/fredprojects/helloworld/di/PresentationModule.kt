@@ -1,43 +1,46 @@
 package com.fredprojects.helloworld.di
 
-import com.fredprojects.helloworld.data.di.DMQualifiers
-import com.fredprojects.helloworld.presentation.features.clients.astronomy.AstronomyInfoVM
-import com.fredprojects.helloworld.presentation.features.clients.math.MathVM
-import com.fredprojects.helloworld.presentation.features.inequality.InequalityVM
-import com.fredprojects.helloworld.presentation.features.jumps.vm.*
-import com.fredprojects.helloworld.presentation.features.pws.vm.PWListVM
-import com.fredprojects.helloworld.presentation.features.pws.vm.UpsertPWVM
+import com.fredprojects.features.clients.domain.astronomy.repository.IAstronomyRepository
+import com.fredprojects.features.clients.domain.math.repository.IMathRepository
+import com.fredprojects.features.clients.presentation.astronomy.AstronomyInfoVM
+import com.fredprojects.features.clients.presentation.math.MathVM
+import com.fredprojects.features.inequality.api.useCases.InequalityUseCase
+import com.fredprojects.features.inequality.impl.InequalityVM
+import com.fredprojects.features.jumps.domain.useCases.JDUseCases
+import com.fredprojects.features.jumps.presentation.vm.*
+import com.fredprojects.features.pws.domain.useCases.PWUseCases
+import com.fredprojects.features.pws.presentation.vm.*
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.dsl.withOptions
-import org.koin.core.qualifier.*
+import org.koin.core.qualifier._q
 import org.koin.dsl.module
 
 val presentationModule = module {
     viewModel { 
-        PWListVM(get(named(AppQualifiers.PW_USE_CASE)))
-    }.withOptions { qualifier = qualifier(AppQualifiers.PW_LIST_VM) }
+        PWListVM(get(_q<PWUseCases>()))
+    }.withOptions { qualifier = _q<PWListVM>() }
 
     viewModel { 
-        UpsertPWVM(get(named(AppQualifiers.PW_USE_CASE)), get())
-    }.withOptions { qualifier = qualifier(AppQualifiers.UPSERT_PW_VM) }
+        UpsertPWVM(get(_q<PWUseCases>()), get())
+    }.withOptions { qualifier = _q<UpsertPWVM>() }
 
     viewModel {
-        JDListVM(get(named(AppQualifiers.JD_USE_CASE)))
-    }.withOptions { qualifier = qualifier(AppQualifiers.JD_LIST_VM) }
+        JDListVM(get(_q<JDUseCases>()))
+    }.withOptions { qualifier = _q<JDListVM>() }
 
     viewModel {
-        JumpingRopeVM(get(named(AppQualifiers.JD_USE_CASE)))
-    }.withOptions { qualifier = qualifier(AppQualifiers.JUMPING_ROPE_VM) }
+        JumpingRopeVM(get(_q<JDUseCases>()))
+    }.withOptions { qualifier = _q<JumpingRopeVM>() }
 
     viewModel {
-        InequalityVM(get(named(AppQualifiers.INEQUALITY_USE_CASE)))
-    }.withOptions { qualifier = qualifier(AppQualifiers.INEQUALITY_VM) }
+        InequalityVM(get(_q<InequalityUseCase>()))
+    }.withOptions { qualifier = _q<InequalityVM>() }
 
     viewModel {
-        AstronomyInfoVM(get(_q(DMQualifiers.ASTRONOMY_INFO_REPOSITORY)))
-    }.withOptions { qualifier = qualifier(AppQualifiers.ASTRONOMY_INFO_VM) }
+        AstronomyInfoVM(get(_q<IAstronomyRepository>()))
+    }.withOptions { qualifier = _q<AstronomyInfoVM>() }
 
     viewModel {
-        MathVM(get(_q(DMQualifiers.MATH_REPOSITORY)))
-    }.withOptions { qualifier = qualifier(AppQualifiers.MATH_VM) }
+        MathVM(get(_q<IMathRepository>()))
+    }.withOptions { qualifier = _q<MathVM>() }
 }
