@@ -13,15 +13,15 @@ val dbModule = module {
             .build()
     }
     single(qualifier<IAstronomyInfoDao>()) {
-        get<HelloWorldDb>().astronomyInfoDao
+        get<HelloWorldDb>(qualifier<HelloWorldDb>()).astronomyInfoDao
     }
     single(qualifier<IJDDao>()) {
-        get<HelloWorldDb>().jdDao
+        get<HelloWorldDb>(qualifier<HelloWorldDb>()).jdDao
     }
     single(qualifier<IMathDao>()) {
-        get<HelloWorldDb>().mathDao
+        get<HelloWorldDb>(qualifier<HelloWorldDb>()).mathDao
     }
     single(qualifier<IPWDao>()) {
-        get<HelloWorldDb>().pwDao
+        get<HelloWorldDb>(qualifier<HelloWorldDb>()).pwDao
     }
 }

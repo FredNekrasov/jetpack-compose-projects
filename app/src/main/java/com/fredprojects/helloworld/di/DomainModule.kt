@@ -1,30 +1,31 @@
 package com.fredprojects.helloworld.di
 
-import com.fredprojects.helloworld.data.di.DMQualifiers
-import com.fredprojects.helloworld.domain.features.fibonacci.useCases.FibonacciUseCase
-import com.fredprojects.helloworld.domain.features.inequality.useCases.InequalityUseCase
-import com.fredprojects.helloworld.domain.features.jumps.useCases.JDUseCases
-import com.fredprojects.helloworld.domain.features.jumps.useCases.crud.*
-import com.fredprojects.helloworld.domain.features.pws.useCases.PWUseCases
-import com.fredprojects.helloworld.domain.features.pws.useCases.crud.*
-import org.koin.core.qualifier.*
+import com.fredprojects.features.fibonacci.api.useCases.FibonacciUseCase
+import com.fredprojects.features.inequality.api.useCases.InequalityUseCase
+import com.fredprojects.features.jumps.domain.repositories.IJDRepository
+import com.fredprojects.features.jumps.domain.useCases.JDUseCases
+import com.fredprojects.features.jumps.domain.useCases.crud.*
+import com.fredprojects.features.pws.domain.repository.IPWRepository
+import com.fredprojects.features.pws.domain.useCases.PWUseCases
+import com.fredprojects.features.pws.domain.useCases.crud.*
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val domainModule = module {
-    factory(qualifier(AppQualifiers.INEQUALITY_USE_CASE)) { InequalityUseCase() }
-    factory(qualifier(AppQualifiers.FIBONACCI_USE_CASE)) { FibonacciUseCase() }
-    factory(qualifier(AppQualifiers.PW_USE_CASE)) {
+    factory(named<InequalityUseCase>()) { InequalityUseCase() }
+    factory(named<FibonacciUseCase>()) { FibonacciUseCase() }
+    factory(named<PWUseCases>()) {
         PWUseCases(
-            getPWs = GetPWUseCase(get(named(DMQualifiers.PW_REPOSITORY))),
-            upsert = UpsertPWUseCase(get(_q(DMQualifiers.PW_REPOSITORY))),
-            delete = DeletePWUseCase(get(_q(DMQualifiers.PW_REPOSITORY)))
+            getPWs = GetPWUseCase(get(named<IPWRepository>())),
+            upsert = UpsertPWUseCase(get(named<IPWRepository>())),
+            delete = DeletePWUseCase(get(named<IPWRepository>()))
         )
     }
-    factory(qualifier(AppQualifiers.JD_USE_CASE)) {
+    factory(named<JDUseCases>()) {
         JDUseCases(
-            getData = GetJDUseCase(get(named(DMQualifiers.JD_REPOSITORY))),
-            upsert = UpsertJDUseCase(get(named(DMQualifiers.JD_REPOSITORY))),
-            delete = DeleteJDUseCase(get(named(DMQualifiers.JD_REPOSITORY)))
+            getData = GetJDUseCase(get(named<IJDRepository>())),
+            upsert = UpsertJDUseCase(get(named<IJDRepository>())),
+            delete = DeleteJDUseCase(get(named<IJDRepository>()))
         )
     }
 } 

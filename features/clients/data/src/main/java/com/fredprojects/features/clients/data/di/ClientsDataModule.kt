@@ -17,13 +17,13 @@ val clientsDataModule = module {
     single(qualifier<IAstronomyInfoService>(), createdAtStart = true) {
         createAstronomyInfoService()
     }
-    single(qualifier<IMathRepository>()) {
+    single<IMathRepository>(qualifier<IMathRepository>()) {
         MathRepository(
             dao = get(qualifier<IMathDao>()),
             api = get(qualifier<IMathService>())
         )
     }
-    single(qualifier<IAstronomyRepository>()) {
+    single<IAstronomyRepository>(qualifier<IAstronomyRepository>()) {
         AstronomyInfoRepository(
             dao = get(qualifier<IAstronomyInfoDao>()),
             api = get(qualifier<IAstronomyInfoService>())
