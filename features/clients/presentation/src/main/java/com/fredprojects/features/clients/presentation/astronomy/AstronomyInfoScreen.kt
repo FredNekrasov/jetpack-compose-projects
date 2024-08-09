@@ -27,7 +27,7 @@ fun AstronomyInfoScreen(
         AstronomyInfoScreenTextFields(onSearch)
         FredText(stringResource(state.status.getString()))
         LazyColumn(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.SpaceEvenly) {
-            items(state.list) {
+            items(state.list, key = { it.hashCode() }) {
                 AstronomyInfoListItem(it, Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 2.dp))
             }
         }

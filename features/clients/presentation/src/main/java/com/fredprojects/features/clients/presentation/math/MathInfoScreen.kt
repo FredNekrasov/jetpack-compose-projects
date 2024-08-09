@@ -47,7 +47,7 @@ private fun MathScreenContent(mathInfoList: List<MathModel>, gridColumns: Int = 
         Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
-        items(mathInfoList) {
+        items(mathInfoList, key = { it.hashCode() }) {
             Spacer(Modifier.height(4.dp))
             MathInfoListItem(it, Modifier.wrapContentSize())
         }

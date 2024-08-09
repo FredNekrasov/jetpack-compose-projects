@@ -41,7 +41,7 @@ fun JDListScreen(
                 exit = fadeOut() + slideOutVertically()
             ) { JDSortingSection(state.sortType) { onEvent(JDEvents.Sort(it)) } }
             LazyColumn(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                items(state.jds) { jumpData ->
+                items(state.jds, key = { it.hashCode() }) { jumpData ->
                     JDListItem(
                         jumpData = jumpData,
                         onDeleteClick = {
