@@ -3,7 +3,7 @@ package com.fredprojects.features.jumps.presentation.vm
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fredprojects.features.jumps.domain.models.JumpData
-import com.fredprojects.features.jumps.domain.utils.SortType
+import com.fredprojects.features.jumps.domain.utils.*
 import com.fredprojects.features.jumps.domain.useCases.JDUseCases
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*
@@ -21,6 +21,8 @@ class JDListVM(
      */
     private val jdStateMSF = MutableStateFlow(JDState())
     val jdState = jdStateMSF.asStateFlow()
+    private val jdStatusMSF = MutableSharedFlow<JumpStatus>()
+    val jdStatus = jdStatusMSF.asSharedFlow()
     private var getDataJob: Job? = null
     /**
      * The onEvent is used to manage data or view events
@@ -35,6 +37,7 @@ class JDListVM(
             }
             JDEvents.ToggleSortSection -> jdStateMSF.value = jdState.value.copy(isSortingSectionVisible = !jdState.value.isSortingSectionVisible)
             is JDEvents.UpsertJD -> upsertJD(event.jumpData)
+            JDEvents.SwitchingDialog -> jdStateMSF.value = jdState.value.copy(isDialogVisible = !jdState.value.isDialogVisible)
         }
     }
     /**
@@ -62,7 +65,7 @@ class JDListVM(
      */
     private fun upsertJD(jumpData: JumpData) {
         viewModelScope.launch {
-            jdStateMSF.emit(jdState.value.copy(jdStatus = useCases.upsert(jumpData)))
+            jdStatusMSF.emit(useCases.upsert(jumpData))
         }
     }
     /**
