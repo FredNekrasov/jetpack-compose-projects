@@ -12,7 +12,7 @@ import com.fredprojects.core.ui.FredText
 internal fun InequalityTextField(
     value: String,
     onChange: (String) -> Unit,
-    text: String,
+    label: String,
     imeAction: ImeAction,
     modifier: Modifier = Modifier
 ) {
@@ -20,7 +20,7 @@ internal fun InequalityTextField(
         value = value,
         onValueChange = { if ((it.toFloatOrNull() != null) || it.isEmpty() || (it == "-")) onChange(it) },
         modifier = modifier,
-        label = { FredText(text) },
+        label = { FredText(label) },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone, imeAction = imeAction),
         colors = TextFieldDefaults.outlinedTextFieldColors(
             textColor = MaterialTheme.colors.onBackground,
