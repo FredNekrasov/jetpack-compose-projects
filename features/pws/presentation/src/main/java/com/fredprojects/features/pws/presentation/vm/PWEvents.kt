@@ -1,5 +1,6 @@
 package com.fredprojects.features.pws.presentation.vm
 
+import androidx.compose.runtime.Stable
 import com.fredprojects.features.pws.domain.models.PracticalWork
 import com.fredprojects.features.pws.domain.utils.SortingPW
 
@@ -12,7 +13,9 @@ import com.fredprojects.features.pws.domain.utils.SortingPW
  * @property ToggleSortSection used to switch the visibility of the sorting section
  */
 sealed class PWEvents {
+    @Stable
     data class Sort(val sortingPW: SortingPW) : PWEvents()
+    @Stable
     data class DeletePW(val pw: PracticalWork) : PWEvents()
     data class SearchPW(val value: String) : PWEvents()
     data object RestorePW : PWEvents()

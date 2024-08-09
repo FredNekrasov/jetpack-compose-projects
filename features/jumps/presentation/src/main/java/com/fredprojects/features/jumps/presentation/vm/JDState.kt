@@ -1,5 +1,6 @@
 package com.fredprojects.features.jumps.presentation.vm
 
+import androidx.compose.runtime.Stable
 import com.fredprojects.features.jumps.domain.models.JumpData
 import com.fredprojects.features.jumps.domain.utils.SortType
 
@@ -11,6 +12,7 @@ import com.fredprojects.features.jumps.domain.utils.SortType
  * @param isSortingSectionVisible the visibility of the sorting section
  * @param isDialogVisible the visibility of the dialog
  */
+@Stable
 data class JDState(
     val jds: List<JumpData> = emptyList(),
     val jd: JumpData? = null,
