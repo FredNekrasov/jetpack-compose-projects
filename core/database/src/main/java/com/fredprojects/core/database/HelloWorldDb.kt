@@ -18,7 +18,7 @@ import com.fredprojects.core.database.entities.*
  *  @property pwDao the dao for the [PWEntity]. See [IPWDao]
  */
 @Database(
-    entities = [PWEntity::class, JDEntity::class, MathEntity::class, AstronomyInfoEntity::class],
+    entities = [PWEntity::class, JDEntity::class, MathEntity::class, AstronomyInfoEntity::class, BBInfoEntity::class],
     version = 2,
     exportSchema = false
 )
@@ -27,6 +27,7 @@ abstract class HelloWorldDb : RoomDatabase() {
     abstract val mathDao: IMathDao
     abstract val jdDao: IJDDao
     abstract val pwDao: IPWDao
+    abstract val bbdDao: IBBDao
     companion object {
         const val DB_NAME = "HelloWorldDb.db"
     }

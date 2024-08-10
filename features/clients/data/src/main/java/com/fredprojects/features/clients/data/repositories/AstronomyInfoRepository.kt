@@ -7,6 +7,7 @@ import com.fredprojects.features.clients.domain.astronomy.models.AstronomyInfo
 import com.fredprojects.features.clients.domain.astronomy.repository.IAstronomyRepository
 import com.fredprojects.features.clients.domain.utils.ActionStatus.*
 import com.fredprojects.features.clients.domain.utils.ConnectionStatus
+import com.fredprojects.features.clients.domain.utils.ConnectionStatus.*
 import com.google.gson.JsonSyntaxException
 import kotlinx.coroutines.flow.*
 import retrofit2.HttpException
@@ -34,20 +35,20 @@ class AstronomyInfoRepository(
         ra: String, dec: String, radius: Float
     ): Flow<ConnectionStatus<AstronomyInfo>> = flow {
         val astronomyInfoList = dao.getAll(ra, dec, radius).map { it.toDomain() }
-        emit(ConnectionStatus.Loading(astronomyInfoList))
+        emit(Loading(astronomyInfoList))
         val remoteData = api.getAstronomyInfo(ra, dec, radius)
         if(remoteData != null) {
             dao.delete(remoteData.map { it.key })
             dao.insert(remoteData.map { it.value.toEntity(ra, it.key, dec, radius) })
-            emit(ConnectionStatus.Success(dao.getAll(ra, dec, radius).map { it.toDomain() }))
-        } else emit(ConnectionStatus.Error(astronomyInfoList, NO_DATA))
+            emit(Success(dao.getAll(ra, dec, radius).map { it.toDomain() }))
+        } else emit(Error(astronomyInfoList, NO_DATA))
     }.catch { ex ->
         val astronomyInfoList = dao.getAll(ra, dec, radius).map { it.toDomain() }
         when(ex) {
-            is JsonSyntaxException -> emit(ConnectionStatus.Error(astronomyInfoList, SERIALIZATION_ERROR))
-            is HttpException -> emit(ConnectionStatus.Error(astronomyInfoList, CONNECTION_ERROR))
-            is IOException -> emit(ConnectionStatus.Error(astronomyInfoList, NO_INTERNET))
-            else -> emit(ConnectionStatus.Error(astronomyInfoList, UNKNOWN))
+            is JsonSyntaxException -> emit(Error(astronomyInfoList, SERIALIZATION_ERROR))
+            is HttpException -> emit(Error(astronomyInfoList, CONNECTION_ERROR))
+            is IOException -> emit(Error(astronomyInfoList, NO_INTERNET))
+            else -> emit(Error(astronomyInfoList, UNKNOWN))
         }
     }
 }

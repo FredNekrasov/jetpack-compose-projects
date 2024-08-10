@@ -11,6 +11,7 @@ package com.fredprojects.features.clients.domain.bybit.models
  * @param tags the tags of the product
  * @param url the url of the product
  * @param favorite the favorite status of the product
+ * @param id the id of the product
  */
 data class BBInfo(
     val title: String,
@@ -21,5 +22,6 @@ data class BBInfo(
     val startDateTime: String,
     val tags: List<String>,
     val url: String,
-    var favorite: Boolean = false
+    var favorite: Boolean = false,
+    val id: Int? = null
 )
