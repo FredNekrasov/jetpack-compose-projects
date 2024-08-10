@@ -42,3 +42,7 @@ include(":features:pws:presentation")
 include(":features:jumps:domain")
 include(":features:jumps:data")
 include(":features:jumps:presentation")
+
+include(":features:auth:domain")
+include(":features:auth:data")
+include(":features:auth:presentation")
