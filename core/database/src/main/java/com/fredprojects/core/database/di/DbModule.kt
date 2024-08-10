@@ -27,4 +27,7 @@ val dbModule = module {
     single(qualifier<IBBDao>()) {
         get<HelloWorldDb>(qualifier<HelloWorldDb>()).bbdDao
     }
+    single(qualifier<IUserDao>()) {
+        get<HelloWorldDb>(qualifier<HelloWorldDb>()).userDao
+    }
 }
