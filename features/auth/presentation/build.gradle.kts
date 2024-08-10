@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.jetbrains.kotlin.compose)
 }
 
 android {
@@ -30,6 +31,11 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:ui"))
+    implementation(project(":features:auth:domain"))
+    implementation(libs.bundles.androidx)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.bundles.compose.presentation)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
 }
