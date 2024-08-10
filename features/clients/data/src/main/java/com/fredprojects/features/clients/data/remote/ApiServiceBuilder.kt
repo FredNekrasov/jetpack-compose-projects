@@ -1,7 +1,6 @@
 package com.fredprojects.features.clients.data.remote
 
-import com.fredprojects.features.clients.data.remote.services.IAstronomyInfoService
-import com.fredprojects.features.clients.data.remote.services.IMathService
+import com.fredprojects.features.clients.data.remote.services.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -14,3 +13,4 @@ private fun provideRetrofit(baseUrl: String): Retrofit = Retrofit.Builder()
     .build()
 internal fun createAstronomyInfoService(): IAstronomyInfoService = provideRetrofit(IAstronomyInfoService.BASE_URL).create(IAstronomyInfoService::class.java)
 internal fun createMathService(): IMathService = provideRetrofit(IMathService.BASE_URL).create(IMathService::class.java)
+internal fun createBBService(): IBBService = provideRetrofit(IBBService.BASE_URL).create(IBBService::class.java)
