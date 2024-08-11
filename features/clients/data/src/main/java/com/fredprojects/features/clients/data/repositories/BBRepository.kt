@@ -40,6 +40,7 @@ class BBRepository(
         val remoteData = api.getProductInfo()
         if(remoteData != null) {
             val newBBInfoList = remoteData.result.list.map {
+                dao.delete(it.title)
                 dao.upsert(it.toEntity(bbTypeParser))
                 it.toDomain()
             }
