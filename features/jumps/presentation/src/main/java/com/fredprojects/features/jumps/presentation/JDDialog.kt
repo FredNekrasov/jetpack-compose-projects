@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.fredprojects.core.ui.*
 import com.fredprojects.core.ui.R
-import com.fredprojects.features.jumps.domain.models.JumpData
+import com.fredprojects.features.jumps.presentation.models.JDPModel
 import com.fredprojects.features.jumps.presentation.vm.JDEvents
 import com.fredprojects.features.jumps.presentation.vm.JDState
 import java.time.LocalDate
@@ -55,7 +55,7 @@ fun JDDialog(
                     {
                         onEvent(
                             JDEvents.UpsertJD(
-                                JumpData(countOfJumps.toIntOrNull() ?: 0, date.toLocalDate() ?: LocalDate.now(), jumpDataState.jd?.id)
+                                JDPModel(countOfJumps.toIntOrNull() ?: 0, date.toLocalDate() ?: LocalDate.now(), jumpDataState.jd?.id)
                             )
                         )
                     },

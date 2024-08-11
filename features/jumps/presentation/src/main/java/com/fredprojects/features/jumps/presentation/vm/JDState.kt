@@ -1,8 +1,8 @@
 package com.fredprojects.features.jumps.presentation.vm
 
 import androidx.compose.runtime.Stable
-import com.fredprojects.features.jumps.domain.models.JumpData
 import com.fredprojects.features.jumps.domain.utils.SortType
+import com.fredprojects.features.jumps.presentation.models.JDPModel
 
 /**
  * JDState is used to store data of the jumps
@@ -14,8 +14,9 @@ import com.fredprojects.features.jumps.domain.utils.SortType
  */
 @Stable
 data class JDState(
-    val jds: List<JumpData> = emptyList(),
-    val jd: JumpData? = null,
+    @Stable
+    val jds: List<JDPModel> = emptyList(),
+    val jd: JDPModel? = null,
     val sortType: SortType = SortType.Descending,
     val isSortingSectionVisible: Boolean = false,
     val isDialogVisible: Boolean = false
