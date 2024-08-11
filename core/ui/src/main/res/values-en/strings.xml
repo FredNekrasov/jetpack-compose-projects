@@ -76,4 +76,5 @@
     <string name="incorrectPassword">you entered the wrong password</string>
     <string name="incorrectEmail">you entered the wrong email</string>
     <string name="editingData">Editing data</string>
+    <string name="shop">Shop</string>
 </resources>
