@@ -2,9 +2,9 @@ package com.fredprojects.features.pws.presentation
 
 import android.content.res.Configuration.ORIENTATION_LANDSCAPE
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Delete
-import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -13,12 +13,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import coil.compose.AsyncImage
-import com.fredprojects.core.ui.R
 import com.fredprojects.core.ui.*
-import com.fredprojects.features.pws.domain.models.PracticalWork
+import com.fredprojects.core.ui.R
+import com.fredprojects.features.pws.presentation.models.PWPModel
 
 @Composable
-internal fun PWListItem(pw: PracticalWork, modifier: Modifier, onDelete: Action) {
+internal fun PWListItem(pw: PWPModel, modifier: Modifier, onDelete: Action) {
     Box(modifier) {
         FredCard(Modifier.matchParentSize(), MaterialTheme.colors.primary, MaterialTheme.colors.onPrimary)
         if(LocalConfiguration.current.orientation == ORIENTATION_LANDSCAPE) {
@@ -30,7 +30,7 @@ internal fun PWListItem(pw: PracticalWork, modifier: Modifier, onDelete: Action)
     }
 }
 @Composable
-private fun PortraitPWListItemContent(pw: PracticalWork) {
+private fun PortraitPWListItemContent(pw: PWPModel) {
     Column(Modifier.fillMaxWidth().padding(16.dp).padding(end = 32.dp)) {
         FredText("${stringResource(R.string.pw)}: ${pw.pwName}", color = MaterialTheme.colors.background)
         Spacer(modifier = Modifier.height(2.dp))
@@ -47,7 +47,7 @@ private fun PortraitPWListItemContent(pw: PracticalWork) {
     }
 }
 @Composable
-private fun LandscapePWListItemContent(pw: PracticalWork) {
+private fun LandscapePWListItemContent(pw: PWPModel) {
     Row(Modifier.fillMaxWidth().padding(16.dp).padding(end = 32.dp), Arrangement.SpaceEvenly, Alignment.CenterVertically) {
         Column(Modifier.fillMaxHeight()) {
             FredText("${stringResource(R.string.pw)}: ${pw.pwName}", color = MaterialTheme.colors.background)

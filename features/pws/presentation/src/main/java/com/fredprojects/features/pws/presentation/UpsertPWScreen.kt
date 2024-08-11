@@ -20,13 +20,14 @@ import coil.compose.AsyncImage
 import com.fredprojects.core.ui.*
 import com.fredprojects.core.ui.R
 import com.fredprojects.features.pws.domain.models.PracticalWork
+import com.fredprojects.features.pws.presentation.models.PWPModel
 import com.fredprojects.features.pws.presentation.vm.UpsertPWState
 
 @Composable
 fun UpsertPWScreen(
     state: UpsertPWState,
     goBack: Action,
-    upsertPW: (PracticalWork) -> Unit,
+    upsertPW: (PWPModel) -> Unit,
     onTakePicture: () -> Uri
 ) {
     var pwName by rememberSaveable { mutableStateOf("") }
@@ -50,7 +51,7 @@ fun UpsertPWScreen(
         topBar = { FredTopBar(false, goBack) },
         floatingActionButton = {
             FredFloatingActionButton(Icons.Default.Done) {
-                upsertPW(PracticalWork(pwName, student, variant.toIntOrNull() ?: 0, lvl.toIntOrNull() ?: 0, date, mark.toIntOrNull() ?: 0, photo, state.pw?.id))
+                upsertPW(PWPModel(pwName, student, variant.toIntOrNull() ?: 0, lvl.toIntOrNull() ?: 0, date, mark.toIntOrNull() ?: 0, photo, state.pw?.id))
             }
         }
     ) { paddingValues ->
