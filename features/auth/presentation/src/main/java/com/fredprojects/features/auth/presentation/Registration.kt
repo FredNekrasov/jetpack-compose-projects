@@ -19,16 +19,23 @@ fun Registration(
     isDataCorrect: Boolean,
     onRegistration: (AuthEvents) -> Unit,
     goBack: Action,
-    isRegistration: Boolean
+    user: User? = null,
 ) {
     var userName by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
     var email by rememberSaveable { mutableStateOf("") }
     var name by rememberSaveable { mutableStateOf("") }
     var surname by rememberSaveable { mutableStateOf("") }
+    user?.let {
+        userName = it.login
+        password = it.password
+        email = it.email
+        name = it.name
+        surname = it.surname
+    }
     Column(Modifier.fillMaxSize(),Arrangement.Center, Alignment.CenterHorizontally) {
         FredHeaderText(
-            if(isRegistration) stringResource(R.string.registration) else stringResource(R.string.editingData),
+            if(user == null) stringResource(R.string.registration) else stringResource(R.string.editingData),
             MaterialTheme.typography.h5
         )
         Spacer(Modifier.height(32.dp))
@@ -46,8 +53,8 @@ fun Registration(
         FredTextField(surname, { surname = it }, R.string.enterSurname)
         Spacer(Modifier.height(16.dp))
         FredButton(
-            { onRegistration(AuthEvents.UpsertUserData(User(userName, password, email, name, surname))) },
-            if(isRegistration) stringResource(R.string.signUp) else stringResource(R.string.save)
+            { onRegistration(AuthEvents.UpsertUserData(User(userName, password, email, name, surname, user?.id))) },
+            if(user == null) stringResource(R.string.signUp) else stringResource(R.string.save)
         )
         Spacer(Modifier.height(4.dp))
         FredButton(goBack, stringResource(R.string.goBack))

@@ -42,6 +42,7 @@ class UserVM(
             userDataSF.value?.id?.let {
                 useCases.delete(it)
             }
+            userDataMSF.emit(null)
         }
     }
 }
