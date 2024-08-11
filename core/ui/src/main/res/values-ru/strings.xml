@@ -76,4 +76,5 @@
     <string name="incorrectPassword">вы ввели неверный пароль</string>
     <string name="incorrectEmail">вы ввели неправильный адрес электронной почты</string>
     <string name="editingData">Редактировать данные</string>
+    <string name="shop">Магазин</string>
 </resources>
