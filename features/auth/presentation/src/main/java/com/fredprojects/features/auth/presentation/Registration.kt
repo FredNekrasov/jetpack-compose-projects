@@ -11,7 +11,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.fredprojects.core.ui.*
 import com.fredprojects.core.ui.R
-import com.fredprojects.features.auth.domain.models.User
+import com.fredprojects.features.auth.presentation.models.UDPModel
 import com.fredprojects.features.auth.presentation.vm.AuthEvents
 
 @Composable
@@ -19,7 +19,7 @@ fun Registration(
     isDataCorrect: Boolean,
     onRegistration: (AuthEvents) -> Unit,
     goBack: Action,
-    user: User? = null,
+    user: UDPModel? = null,
 ) {
     var userName by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
@@ -53,7 +53,7 @@ fun Registration(
         FredTextField(surname, { surname = it }, R.string.enterSurname)
         Spacer(Modifier.height(16.dp))
         FredButton(
-            { onRegistration(AuthEvents.UpsertUserData(User(userName, password, email, name, surname, user?.id))) },
+            { onRegistration(AuthEvents.UpsertUserData(UDPModel(userName, password, email, name, surname, user?.id))) },
             if(user == null) stringResource(R.string.signUp) else stringResource(R.string.save)
         )
         Spacer(Modifier.height(4.dp))

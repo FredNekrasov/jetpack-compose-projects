@@ -1,10 +1,12 @@
 package com.fredprojects.features.auth.presentation.vm
 
+import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fredprojects.features.auth.domain.models.User
 import com.fredprojects.features.auth.domain.useCases.UserUseCases
 import com.fredprojects.features.auth.domain.utils.AuthStatus
+import com.fredprojects.features.auth.presentation.mappers.*
+import com.fredprojects.features.auth.presentation.models.UDPModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
@@ -13,9 +15,9 @@ class UserVM(
 ) : ViewModel() {
     private val authStatusMSF = MutableSharedFlow<AuthStatus>()
     val authStatusSF = authStatusMSF.asSharedFlow()
-    private val userDataMSF = MutableStateFlow<User?>(null)
-    val userDataSF = userDataMSF.asStateFlow()
-    fun onUserEvent(event : AuthEvents) {
+    var udpModel by mutableStateOf<UDPModel?>(null)
+        private set
+    fun onEvent(event : AuthEvents) {
         when(event) {
             is AuthEvents.Authorization -> auth(event.login, event.password)
             AuthEvents.DeleteUser -> delete()
@@ -26,23 +28,21 @@ class UserVM(
         viewModelScope.launch {
             useCases.auth(userName,password).also {
                 authStatusMSF.emit(it.first)
-                userDataMSF.emit(it.second)
+                udpModel = it.second?.toPresentation()
             }
         }
     }
-    private fun upsertUserData(user: User) {
+    private fun upsertUserData(user: UDPModel) {
         viewModelScope.launch {
-            val (authStatus, userData) = useCases.upsert(user)
+            val (authStatus, userData) = useCases.upsert(user.toDomain())
             authStatusMSF.emit(authStatus)
-            userDataMSF.emit(userData)
+            udpModel = userData?.toPresentation()
         }
     }
     private fun delete() {
         viewModelScope.launch {
-            userDataSF.value?.id?.let {
-                useCases.delete(it)
-            }
-            userDataMSF.emit(null)
+            udpModel?.id?.let { useCases.delete(it) }
+            udpModel = null
         }
     }
 }

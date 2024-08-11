@@ -12,10 +12,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.fredprojects.core.ui.*
 import com.fredprojects.core.ui.R
-import com.fredprojects.features.auth.domain.models.User
+import com.fredprojects.features.auth.presentation.models.UDPModel
 
 @Composable
-internal fun UserInfo(user: User, onDelete: Action, onEdit: Action, modifier: Modifier) {
+internal fun UserInfo(
+    user: UDPModel,
+    onDelete: Action,
+    onEdit: Action,
+    modifier: Modifier
+) {
     Box(modifier) {
         FredCard(Modifier.matchParentSize(), MaterialTheme.colors.onError, MaterialTheme.colors.surface)
         Column(modifier.padding(16.dp).padding(end = 32.dp)) {
