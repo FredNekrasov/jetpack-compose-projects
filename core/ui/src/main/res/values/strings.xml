@@ -96,4 +96,9 @@
     <string name="incorrectEmail">you entered the wrong email</string>
     <!-- bybit -->
     <string name="shop">Shop</string>
+    <string name="tryAgain">Try again</string>
+    <!-- screens -->
+    <string name="astronomyInfo">information about astronomy</string>
+    <string name="math">Math</string>
+    <string name="inequality">Inequality</string>
 </resources>
