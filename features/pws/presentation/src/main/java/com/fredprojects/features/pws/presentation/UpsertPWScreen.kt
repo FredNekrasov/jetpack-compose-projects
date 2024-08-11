@@ -19,7 +19,6 @@ import androidx.core.net.toUri
 import coil.compose.AsyncImage
 import com.fredprojects.core.ui.*
 import com.fredprojects.core.ui.R
-import com.fredprojects.features.pws.domain.models.PracticalWork
 import com.fredprojects.features.pws.presentation.models.PWPModel
 import com.fredprojects.features.pws.presentation.vm.UpsertPWState
 
