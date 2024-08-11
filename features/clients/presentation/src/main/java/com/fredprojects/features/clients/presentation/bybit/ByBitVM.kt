@@ -14,6 +14,7 @@ class ByBitVM(
 ) : ViewModel() {
     private val bbStateMSF = MutableStateFlow<ConnectionStatus<BBInfo>>(ConnectionStatus.Nothing())
     val bbState = bbStateMSF.asStateFlow()
+    init { getData() }
     fun getData() {
         viewModelScope.launch {
             repository.getData().flowOn(Dispatchers.IO).collect {
