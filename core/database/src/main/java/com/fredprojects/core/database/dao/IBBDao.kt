@@ -21,4 +21,10 @@ interface IBBDao {
      */
     @Query("SELECT * FROM bybit")
     suspend fun getAll(): List<BBInfoEntity>
+    /**
+     * delete is used to delete data from the database.
+     * @param title is the title of the data to be deleted
+     */
+    @Query("DELETE FROM bybit WHERE title = :title")
+    suspend fun delete(title: String)
 }
