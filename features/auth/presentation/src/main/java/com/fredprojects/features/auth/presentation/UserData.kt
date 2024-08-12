@@ -22,8 +22,8 @@ internal fun UserInfo(
     modifier: Modifier
 ) {
     Box(modifier) {
-        FredCard(Modifier.matchParentSize(), MaterialTheme.colors.onError, MaterialTheme.colors.surface)
-        Column(modifier.padding(16.dp).padding(end = 32.dp)) {
+        FredCard(Modifier.matchParentSize(), MaterialTheme.colors.onBackground, MaterialTheme.colors.background)
+        Column(modifier.padding(16.dp).padding(horizontal = 32.dp)) {
             FredText("${stringResource(R.string.userName)}: ${user.login}", color = MaterialTheme.colors.background)
             Spacer(Modifier.height(8.dp))
             FredText("${stringResource(R.string.password)}: ${user.password}", color = MaterialTheme.colors.background)

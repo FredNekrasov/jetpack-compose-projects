@@ -8,7 +8,7 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import com.fredprojects.core.ui.FredText
+import com.fredprojects.core.ui.*
 import com.fredprojects.features.clients.presentation.astronomy.*
 import com.fredprojects.features.clients.presentation.math.*
 import com.fredprojects.features.inequality.impl.*
@@ -17,7 +17,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun MainScreen() {
+fun MainScreen(goBack: Action) {
     val inequalityVM: InequalityVM = koinViewModel()
     val mathVM: MathVM = koinViewModel()
     val astronomyInfoVM: AstronomyInfoVM = koinViewModel()
@@ -25,6 +25,7 @@ fun MainScreen() {
     val scope = rememberCoroutineScope()
     Scaffold(
         Modifier.fillMaxSize(),
+        topBar = { FredTopBar(goBack) },
         bottomBar = {
             MainScrollableTabRow(pagerState.currentPage) { scope.launch { pagerState.animateScrollToPage(it) } }
         }
