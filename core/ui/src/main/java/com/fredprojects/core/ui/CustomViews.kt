@@ -2,12 +2,11 @@ package com.fredprojects.core.ui
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
-import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -177,16 +176,14 @@ fun FredCard(
     }
 }
 @Composable
-fun FredTopBar(isAction: Boolean, action: Action, isArrowUp: Boolean = false) {
+fun FredTopBar(
+    goBack: Action,
+    action: @Composable (RowScope.() -> Unit) = {}
+) {
     TopAppBar(
         title = { FredHeaderText(stringResource(R.string.app_name), textStyle = MaterialTheme.typography.h5) },
-        navigationIcon = { if(!isAction) FredIconButton(action, Icons.AutoMirrored.Default.KeyboardArrowLeft) },
-        actions = {
-            when {
-                isAction && !isArrowUp -> FredIconButton(action, Icons.Default.KeyboardArrowDown)
-                isAction && isArrowUp -> FredIconButton(action, Icons.Default.KeyboardArrowUp)
-            }
-        },
+        navigationIcon = { FredIconButton(goBack, Icons.AutoMirrored.Default.KeyboardArrowLeft) },
+        actions = action,
         backgroundColor = MaterialTheme.colors.onBackground,
         contentColor = MaterialTheme.colors.background
     )

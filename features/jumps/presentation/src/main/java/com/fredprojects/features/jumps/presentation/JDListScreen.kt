@@ -7,7 +7,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,6 +23,7 @@ import kotlinx.coroutines.launch
 fun JDListScreen(
     state: JDState,
     onEvent: (JDEvents) -> Unit,
+    goBack: Action,
     toJumpingRope: Action
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
@@ -30,7 +31,13 @@ fun JDListScreen(
     val deleteMessage = stringResource(R.string.deletedRecord)
     Scaffold(
         modifier = Modifier.fillMaxSize(),
-        topBar = { FredTopBar(true, { onEvent(JDEvents.ToggleSortSection) }, state.isSortingSectionVisible) },
+        topBar = {
+            FredTopBar(goBack) {
+                if(!state.isSortingSectionVisible) {
+                    FredIconButton({ onEvent(JDEvents.ToggleSortSection) }, Icons.Default.KeyboardArrowDown)
+                } else FredIconButton({ onEvent(JDEvents.ToggleSortSection) }, Icons.Default.KeyboardArrowUp)
+            }
+        },
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         floatingActionButton = { FredFloatingActionButton(Icons.Default.Add, toJumpingRope) }
     ) { innerPadding ->

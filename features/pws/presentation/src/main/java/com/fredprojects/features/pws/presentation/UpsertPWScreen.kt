@@ -47,7 +47,7 @@ fun UpsertPWScreen(
     }
     Scaffold(
         modifier = Modifier.fillMaxSize(),
-        topBar = { FredTopBar(false, goBack) },
+        topBar = { FredTopBar(goBack) },
         floatingActionButton = {
             FredFloatingActionButton(Icons.Default.Done) {
                 upsertPW(PWPModel(pwName, student, variant.toIntOrNull() ?: 0, lvl.toIntOrNull() ?: 0, date, mark.toIntOrNull() ?: 0, photo, state.pw?.id))
