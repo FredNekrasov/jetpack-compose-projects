@@ -21,7 +21,7 @@ fun Profile(
 ) {
     Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
         Spacer(Modifier.height(8.dp))
-        FredHeaderText(stringResource(R.string.profile), MaterialTheme.typography.h5)
+        FredHeaderText(stringResource(R.string.profile), MaterialTheme.typography.h4)
         Spacer(Modifier.height(16.dp))
         userData?.let {
             UserInfo(it, { onDelete(AuthEvents.DeleteUser) }, toEditScreen, Modifier.fillMaxWidth().padding(8.dp))

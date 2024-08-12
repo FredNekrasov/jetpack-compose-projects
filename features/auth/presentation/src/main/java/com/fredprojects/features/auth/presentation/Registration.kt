@@ -26,17 +26,17 @@ fun Registration(
     var email by rememberSaveable { mutableStateOf("") }
     var name by rememberSaveable { mutableStateOf("") }
     var surname by rememberSaveable { mutableStateOf("") }
-    user?.let {
-        userName = it.login
-        password = it.password
-        email = it.email
-        name = it.name
-        surname = it.surname
+    if(user != null) {
+        userName = user.login
+        password = user.password
+        email = user.email
+        name = user.name
+        surname = user.surname
     }
     Column(Modifier.fillMaxSize(),Arrangement.Center, Alignment.CenterHorizontally) {
         FredHeaderText(
             if(user == null) stringResource(R.string.registration) else stringResource(R.string.editingData),
-            MaterialTheme.typography.h5
+            MaterialTheme.typography.h4
         )
         Spacer(Modifier.height(32.dp))
         FredTextField(userName, { userName = it }, R.string.enterUN, isDataCorrect)

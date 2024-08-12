@@ -19,7 +19,8 @@ fun ProductList(
     navButtons: @Composable () -> Unit
 ) {
     Column(Modifier.fillMaxSize(), Arrangement.Center, Alignment.CenterHorizontally) {
-        FredHeaderText(stringResource(R.string.shop), MaterialTheme.typography.h5)
+        Spacer(Modifier.height(8.dp))
+        FredHeaderText(stringResource(R.string.shop), MaterialTheme.typography.h4)
         Spacer(Modifier.height(16.dp))
         LazyColumn(Modifier.fillMaxSize()) {
             items(list) { bbInfo ->

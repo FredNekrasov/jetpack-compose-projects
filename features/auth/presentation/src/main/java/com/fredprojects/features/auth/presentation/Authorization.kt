@@ -21,7 +21,7 @@ fun Authorization(
     var userName by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
     Column(Modifier.fillMaxSize(), Arrangement.Center, Alignment.CenterHorizontally) {
-        FredHeaderText(text = stringResource(R.string.authorization), textStyle = MaterialTheme.typography.h5)
+        FredHeaderText(text = stringResource(R.string.authorization), textStyle = MaterialTheme.typography.h4)
         Spacer(Modifier.height(32.dp))
         FredTextField(userName, { userName = it }, R.string.enterUN, isDataCorrect)
         if (!isDataCorrect) FredText(stringResource(R.string.incorrectUserName), color = MaterialTheme.colors.error)
