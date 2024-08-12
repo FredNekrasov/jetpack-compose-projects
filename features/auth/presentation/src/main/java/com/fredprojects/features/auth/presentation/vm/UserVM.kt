@@ -15,7 +15,7 @@ class UserVM(
 ) : ViewModel() {
     private val authStatusMSF = MutableSharedFlow<AuthStatus>()
     val authStatusSF = authStatusMSF.asSharedFlow()
-    var udpModel by mutableStateOf<UDPModel?>(null)
+    var authState by mutableStateOf<UDPModel?>(null)
         private set
     fun onEvent(event : AuthEvents) {
         when(event) {
@@ -28,7 +28,7 @@ class UserVM(
         viewModelScope.launch {
             useCases.auth(userName,password).also {
                 authStatusMSF.emit(it.first)
-                udpModel = it.second?.toPresentation()
+                authState = it.second?.toPresentation()
             }
         }
     }
@@ -36,13 +36,13 @@ class UserVM(
         viewModelScope.launch {
             val (authStatus, userData) = useCases.upsert(user.toDomain())
             authStatusMSF.emit(authStatus)
-            udpModel = userData?.toPresentation()
+            authState = userData?.toPresentation()
         }
     }
     private fun delete() {
         viewModelScope.launch {
-            udpModel?.id?.let { useCases.delete(it) }
-            udpModel = null
+            authState?.id?.let { useCases.delete(it) }
+            authState = null
         }
     }
 }

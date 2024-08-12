@@ -53,7 +53,7 @@ fun NavGraphBuilder.authModule(
     }
     composable(Routes.REGISTRATION) {
         var isDataCorrect by rememberSaveable { mutableStateOf(true) }
-        Registration(isDataCorrect, userVM::onEvent, controller::navigateUp, userVM.udpModel)
+        Registration(userVM.authState, isDataCorrect, controller::navigateUp, userVM::onEvent)
         LaunchedEffect(true) {
             userVM.authStatusSF.collectLatest {
                 when(it) {
@@ -77,7 +77,7 @@ fun NavGraphBuilder.authModule(
     }
     composable(Routes.PROFILE) {
         Profile(
-            userVM.udpModel,
+            userVM.authState,
             { userVM.onEvent(it); controller.popBackStack(Routes.AUTH, false) },
             { controller.navigate(Routes.REGISTRATION) }
         ) {

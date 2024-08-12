@@ -7,6 +7,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.fredprojects.core.ui.*
@@ -16,10 +17,10 @@ import com.fredprojects.features.auth.presentation.vm.AuthEvents
 
 @Composable
 fun Registration(
+    user: UDPModel?,
     isDataCorrect: Boolean,
-    onRegistration: (AuthEvents) -> Unit,
     goBack: Action,
-    user: UDPModel? = null,
+    onRegistration: (AuthEvents) -> Unit
 ) {
     var userName by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
@@ -42,15 +43,14 @@ fun Registration(
         FredTextField(userName, { userName = it }, R.string.enterUN, isDataCorrect)
         if(!isDataCorrect) FredText(stringResource(R.string.incorrectUserName), color = MaterialTheme.colors.error)
         Spacer(Modifier.height(4.dp))
-        PasswordTextField(value = password, onChange = { password = it }, isValueCorrect = isDataCorrect)
+        PasswordTextField(password, { password = it }, isDataCorrect)
         if(!isDataCorrect) FredText(stringResource(R.string.incorrectPassword), color = MaterialTheme.colors.error)
         Spacer(Modifier.height(4.dp))
         FredTextField(email, { email = it }, R.string.enterEmail, isDataCorrect, keyboardType = KeyboardType.Email)
         if(!isDataCorrect) FredText(stringResource(R.string.incorrectEmail), color = MaterialTheme.colors.error)
         Spacer(Modifier.height(4.dp))
         FredTextField(name, { name = it }, R.string.enterName)
-        Spacer(Modifier.height(4.dp))
-        FredTextField(surname, { surname = it }, R.string.enterSurname)
+        FredTextField(surname, { surname = it }, R.string.enterSurname, imeAction = ImeAction.Done)
         Spacer(Modifier.height(16.dp))
         FredButton(
             { onRegistration(AuthEvents.UpsertUserData(UDPModel(userName, password, email, name, surname, user?.id))) },
