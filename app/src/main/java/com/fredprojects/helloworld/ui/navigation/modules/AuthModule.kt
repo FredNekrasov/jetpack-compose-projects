@@ -2,13 +2,15 @@ package com.fredprojects.helloworld.ui.navigation.modules
 
 import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.outlined.Send
-import androidx.compose.material.icons.outlined.*
+import androidx.compose.material.icons.automirrored.filled.Send
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
@@ -38,19 +40,12 @@ fun NavGraphBuilder.authModule(
                             isDataCorrect = true
                             controller.navigate(Routes.PROFILE)
                         }
-                        AuthStatus.INVALID_USERNAME -> {
-                            activityContext.displayToast(R.string.incorrectUserName)
-                            isDataCorrect = false
-                        }
-                        AuthStatus.INVALID_PASSWORD -> {
-                            activityContext.displayToast(R.string.incorrectPassword)
-                            isDataCorrect = false
-                        }
                         AuthStatus.INVALID_DATA -> {
                             activityContext.displayToast(R.string.error)
                             isDataCorrect = false
                         }
-                        else -> isDataCorrect = true
+                        AuthStatus.NOTHING -> isDataCorrect = true
+                        else -> isDataCorrect = false
                     }
                 }
             }
@@ -66,18 +61,6 @@ fun NavGraphBuilder.authModule(
                         isDataCorrect = true
                         controller.navigate(Routes.PROFILE)
                     }
-                    AuthStatus.INVALID_USERNAME -> {
-                        activityContext.displayToast(R.string.incorrectUserName)
-                        isDataCorrect = false
-                    }
-                    AuthStatus.INVALID_PASSWORD -> {
-                        activityContext.displayToast(R.string.incorrectPassword)
-                        isDataCorrect = false
-                    }
-                    AuthStatus.INVALID_EMAIL -> {
-                        activityContext.displayToast(R.string.incorrectEmail)
-                        isDataCorrect = false
-                    }
                     AuthStatus.INVALID_DATA -> {
                         activityContext.displayToast(R.string.error)
                         isDataCorrect = false
@@ -87,21 +70,27 @@ fun NavGraphBuilder.authModule(
                         isDataCorrect = false
                     }
                     AuthStatus.NOTHING -> isDataCorrect = true
+                    else -> isDataCorrect = false
                 }
             }
         }
     }
     composable(Routes.PROFILE) {
-        Profile(userVM.udpModel, userVM::onEvent, { controller.navigate(Routes.REGISTRATION) }) {
+        Profile(
+            userVM.udpModel,
+            { userVM.onEvent(it); controller.popBackStack(Routes.AUTH, false) },
+            { controller.navigate(Routes.REGISTRATION) }
+        ) {
             Row(Modifier.fillMaxWidth(), Arrangement.SpaceEvenly, Alignment.CenterVertically) {
-                FredIconButton({ controller.navigate(Routes.BYBIT) }, Icons.Outlined.ShoppingCart)
-                FredIconButton({ controller.navigate(Routes.FAV_PRODUCTS) }, Icons.Outlined.Favorite)
+                FredIconButton({ controller.navigate(Routes.BYBIT) }, Icons.Default.ShoppingCart, tint = MaterialTheme.colors.onBackground)
+                FredIconButton({ controller.navigate(Routes.FAV_PRODUCTS) }, Icons.Default.Favorite, tint = MaterialTheme.colors.onBackground)
             }
+            Spacer(Modifier.height(4.dp))
             Row(Modifier.fillMaxWidth(), Arrangement.SpaceEvenly, Alignment.CenterVertically) {
-                FredIconButton({ controller.navigate(Routes.MAIN_SCREEN) }, Icons.Outlined.Home)
-                FredIconButton({ controller.navigate(Routes.FIBONACCI) }, Icons.AutoMirrored.Outlined.Send)
-                FredIconButton({ controller.navigate(Routes.PW_LIST) }, Icons.Outlined.Star)
-                FredIconButton({ controller.navigate(Routes.JD_LIST) }, Icons.Outlined.DateRange)
+                FredIconButton({ controller.navigate(Routes.MAIN_SCREEN) }, Icons.Default.Home, tint = MaterialTheme.colors.onBackground)
+                FredIconButton({ controller.navigate(Routes.FIBONACCI) }, Icons.AutoMirrored.Default.Send, tint = MaterialTheme.colors.onBackground)
+                FredIconButton({ controller.navigate(Routes.PW_LIST) }, Icons.Default.Star, tint = MaterialTheme.colors.onBackground)
+                FredIconButton({ controller.navigate(Routes.JD_LIST) }, Icons.Default.DateRange, tint = MaterialTheme.colors.onBackground)
             }
         }
     }

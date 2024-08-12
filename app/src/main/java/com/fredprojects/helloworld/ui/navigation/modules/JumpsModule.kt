@@ -22,7 +22,7 @@ fun NavGraphBuilder.jumpsModule(
         val jdListVM: JDListVM = koinViewModel()
         val jdState = jdListVM.jdState.collectAsState().value
         var isValuesCorrect by remember { mutableStateOf(true) }
-        JDListScreen(jdState, jdListVM::onEvent) {
+        JDListScreen(jdState, jdListVM::onEvent, controller::navigateUp) {
             controller.navigate(Routes.JUMPING_ROPE)
         }
         if(jdState.isDialogVisible) JDDialog(jdState, jdListVM::onEvent, isValuesCorrect)

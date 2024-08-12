@@ -1,14 +1,20 @@
 package com.fredprojects.helloworld.ui.navigation.modules
 
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import com.fredprojects.core.ui.FredButton
+import com.fredprojects.core.ui.*
 import com.fredprojects.core.ui.R
 import com.fredprojects.features.clients.domain.utils.ActionStatus
 import com.fredprojects.features.clients.presentation.bybit.*
@@ -20,9 +26,11 @@ fun NavGraphBuilder.byBitScreens(bbVM: ByBitVM, controller: NavHostController) {
         val state = bbVM.bbState.collectAsState().value
         if(!state.status.isLoading()) {
             ProductList(list = state.list, onUpdate = bbVM::update) {
-                FredButton({ controller.navigateUp() }, stringResource(R.string.goBack))
-                ShowConnectionInfo(bbVM::getData, state.status)
-                FredButton({ controller.navigate(Routes.FAV_PRODUCTS) }, stringResource(R.string.favourites))
+                Row(Modifier.fillMaxWidth(), Arrangement.SpaceEvenly, Alignment.CenterVertically) {
+                    FredIconButton(controller::navigateUp, Icons.AutoMirrored.Default.KeyboardArrowLeft, tint = MaterialTheme.colors.onBackground)
+                    ShowConnectionInfo(bbVM::getData, state.status)
+                    FredIconButton({ controller.navigate(Routes.FAV_PRODUCTS) }, Icons.Default.Favorite, tint = MaterialTheme.colors.onBackground)
+                }
             }
         } else CircularProgressIndicator(color = MaterialTheme.colors.onBackground)
     }

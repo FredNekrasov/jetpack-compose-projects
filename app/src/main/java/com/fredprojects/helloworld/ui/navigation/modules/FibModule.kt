@@ -1,9 +1,9 @@
 package com.fredprojects.helloworld.ui.navigation.modules
 
 import android.app.Activity.BIND_AUTO_CREATE
-import androidx.activity.ComponentActivity
 import android.content.*
 import android.os.IBinder
+import androidx.activity.ComponentActivity
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.navigation.NavGraphBuilder
@@ -16,11 +16,12 @@ import com.fredprojects.helloworld.ui.navigation.Routes
 import java.util.UUID
 
 fun NavGraphBuilder.fibModule(
-    activityContext: ComponentActivity
+    activityContext: ComponentActivity,
+    goBack: () -> Unit
 ) {
     composable(Routes.FIBONACCI) {
         var fibSequences by rememberSaveable { mutableStateOf(emptyList<FibonacciBinder>()) }
-        FibScreen(fibSequences) {
+        FibScreen(fibSequences, goBack) {
             activityContext.apply {
                 val intent = Intent(this, FibSequenceService::class.java)
                 intent.action = UUID.randomUUID().toString()

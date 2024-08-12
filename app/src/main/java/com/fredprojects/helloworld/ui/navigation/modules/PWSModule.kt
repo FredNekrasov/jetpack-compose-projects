@@ -54,7 +54,7 @@ fun NavGraphBuilder.pwsModule(
     }
     composable(Routes.PW_LIST) {
         val pwListVM: PWListVM = koinViewModel()
-        PWListScreen(pwListVM.pwState.collectAsState().value, pwListVM::onEvent) {
+        PWListScreen(pwListVM.pwState.collectAsState().value, pwListVM::onEvent, controller::navigateUp) {
             if(it != null) {
                 controller.navigate(Routes.UPSERT_PW + "?id=${it}")
             } else controller.navigate(Routes.UPSERT_PW)

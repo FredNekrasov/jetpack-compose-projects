@@ -19,10 +19,10 @@ fun HWNavHost(
     val bbVM: ByBitVM = koinViewModel()
     NavHost(navController = controller, startDestination = Routes.AUTH) {
         authModule(userVM, activityContext, controller)
-        composable(Routes.MAIN_SCREEN) { MainScreen() }
+        composable(Routes.MAIN_SCREEN) { MainScreen(controller::navigateUp) }
+        fibModule(activityContext, controller::navigateUp)
         jumpsModule(controller, jumpingRopeScreen)
-        byBitScreens(bbVM, controller)
         pwsModule(activityContext, controller)
-        fibModule(activityContext)
+        byBitScreens(bbVM, controller)
     }
 }
