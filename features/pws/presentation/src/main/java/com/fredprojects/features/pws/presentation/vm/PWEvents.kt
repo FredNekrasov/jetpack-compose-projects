@@ -1,8 +1,8 @@
 package com.fredprojects.features.pws.presentation.vm
 
 import androidx.compose.runtime.Stable
-import com.fredprojects.features.pws.domain.models.PracticalWork
 import com.fredprojects.features.pws.domain.utils.SortingPW
+import com.fredprojects.features.pws.presentation.models.PWPModel
 
 /**
  * PWEvents is used to send events to the PWListVM to perform actions
@@ -15,8 +15,7 @@ import com.fredprojects.features.pws.domain.utils.SortingPW
 sealed class PWEvents {
     @Stable
     data class Sort(val sortingPW: SortingPW) : PWEvents()
-    @Stable
-    data class DeletePW(val pw: PracticalWork) : PWEvents()
+    data class DeletePW(val pw: PWPModel) : PWEvents()
     data class SearchPW(val value: String) : PWEvents()
     data object RestorePW : PWEvents()
     data object ToggleSortSection : PWEvents()

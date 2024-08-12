@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 @Composable
-fun FavCheckBox(
+internal fun FavCheckBox(
     value: Boolean,
     onValueChange: (Boolean) -> Unit,
     modifier: Modifier = Modifier

@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -15,21 +16,23 @@ import com.fredprojects.core.ui.*
 import com.fredprojects.features.fibonacci.api.utils.CalculationStatus
 
 @Composable
-fun FibScreen(fibonacciSequences: List<FibonacciBinder>, calculate: (Int) -> Unit) {
+fun FibScreen(fibonacciSequences: List<FibonacciBinder>, goBack: Action, calculate: (Int) -> Unit) {
     var number by rememberSaveable { mutableStateOf("") }
     var isNumberCorrect by rememberSaveable { mutableStateOf(true) }
-    Column(Modifier.fillMaxSize(), Arrangement.Center, Alignment.CenterHorizontally) {
-        FredNumericTextField(number, { number = it }, R.string.fibEnterNumber)
-        if(!isNumberCorrect) FredText(stringResource(R.string.error), color = MaterialTheme.colors.error)
-        Spacer(Modifier.height(4.dp))
-        FredButton(
-            {
-                isNumberCorrect = number.isNotEmpty() && (number.toIntOrNull() != null)
-                if(isNumberCorrect) calculate(number.toInt())
-            },
-            stringResource(R.string.displayResult)
-        )
-        FibSequenceList(fibonacciSequences)
+    Scaffold(Modifier.fillMaxSize(), topBar = { FredTopBar(goBack) }) { innerPadding ->
+        Column(Modifier.fillMaxSize().padding(innerPadding), Arrangement.Center, Alignment.CenterHorizontally) {
+            FredNumericTextField(number, { number = it }, R.string.fibEnterNumber)
+            if(!isNumberCorrect) FredText(stringResource(R.string.error), color = MaterialTheme.colors.error)
+            Spacer(Modifier.height(4.dp))
+            FredButton(
+                {
+                    isNumberCorrect = number.isNotEmpty() && (number.toIntOrNull() != null)
+                    if(isNumberCorrect) calculate(number.toInt())
+                },
+                stringResource(R.string.displayResult)
+            )
+            FibSequenceList(fibonacciSequences)
+        }
     }
 }
 @Composable

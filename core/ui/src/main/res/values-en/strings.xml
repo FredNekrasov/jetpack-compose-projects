@@ -77,4 +77,8 @@
     <string name="incorrectEmail">you entered the wrong email</string>
     <string name="editingData">Editing data</string>
     <string name="shop">Shop</string>
+    <string name="tryAgain">Try again</string>
+    <string name="astronomyInfo">information about astronomy</string>
+    <string name="math">Math</string>
+    <string name="inequality">Inequality</string>
 </resources>

@@ -1,9 +1,9 @@
 package com.fredprojects.features.pws.presentation.vm
 
 import androidx.compose.runtime.Stable
-import com.fredprojects.features.pws.domain.models.PracticalWork
 import com.fredprojects.features.pws.domain.utils.SortType
 import com.fredprojects.features.pws.domain.utils.SortingPW
+import com.fredprojects.features.pws.presentation.models.PWPModel
 
 /**
  * PWState represents the state of the practical works.
@@ -13,7 +13,8 @@ import com.fredprojects.features.pws.domain.utils.SortingPW
  */
 @Stable
 data class PWState(
-    val pws: List<PracticalWork> = emptyList(),
+    @Stable
+    val pws: List<PWPModel> = emptyList(),
     val sortingPW: SortingPW = SortingPW.Date(SortType.Descending),
     val isSortingSectionVisible: Boolean = false
 )

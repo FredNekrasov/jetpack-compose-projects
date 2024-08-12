@@ -11,10 +11,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.fredprojects.core.ui.*
 import com.fredprojects.core.ui.R
-import com.fredprojects.features.jumps.domain.models.JumpData
+import com.fredprojects.features.jumps.presentation.models.JDPModel
 
 @Composable
-internal fun JDListItem(jumpData: JumpData, onDeleteClick: Action, modifier: Modifier = Modifier) {
+internal fun JDListItem(jumpData: JDPModel, onDeleteClick: Action, modifier: Modifier = Modifier) {
     Box(modifier) {
         FredCard(Modifier.matchParentSize(), MaterialTheme.colors.error, MaterialTheme.colors.onError)
         Column(Modifier.fillMaxSize().padding(16.dp).padding(end = 32.dp)) {

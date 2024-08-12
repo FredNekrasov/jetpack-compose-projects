@@ -18,9 +18,9 @@ import com.fredprojects.features.clients.domain.bybit.models.BBInfo
 fun FavProductList(
     list: List<BBInfo>, onUpdate: (BBInfo) -> Unit, goBack: Action
 ) {
-    Scaffold(topBar = { FredTopBar(false, goBack) }) { innerPadding ->
+    Scaffold(topBar = { FredTopBar(goBack) }) { innerPadding ->
         Column(Modifier.fillMaxSize().padding(innerPadding), Arrangement.Center, Alignment.CenterHorizontally) {
-            FredHeaderText(stringResource(R.string.shop), MaterialTheme.typography.h5)
+            FredHeaderText(stringResource(R.string.favourites), MaterialTheme.typography.h4)
             Spacer(Modifier.height(8.dp))
             LazyColumn(Modifier.fillMaxSize()) {
                 items(list) { bbInfo ->

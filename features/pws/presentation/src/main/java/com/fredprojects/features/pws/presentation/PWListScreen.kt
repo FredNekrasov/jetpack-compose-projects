@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.outlined.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -23,6 +25,7 @@ import kotlinx.coroutines.launch
 fun PWListScreen(
     state: PWState,
     onEvent: (PWEvents) -> Unit,
+    goBack: Action,
     toUpsertPWScreen: (Int?) -> Unit
 ) {
     val scaffoldState = rememberScaffoldState()
@@ -32,7 +35,13 @@ fun PWListScreen(
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         scaffoldState = scaffoldState,
-        topBar = { FredTopBar(true, { onEvent(PWEvents.ToggleSortSection) }, state.isSortingSectionVisible) },
+        topBar = {
+            FredTopBar(goBack) {
+                if(!state.isSortingSectionVisible) {
+                    FredIconButton({ onEvent(PWEvents.ToggleSortSection) }, Icons.Default.KeyboardArrowDown)
+                } else FredIconButton({ onEvent(PWEvents.ToggleSortSection) }, Icons.Default.KeyboardArrowUp)
+            }
+        },
         floatingActionButton = { FredFloatingActionButton(Icons.Outlined.Add) { toUpsertPWScreen(null) } }
     ) { innerPadding ->
         Column(Modifier.fillMaxSize().padding(innerPadding), horizontalAlignment = Alignment.CenterHorizontally) {

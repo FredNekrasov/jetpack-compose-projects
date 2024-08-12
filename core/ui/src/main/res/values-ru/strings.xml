@@ -77,4 +77,8 @@
     <string name="incorrectEmail">вы ввели неправильный адрес электронной почты</string>
     <string name="editingData">Редактировать данные</string>
     <string name="shop">Магазин</string>
+    <string name="tryAgain">Пробуйте снова</string>
+    <string name="astronomyInfo">информация об астрономии</string>
+    <string name="math">Математика</string>
+    <string name="inequality">Неравенства</string>
 </resources>

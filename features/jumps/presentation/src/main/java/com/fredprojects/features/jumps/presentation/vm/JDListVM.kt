@@ -2,9 +2,10 @@ package com.fredprojects.features.jumps.presentation.vm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fredprojects.features.jumps.domain.models.JumpData
 import com.fredprojects.features.jumps.domain.utils.*
 import com.fredprojects.features.jumps.domain.useCases.JDUseCases
+import com.fredprojects.features.jumps.presentation.mappers.*
+import com.fredprojects.features.jumps.presentation.models.JDPModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -44,9 +45,9 @@ class JDListVM(
      * The deleteJD is used to delete a jump from the database
      * @param jumpData is the jump to be deleted
      */
-    private fun deleteJD(jumpData: JumpData) {
+    private fun deleteJD(jumpData: JDPModel) {
         viewModelScope.launch {
-            useCases.delete(jumpData)
+            useCases.delete(jumpData.toDomain())
         }
     }
     /**
@@ -56,16 +57,16 @@ class JDListVM(
     private fun getSortedJDs(sortType: SortType) {
         getDataJob?.cancel()
         getDataJob = useCases.getData(sortType).onEach {
-            jdStateMSF.emit(jdState.value.copy(jds = it, sortType = sortType))
+            jdStateMSF.emit(jdState.value.copy(jds = it.map { jd -> jd.toPresentation() }, sortType = sortType))
         }.launchIn(viewModelScope)
     }
     /**
      * The upsertJD is used to insert or update a jump data
      * @param jumpData is the jump data to be inserted or updated
      */
-    private fun upsertJD(jumpData: JumpData) {
+    private fun upsertJD(jumpData: JDPModel) {
         viewModelScope.launch {
-            jdStatusMSF.emit(useCases.upsert(jumpData))
+            jdStatusMSF.emit(useCases.upsert(jumpData.toDomain()))
         }
     }
     /**

@@ -1,8 +1,12 @@
 package com.fredprojects.helloworld.di
 
+import com.fredprojects.features.auth.domain.useCases.UserUseCases
+import com.fredprojects.features.auth.presentation.vm.UserVM
 import com.fredprojects.features.clients.domain.astronomy.repository.IAstronomyRepository
+import com.fredprojects.features.clients.domain.bybit.repository.IBBRepository
 import com.fredprojects.features.clients.domain.math.repository.IMathRepository
 import com.fredprojects.features.clients.presentation.astronomy.AstronomyInfoVM
+import com.fredprojects.features.clients.presentation.bybit.ByBitVM
 import com.fredprojects.features.clients.presentation.math.MathVM
 import com.fredprojects.features.inequality.api.useCases.InequalityUseCase
 import com.fredprojects.features.inequality.impl.InequalityVM
@@ -43,4 +47,12 @@ val presentationModule = module {
     viewModel {
         MathVM(get(_q<IMathRepository>()))
     }.withOptions { qualifier = _q<MathVM>() }
+
+    viewModel {
+        ByBitVM(get(_q<IBBRepository>()))
+    }.withOptions { qualifier = _q<ByBitVM>() }
+
+    viewModel {
+        UserVM(get(_q<UserUseCases>()))
+    }.withOptions { qualifier = _q<UserVM>() }
 }

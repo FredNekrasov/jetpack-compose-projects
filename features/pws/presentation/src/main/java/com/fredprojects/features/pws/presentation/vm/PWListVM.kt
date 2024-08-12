@@ -2,10 +2,11 @@ package com.fredprojects.features.pws.presentation.vm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fredprojects.features.pws.domain.models.PracticalWork
 import com.fredprojects.features.pws.domain.useCases.PWUseCases
 import com.fredprojects.features.pws.domain.utils.SortType
 import com.fredprojects.features.pws.domain.utils.SortingPW
+import com.fredprojects.features.pws.presentation.mappers.*
+import com.fredprojects.features.pws.presentation.models.PWPModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -22,7 +23,7 @@ class PWListVM(
      */
     private val pwStateMSF = MutableStateFlow(PWState())
     val pwState = pwStateMSF.asStateFlow()
-    private var recentlyDeletedPW: PracticalWork? = null
+    private var recentlyDeletedPW: PWPModel? = null
     private var getDataJob: Job? = null
     /**
      * The onEvent is used to manage data or view events
@@ -46,7 +47,7 @@ class PWListVM(
     private fun getSortedPWs(sortingPW: SortingPW) {
         getDataJob?.cancel()
         getDataJob = useCases.getPWs(sortingPW).onEach {
-            pwStateMSF.emit(pwState.value.copy(pws = it, sortingPW = sortingPW))
+            pwStateMSF.emit(pwState.value.copy(pws = it.map { pw -> pw.toPresentation() }, sortingPW = sortingPW))
         }.launchIn(viewModelScope)
     }
     /**
@@ -56,16 +57,16 @@ class PWListVM(
     private fun findPWsByValue(value: String) {
         getDataJob?.cancel()
         getDataJob = useCases.getPWs.find(value, pwState.value.sortingPW).onEach {
-            pwStateMSF.emit(pwState.value.copy(pws = it))
+            pwStateMSF.emit(pwState.value.copy(pws = it.map { pw -> pw.toPresentation() }))
         }.launchIn(viewModelScope)
     }
     /**
      * The deletePW is used to delete a practical work from the database
      * @param pw is the practical work to be deleted
      */
-    private fun deletePW(pw: PracticalWork) {
+    private fun deletePW(pw: PWPModel) {
         viewModelScope.launch {
-            useCases.delete(pw)
+            useCases.delete(pw.toDomain())
             recentlyDeletedPW = pw
         }
     }
@@ -75,7 +76,7 @@ class PWListVM(
     private fun restorePW() {
         viewModelScope.launch {
             recentlyDeletedPW?.let { pw ->
-                useCases.upsert(pw)
+                useCases.upsert(pw.toDomain())
                 recentlyDeletedPW = null
             }
         }

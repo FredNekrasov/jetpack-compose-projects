@@ -1,5 +1,7 @@
 package com.fredprojects.helloworld.di
 
+import com.fredprojects.features.auth.domain.repository.IUserRepository
+import com.fredprojects.features.auth.domain.useCases.*
 import com.fredprojects.features.fibonacci.api.useCases.FibonacciUseCase
 import com.fredprojects.features.inequality.api.useCases.InequalityUseCase
 import com.fredprojects.features.jumps.domain.repositories.IJDRepository
@@ -26,6 +28,13 @@ val domainModule = module {
             getData = GetJDUseCase(get(named<IJDRepository>())),
             upsert = UpsertJDUseCase(get(named<IJDRepository>())),
             delete = DeleteJDUseCase(get(named<IJDRepository>()))
+        )
+    }
+    factory(named<UserUseCases>()) {
+        UserUseCases(
+            auth = AuthUseCase(get(named<IUserRepository>())),
+            upsert = UpsertUserUseCase(get(named<IUserRepository>())),
+            delete = DeleteUserUseCase(get(named<IUserRepository>()))
         )
     }
 } 

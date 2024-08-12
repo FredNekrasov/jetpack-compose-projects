@@ -1,8 +1,8 @@
 package com.fredprojects.features.pws.presentation.vm
 
 import androidx.compose.runtime.Stable
-import com.fredprojects.features.pws.domain.models.PracticalWork
 import com.fredprojects.features.pws.domain.utils.PWStatus
+import com.fredprojects.features.pws.presentation.models.PWPModel
 
 /**
  * UpsertPWState is used to insert or update a PracticalWork and its status after the operation is completed
@@ -11,6 +11,6 @@ import com.fredprojects.features.pws.domain.utils.PWStatus
  */
 @Stable
 data class UpsertPWState(
-    val pw: PracticalWork? = null,
+    val pw: PWPModel? = null,
     val status: PWStatus = PWStatus.NOTHING
 )
