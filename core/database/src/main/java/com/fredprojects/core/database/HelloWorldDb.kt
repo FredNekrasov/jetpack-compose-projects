@@ -23,7 +23,7 @@ import com.fredprojects.core.database.entities.*
  */
 @Database(
     entities = [PWEntity::class, JDEntity::class, MathEntity::class, AstronomyInfoEntity::class, BBInfoEntity::class, UserEntity::class],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 abstract class HelloWorldDb : RoomDatabase() {
