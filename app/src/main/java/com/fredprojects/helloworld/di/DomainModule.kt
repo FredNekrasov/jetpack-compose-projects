@@ -30,7 +30,7 @@ val domainModule = module {
             delete = DeleteJDUseCase(get(named<IJDRepository>()))
         )
     }
-    factory {
+    factory(named<UserUseCases>()) {
         UserUseCases(
             auth = AuthUseCase(get(named<IUserRepository>())),
             upsert = UpsertUserUseCase(get(named<IUserRepository>())),
