@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.savedstate)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.bundles.compose.presentation)
+    implementation(libs.coil.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
 }
