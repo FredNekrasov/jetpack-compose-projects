@@ -12,14 +12,13 @@ import com.fredprojects.features.jumps.presentation.vm.JDEvents
 import com.fredprojects.features.jumps.presentation.vm.JDListVM
 import com.fredprojects.helloworld.ui.navigation.Routes
 import kotlinx.coroutines.flow.collectLatest
-import org.koin.androidx.compose.koinViewModel
 
 fun NavGraphBuilder.jumpsModule(
+    jdListVM: JDListVM,
     controller: NavHostController,
     jumpingRopeScreen: @Composable (Action) -> Unit
 ) {
     composable(Routes.JD_LIST) {
-        val jdListVM: JDListVM = koinViewModel()
         val jdState = jdListVM.jdState.collectAsState().value
         var isValuesCorrect by remember { mutableStateOf(true) }
         JDListScreen(jdState, jdListVM::onEvent, controller::navigateUp) {

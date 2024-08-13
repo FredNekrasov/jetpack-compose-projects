@@ -10,15 +10,17 @@ import androidx.core.app.*
 import com.fredprojects.features.fibonacci.api.useCases.FibonacciUseCase
 import com.fredprojects.core.ui.R as PR
 import com.fredprojects.features.fibonacci.impl.FibonacciBinder
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
-import org.koin.android.ext.android.get
-import org.koin.core.qualifier.named
+import javax.inject.Inject
 import kotlin.random.Random
 
+@AndroidEntryPoint
 class FibSequenceService : Service() {
+    @Inject lateinit var fubUseCase: FibonacciUseCase
     override fun onBind(intent: Intent): IBinder {
-        val fibonacciBinder = FibonacciBinder(get(named<FibonacciUseCase>()))
+        val fibonacciBinder = FibonacciBinder(fubUseCase)
         fibonacciBinder.calculate(intent.getIntExtra(NUMBER, -1))
         sendResult(fibonacciBinder)
         return fibonacciBinder

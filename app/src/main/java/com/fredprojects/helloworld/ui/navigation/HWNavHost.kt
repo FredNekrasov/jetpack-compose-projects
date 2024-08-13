@@ -2,12 +2,18 @@ package com.fredprojects.helloworld.ui.navigation
 
 import androidx.activity.ComponentActivity
 import androidx.compose.runtime.Composable
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.*
 import com.fredprojects.core.ui.Action
 import com.fredprojects.features.auth.presentation.vm.UserVM
+import com.fredprojects.features.clients.presentation.astronomy.AstronomyInfoVM
 import com.fredprojects.features.clients.presentation.bybit.ByBitVM
+import com.fredprojects.features.clients.presentation.math.MathVM
+import com.fredprojects.features.inequality.impl.InequalityVM
+import com.fredprojects.features.jumps.presentation.vm.JDListVM
+import com.fredprojects.features.pws.presentation.vm.PWListVM
+import com.fredprojects.features.pws.presentation.vm.UpsertPWVM
 import com.fredprojects.helloworld.ui.navigation.modules.*
-import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun HWNavHost(
@@ -15,14 +21,22 @@ fun HWNavHost(
     jumpingRopeScreen: @Composable (Action) -> Unit
 ) {
     val controller = rememberNavController()
-    val userVM: UserVM = koinViewModel()
-    val bbVM: ByBitVM = koinViewModel()
+    val userVM: UserVM = hiltViewModel()
+    val inequalityVM: InequalityVM = hiltViewModel()
+    val mathVM: MathVM = hiltViewModel()
+    val astronomyInfoVM: AstronomyInfoVM = hiltViewModel()
+    val jdListVM: JDListVM = hiltViewModel()
+    val pwListVM: PWListVM = hiltViewModel()
+    val upsertPWVM: UpsertPWVM = hiltViewModel()
+    val bbVM: ByBitVM = hiltViewModel()
     NavHost(navController = controller, startDestination = Routes.AUTH) {
         authModule(userVM, activityContext, controller)
-        composable(Routes.MAIN_SCREEN) { MainScreen(controller::navigateUp) }
+        composable(Routes.MAIN_SCREEN) {
+            MainScreen(inequalityVM, mathVM, astronomyInfoVM, controller::navigateUp)
+        }
+        pwsModule(pwListVM, upsertPWVM, activityContext, controller)
+        jumpsModule(jdListVM, controller, jumpingRopeScreen)
         fibModule(activityContext, controller::navigateUp)
-        jumpsModule(controller, jumpingRopeScreen)
-        pwsModule(activityContext, controller)
         byBitScreens(bbVM, controller)
     }
 }
