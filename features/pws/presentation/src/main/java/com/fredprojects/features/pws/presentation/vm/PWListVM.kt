@@ -7,14 +7,17 @@ import com.fredprojects.features.pws.domain.utils.SortType
 import com.fredprojects.features.pws.domain.utils.SortingPW
 import com.fredprojects.features.pws.presentation.mappers.*
 import com.fredprojects.features.pws.presentation.models.PWPModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * PWListVM is used to manage the state of the list of practical works
  */
-class PWListVM(
+@HiltViewModel
+class PWListVM @Inject constructor(
     private val useCases: PWUseCases
 ) : ViewModel()  {
     /**

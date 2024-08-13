@@ -6,14 +6,17 @@ import com.fredprojects.features.jumps.domain.utils.*
 import com.fredprojects.features.jumps.domain.useCases.JDUseCases
 import com.fredprojects.features.jumps.presentation.mappers.*
 import com.fredprojects.features.jumps.presentation.models.JDPModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * JDListVM is used to manage the state of the list of jumps
  */
-class JDListVM(
+@HiltViewModel
+class JDListVM @Inject constructor(
     private val useCases: JDUseCases
 ) : ViewModel() {
     /**

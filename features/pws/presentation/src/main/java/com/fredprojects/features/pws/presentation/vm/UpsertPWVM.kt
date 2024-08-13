@@ -4,15 +4,18 @@ import androidx.lifecycle.*
 import com.fredprojects.features.pws.domain.useCases.PWUseCases
 import com.fredprojects.features.pws.presentation.mappers.*
 import com.fredprojects.features.pws.presentation.models.PWPModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * UpsertPWVM is used to manage the state of the upsert view
  * @param savedStateHandle is used to get the id of the practical work
  */
-class UpsertPWVM(
+@HiltViewModel
+class UpsertPWVM @Inject constructor(
     private val useCases: PWUseCases,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
