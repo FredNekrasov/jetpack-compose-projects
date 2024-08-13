@@ -16,7 +16,7 @@ internal fun FavCheckBox(
         modifier = modifier,
         colors = CheckboxDefaults.colors(
             checkedColor = MaterialTheme.colors.background,
-            uncheckedColor = MaterialTheme.colors.onBackground,
+            uncheckedColor = MaterialTheme.colors.background,
             checkmarkColor = MaterialTheme.colors.onBackground
         )
     )
