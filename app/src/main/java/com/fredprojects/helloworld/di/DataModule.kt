@@ -1,26 +1,28 @@
 package com.fredprojects.helloworld.di
 
 import com.fredprojects.core.database.dao.*
-import com.fredprojects.core.database.di.dbModule
 import com.fredprojects.features.auth.data.repository.UserRepository
 import com.fredprojects.features.auth.domain.repository.IUserRepository
-import com.fredprojects.features.clients.data.di.clientsDataModule
 import com.fredprojects.features.jumps.data.repositories.JDRepository
 import com.fredprojects.features.jumps.domain.repositories.IJDRepository
 import com.fredprojects.features.pws.data.repositories.PWRepository
 import com.fredprojects.features.pws.domain.repository.IPWRepository
-import org.koin.core.qualifier.qualifier
-import org.koin.dsl.module
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
-val dataModule = module {
-    includes(dbModule, clientsDataModule)
-    single<IPWRepository>(qualifier<IPWRepository>()) {
-        PWRepository(get(qualifier<IPWDao>()))
-    }
-    single<IJDRepository>(qualifier<IJDRepository>()) {
-        JDRepository(get(qualifier<IJDDao>()))
-    }
-    single<IUserRepository>(qualifier<IUserRepository>()) {
-        UserRepository(get(qualifier<IUserDao>()))
-    }
+@Module
+@InstallIn(SingletonComponent::class)
+internal object DataModule {
+    @Singleton
+    @Provides
+    fun providePWRepository(dao: IPWDao): IPWRepository = PWRepository(dao)
+    @Singleton
+    @Provides
+    fun provideJDRepository(dao: IJDDao): IJDRepository = JDRepository(dao)
+    @Singleton
+    @Provides
+    fun provideUserRepository(dao: IUserDao): IUserRepository = UserRepository(dao)
 }

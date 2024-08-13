@@ -9,39 +9,37 @@ import com.fredprojects.features.clients.domain.astronomy.repository.IAstronomyR
 import com.fredprojects.features.clients.domain.bybit.repository.IBBRepository
 import com.fredprojects.features.clients.domain.math.repository.IMathRepository
 import com.google.gson.Gson
-import org.koin.core.qualifier.qualifier
-import org.koin.dsl.module
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
-val clientsDataModule = module {
-    single(qualifier<IMathService>(), createdAtStart = true) {
-        createMathService()
-    }
-    single(qualifier<IAstronomyInfoService>(), createdAtStart = true) {
-        createAstronomyInfoService()
-    }
-    single(qualifier<IBBService>(), createdAtStart = true) {
-        createBBService()
-    }
-    single<IMathRepository>(qualifier<IMathRepository>()) {
-        MathRepository(
-            dao = get(qualifier<IMathDao>()),
-            api = get(qualifier<IMathService>())
-        )
-    }
-    single<IAstronomyRepository>(qualifier<IAstronomyRepository>()) {
-        AstronomyInfoRepository(
-            dao = get(qualifier<IAstronomyInfoDao>()),
-            api = get(qualifier<IAstronomyInfoService>())
-        )
-    }
-    single(qualifier<BBTypeParser>(), createdAtStart = true) {
-        BBTypeParser(Gson())
-    }
-    single<IBBRepository>(qualifier<IBBRepository>()) {
-        BBRepository(
-            dao = get(qualifier<IBBDao>()),
-            api = get(qualifier<IBBService>()),
-            bbTypeParser = get(qualifier<BBTypeParser>())
-        )
-    }
+@Module
+@InstallIn(SingletonComponent::class)
+internal object ClientsDataModule {
+    @Singleton
+    @Provides
+    fun provideMathService(): IMathService = createMathService()
+    @Singleton
+    @Provides
+    fun provideAstronomyInfoService(): IAstronomyInfoService = createAstronomyInfoService()
+    @Singleton
+    @Provides
+    fun provideBBService(): IBBService = createBBService()
+    @Singleton
+    @Provides
+    fun provideMathRepository(
+        dao: IMathDao, api: IMathService
+    ): IMathRepository = MathRepository(dao, api)
+    @Singleton
+    @Provides
+    fun provideAstronomyInfoRepository(
+        dao: IAstronomyInfoDao, api: IAstronomyInfoService
+    ): IAstronomyRepository = AstronomyInfoRepository(dao, api)
+    @Singleton
+    @Provides
+    fun provideBBRepository(
+        dao: IBBDao, api: IBBService
+    ): IBBRepository = BBRepository(dao, api, BBTypeParser(Gson()))
 }
