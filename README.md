@@ -14,7 +14,7 @@
 ### В пункте 7 были использованы следующие API:
 1. https://github.com/astrocatalogs/OACAPI;
 2. По данному выражению найдите его упрощенный вариант https://newton.now.sh/;
-3. Bybit.
+3. Bybit. [Тестовое задание](https://github.com/FredNekrasov/jetpack-compose-projects/blob/master/info/TestTask.pdf)
 
 </details>
 
@@ -30,7 +30,7 @@
 ## Коротко про архитектуру проекта
 Приложение соответствует SAA(Single Activity Architecture) и разработано оно по принципам Clean Architecture, что обеспечивает четкое разделение слоев и ответственностей, делает код более читаемым и поддерживаемым. При разработке приложения также учитывался принцип KISS, то есть стремление к простоте и минимализму в процессе разработки, что позволило избежать излишней сложности, сохранить код чистым, сделать приложение легким для понимания.
 
-![HelloWorldAppsDiagram drawio](https://github.com/user-attachments/assets/1ba990e4-d925-4d1e-bcc6-e370f12e306f)
+![HelloWorldAppsDiagram drawio](https://github.com/FredNekrasov/jetpack-compose-projects/blob/master/info/HelloWorldAppsDiagram.png)
 
 </details>
 
@@ -38,7 +38,7 @@
 
 ## Навигация между экранами
 
-![HelloWorldNavGraph](https://github.com/user-attachments/assets/5bbc38d0-6f42-45fe-bc9d-95571c220e55)
+![HelloWorldNavGraph](https://github.com/FredNekrasov/jetpack-compose-projects/blob/master/info/HelloWorldNavGraph.png)
 
 </details>
 
