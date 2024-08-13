@@ -69,7 +69,7 @@ androidx = ["androidx-core-ktx", "androidx-lifecycle-runtime-ktx", "androidx-lif
 hilt = ["hilt-android-compiler", "hilt-compiler"]
 ## compose
 compose-app = ["androidx-activity-compose", "androidx-ui", "androidx-ui-graphics", "androidx-ui-tooling-preview", "androidx-material", "androidx-navigation-compose", "androidx-hilt-navigation-compose"]
-compose-presentation = ["androidx-ui", "androidx-ui-graphics", "androidx-material", "coil-compose"]
+compose-presentation = ["androidx-ui", "androidx-ui-graphics", "androidx-material"]
 compose-debug = ["androidx-ui-tooling", "androidx-ui-test-manifest"]
 ## test
 test = ["junit", "kotlinx-coroutines-test"]
