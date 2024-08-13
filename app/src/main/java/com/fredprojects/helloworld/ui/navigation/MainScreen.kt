@@ -13,14 +13,15 @@ import com.fredprojects.features.clients.presentation.astronomy.*
 import com.fredprojects.features.clients.presentation.math.*
 import com.fredprojects.features.inequality.impl.*
 import kotlinx.coroutines.launch
-import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun MainScreen(goBack: Action) {
-    val inequalityVM: InequalityVM = koinViewModel()
-    val mathVM: MathVM = koinViewModel()
-    val astronomyInfoVM: AstronomyInfoVM = koinViewModel()
+fun MainScreen(
+    inequalityVM: InequalityVM,
+    mathVM: MathVM,
+    astronomyInfoVM: AstronomyInfoVM,
+    goBack: Action
+) {
     val pagerState = rememberPagerState { 3 }
     val scope = rememberCoroutineScope()
     Scaffold(

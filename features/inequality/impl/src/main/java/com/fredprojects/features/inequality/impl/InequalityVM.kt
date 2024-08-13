@@ -5,15 +5,18 @@ import androidx.lifecycle.viewModelScope
 import com.fredprojects.features.inequality.api.useCases.InequalityUseCase
 import com.fredprojects.features.inequality.api.utils.InequalityStatus
 import com.fredprojects.core.ui.R
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * InequalityVM is used to provide data to the view
  * @param inequalityUseCase is used to solve the inequality
  */
-class InequalityVM(
+@HiltViewModel
+class InequalityVM @Inject constructor(
     private val inequalityUseCase: InequalityUseCase
 ) : ViewModel() {
     /**

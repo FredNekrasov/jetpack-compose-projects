@@ -10,31 +10,34 @@ import com.fredprojects.features.jumps.domain.useCases.crud.*
 import com.fredprojects.features.pws.domain.repository.IPWRepository
 import com.fredprojects.features.pws.domain.useCases.PWUseCases
 import com.fredprojects.features.pws.domain.useCases.crud.*
-import org.koin.core.qualifier.named
-import org.koin.dsl.module
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 
-val domainModule = module {
-    factory(named<InequalityUseCase>()) { InequalityUseCase() }
-    factory(named<FibonacciUseCase>()) { FibonacciUseCase() }
-    factory(named<PWUseCases>()) {
-        PWUseCases(
-            getPWs = GetPWUseCase(get(named<IPWRepository>())),
-            upsert = UpsertPWUseCase(get(named<IPWRepository>())),
-            delete = DeletePWUseCase(get(named<IPWRepository>()))
-        )
-    }
-    factory(named<JDUseCases>()) {
-        JDUseCases(
-            getData = GetJDUseCase(get(named<IJDRepository>())),
-            upsert = UpsertJDUseCase(get(named<IJDRepository>())),
-            delete = DeleteJDUseCase(get(named<IJDRepository>()))
-        )
-    }
-    factory(named<UserUseCases>()) {
-        UserUseCases(
-            auth = AuthUseCase(get(named<IUserRepository>())),
-            upsert = UpsertUserUseCase(get(named<IUserRepository>())),
-            delete = DeleteUserUseCase(get(named<IUserRepository>()))
-        )
-    }
-} 
+@Module
+@InstallIn(SingletonComponent::class)
+internal object DomainModule {
+    @Provides
+    fun provideInequalityUseCase(): InequalityUseCase = InequalityUseCase()
+    @Provides
+    fun provideFibonacciUseCase(): FibonacciUseCase = FibonacciUseCase()
+    @Provides
+    fun providePWUseCase(repository: IPWRepository): PWUseCases = PWUseCases(
+        getPWs = GetPWUseCase(repository),
+        upsert = UpsertPWUseCase(repository),
+        delete = DeletePWUseCase(repository)
+    )
+    @Provides
+    fun provideJDUseCase(repository: IJDRepository): JDUseCases = JDUseCases(
+        getData = GetJDUseCase(repository),
+        upsert = UpsertJDUseCase(repository),
+        delete = DeleteJDUseCase(repository)
+    )
+    @Provides
+    fun provideUserUseCase(repository: IUserRepository): UserUseCases = UserUseCases(
+        auth = AuthUseCase(repository),
+        upsert = UpsertUserUseCase(repository),
+        delete = DeleteUserUseCase(repository)
+    )
+}

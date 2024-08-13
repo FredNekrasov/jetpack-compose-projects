@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.jetbrains.kotlin.compose)
+    alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.ksp)
 }
 android {
     namespace = "com.fredprojects.helloworld"
@@ -46,8 +48,9 @@ composeCompiler {
     reportsDestination = layout.buildDirectory.dir("compose_compiler")
 }
 dependencies {
-    // DI Koin
-    implementation(libs.bundles.koin)
+    // DI Dagger-Hilt
+    implementation(libs.hilt.android)
+    ksp(libs.bundles.hilt)
     // default dependencies
     implementation(libs.bundles.androidx)
     implementation(platform(libs.androidx.compose.bom))

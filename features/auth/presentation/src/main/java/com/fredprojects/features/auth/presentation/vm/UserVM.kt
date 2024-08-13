@@ -7,10 +7,13 @@ import com.fredprojects.features.auth.domain.useCases.UserUseCases
 import com.fredprojects.features.auth.domain.utils.AuthStatus
 import com.fredprojects.features.auth.presentation.mappers.*
 import com.fredprojects.features.auth.presentation.models.UDPModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class UserVM(
+@HiltViewModel
+class UserVM @Inject constructor(
     private val useCases: UserUseCases
 ) : ViewModel() {
     private val authStatusMSF = MutableSharedFlow<AuthStatus>()

@@ -3,11 +3,12 @@
 agp = "8.5.2"
 kotlin = "2.0.0"
 ksp = "2.0.0-1.0.24"
+dagger = "2.51.1"
 # libraries
+hilt = "1.2.0"
 ## app/presentation
 coreKtx = "1.13.1"
 lifecycleKtx = "2.8.4"
-koin = "3.5.6"
 ### compose
 activityCompose = "1.9.1"
 composeBom = "2024.06.00"
@@ -29,10 +30,10 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleKtx" }
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleKtx" }
 androidx-lifecycle-viewmodel-savedstate = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-savedstate", version.ref = "lifecycleKtx" }
-## DI Koin
-koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
-koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
-koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin" }
+## DI Hilt
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "dagger" }
+hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "dagger" }
+hilt-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hilt" }
 ## compose
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
@@ -44,10 +45,10 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material = { group = "androidx.compose.material", name = "material" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hilt" }
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 # test
 junit = { group = "junit", name = "junit", version.ref = "junit" }
-koin-test = { group = "io.insert-koin", name = "koin-test", version.ref = "koin" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -65,13 +66,13 @@ retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-
 [bundles]
 # app/presentation
 androidx = ["androidx-core-ktx", "androidx-lifecycle-runtime-ktx", "androidx-lifecycle-viewmodel-ktx"]
-koin = ["koin-core", "koin-android", "koin-androidx-compose"]
+hilt = ["hilt-android-compiler", "hilt-compiler"]
 ## compose
-compose-app = ["androidx-activity-compose", "androidx-ui", "androidx-ui-graphics", "androidx-ui-tooling-preview", "androidx-material", "androidx-navigation-compose"]
+compose-app = ["androidx-activity-compose", "androidx-ui", "androidx-ui-graphics", "androidx-ui-tooling-preview", "androidx-material", "androidx-navigation-compose", "androidx-hilt-navigation-compose"]
 compose-presentation = ["androidx-ui", "androidx-ui-graphics", "androidx-material", "coil-compose"]
 compose-debug = ["androidx-ui-tooling", "androidx-ui-test-manifest"]
 ## test
-test = ["junit", "koin-test", "kotlinx-coroutines-test"]
+test = ["junit", "kotlinx-coroutines-test"]
 android-test = ["androidx-junit", "androidx-ui-test-junit4", "androidx-espresso-core"]
 # data
 room = ["androidx-room-ktx", "androidx-room-runtime"]
@@ -84,3 +85,4 @@ jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = 
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 jetbrains-kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "dagger" }

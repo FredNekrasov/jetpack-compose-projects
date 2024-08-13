@@ -5,11 +5,14 @@ import androidx.lifecycle.viewModelScope
 import com.fredprojects.features.clients.domain.bybit.models.BBInfo
 import com.fredprojects.features.clients.domain.bybit.repository.IBBRepository
 import com.fredprojects.features.clients.domain.utils.ConnectionStatus
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ByBitVM(
+@HiltViewModel
+class ByBitVM @Inject constructor(
     private val repository: IBBRepository
 ) : ViewModel() {
     private val bbStateMSF = MutableStateFlow<ConnectionStatus<BBInfo>>(ConnectionStatus.Nothing())

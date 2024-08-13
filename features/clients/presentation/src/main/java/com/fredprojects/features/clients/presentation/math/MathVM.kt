@@ -5,15 +5,18 @@ import androidx.lifecycle.viewModelScope
 import com.fredprojects.features.clients.domain.math.models.MathModel
 import com.fredprojects.features.clients.domain.math.repository.IMathRepository
 import com.fredprojects.features.clients.domain.utils.ConnectionStatus
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * MathVM is used to get data from the server
  * @param repository the repository used to get data from the server
  */
-class MathVM(
+@HiltViewModel
+class MathVM @Inject constructor(
     private val repository: IMathRepository
 ) : ViewModel() {
     /**

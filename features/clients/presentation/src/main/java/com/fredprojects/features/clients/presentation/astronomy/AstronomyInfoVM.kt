@@ -5,15 +5,18 @@ import androidx.lifecycle.viewModelScope
 import com.fredprojects.features.clients.domain.astronomy.models.AstronomyInfo
 import com.fredprojects.features.clients.domain.astronomy.repository.IAstronomyRepository
 import com.fredprojects.features.clients.domain.utils.ConnectionStatus
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * AstronomyInfoVM is used to get data from the server
  * @param repository the repository used to get data from the server
  */
-class AstronomyInfoVM(
+@HiltViewModel
+class AstronomyInfoVM @Inject constructor(
     private val repository: IAstronomyRepository
 ) : ViewModel() {
     /**

@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -32,7 +34,9 @@ android {
 dependencies {
     implementation(project(":core:database"))
     implementation(project(":features:clients:domain"))
-    implementation(libs.koin.core)
+    // DI Dagger-Hilt
+    implementation(libs.hilt.android)
+    ksp(libs.bundles.hilt)
     implementation(libs.bundles.retrofit)
     implementation(libs.kotlinx.coroutines.core)
     testImplementation(libs.junit)

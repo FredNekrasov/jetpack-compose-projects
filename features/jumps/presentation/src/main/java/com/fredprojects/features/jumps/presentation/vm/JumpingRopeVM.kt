@@ -5,14 +5,17 @@ import androidx.lifecycle.viewModelScope
 import com.fredprojects.features.jumps.domain.models.JumpData
 import com.fredprojects.features.jumps.domain.utils.JumpStatus
 import com.fredprojects.features.jumps.domain.useCases.JDUseCases
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * JumpingRopeVM is used to manage the state of the jumping rope
  */
-class JumpingRopeVM(
+@HiltViewModel
+class JumpingRopeVM @Inject constructor(
     private val useCases: JDUseCases
 ) : ViewModel() {
     /**

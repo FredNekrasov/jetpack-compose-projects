@@ -18,21 +18,23 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.lifecycleScope
-import com.fredprojects.core.ui.R as PR
-import com.fredprojects.core.ui.*
+import com.fredprojects.core.ui.FredButton
+import com.fredprojects.core.ui.FredText
 import com.fredprojects.features.jumps.domain.utils.JumpStatus
 import com.fredprojects.features.jumps.presentation.JumpingRopeDialog
 import com.fredprojects.features.jumps.presentation.vm.JumpingRopeVM
 import com.fredprojects.helloworld.ui.navigation.HWNavHost
 import com.fredprojects.helloworld.ui.theme.HelloWorldTheme
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import org.koin.androidx.compose.koinViewModel
-import org.koin.core.qualifier.named
 import kotlin.math.sqrt
+import com.fredprojects.core.ui.R as PR
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val sensorManager by lazy { getSystemService(SENSOR_SERVICE) as SensorManager }
     private val accelerometer by lazy { sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER) }
@@ -67,7 +69,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             HelloWorldTheme {
                 Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-                    val jumpingRopeVM: JumpingRopeVM = koinViewModel(named<JumpingRopeVM>())
+                    val jumpingRopeVM: JumpingRopeVM = hiltViewModel()
                     HWNavHost(activityContext = this) { goBack ->
                         val x = xMSF.collectAsState().value
                         val y = yMSF.collectAsState().value
