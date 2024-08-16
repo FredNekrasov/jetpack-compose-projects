@@ -7,7 +7,7 @@ class FakeAstronomyInfoService : IAstronomyInfoService {
     override suspend fun getAstronomyInfo(
         ra: String, dec: String, radius: Float
     ): Map<String, AstronomyInfoDto>? {
-        if(radius == 2f) return null
+        if(ra.isBlank() || dec.isBlank() || radius == 2f) return null
         return mapOf(
             "test1" to AstronomyInfoDto(references = listOf("test"), name = listOf("test1")),
             "test2" to AstronomyInfoDto(references = listOf("test"), name = listOf("test2")),
