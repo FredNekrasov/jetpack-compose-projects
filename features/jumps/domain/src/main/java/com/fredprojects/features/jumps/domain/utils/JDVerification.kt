@@ -5,4 +5,4 @@ import java.time.LocalDate
 
 internal fun JumpData.isCountCorrect() = count > 0
 internal fun JumpData.isDateCorrect() = date <= LocalDate.now()
-internal fun JumpData.isValid() = isCountCorrect() && isDateCorrect()
+internal fun JumpData.isValid() = isCountCorrect() || isDateCorrect()
