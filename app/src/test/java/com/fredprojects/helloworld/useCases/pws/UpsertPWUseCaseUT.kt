@@ -38,8 +38,8 @@ class UpsertPWUseCaseUT {
             assert(it.isNotEmpty())
             assertNotNull(it.firstOrNull())
             assertNotNull(it.lastOrNull())
-            assertEquals(it.first(), pw)
-            assertEquals(it.last(), pw2)
+            assertEquals(it.first(), pw.copy(id = 0))
+            assertEquals(it.last(), pw2.copy(id = 1))
         }
         val pw3 = PracticalWork("name", "student", 3, 3, "11.11.2020", 5, "image", 1)
         val result3 = upsertPW(pw3)
@@ -48,8 +48,8 @@ class UpsertPWUseCaseUT {
             assert(it.isNotEmpty())
             assertNotNull(it.firstOrNull())
             assertNotNull(it.lastOrNull())
-            assertEquals(it.first(), pw)
-            assertEquals(it.last(), pw3)
+            assertEquals(it.first(), pw.copy(id = 0))
+            assertEquals(it.last(), pw3.copy(id = 1))
         }
     }
     @Test

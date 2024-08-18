@@ -32,7 +32,10 @@ class DeletePWUseCaseUT {
         val pw = PracticalWork("name", "student", 3, 3, "11.11.2022", 5, "image")
         val result = pwUseCases.upsert(pw)
         assertEquals(result, PWStatus.SUCCESS)
-        pwUseCases.delete(pw)
+        pwUseCases.getPWs(SortingPW.Date(SortType.Descending)).collectLatest {
+            assert(it.isNotEmpty())
+        }
+        pwUseCases.delete(pw.copy(id = 0))
         pwUseCases.getPWs(SortingPW.Date(SortType.Descending)).collectLatest {
             assert(it.isEmpty())
         }
