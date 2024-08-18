@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.flow
 class FakePWDao : IPWDao {
     private val pwList = mutableListOf<PWEntity>()
     override suspend fun upsert(pwEntity: PWEntity) {
-        if(pwEntity.id == null) pwList.add(pwEntity) else pwList[pwEntity.id!!] = pwEntity
+        if(pwEntity.id == null) pwList.add(pwEntity.copy(id = pwList.size)) else pwList[pwEntity.id!!] = pwEntity
     }
     override suspend fun delete(pwEntity: PWEntity) {
         pwList.remove(pwEntity)
