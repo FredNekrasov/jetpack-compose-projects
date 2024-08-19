@@ -9,7 +9,7 @@ class FakeUserDao : IUserDao {
         login: String, password: String
     ): UserEntity? = users.find { it.login == login && it.password == password }
     override suspend fun upsert(user: UserEntity) {
-        if(user.id == null) users.add(user) else users[user.id!!] = user
+        if(user.id == null) users.add(user.copy(id = users.size)) else users[user.id!!] = user
     }
     override suspend fun delete(userId: Int) {
         users.removeAt(userId)
