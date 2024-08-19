@@ -40,8 +40,8 @@ class JDUseCasesUT {
         jdUseCases.getData(SortType.Ascending).collectLatest {
             assertNotNull(it.firstOrNull())
             assertNotNull(it.lastOrNull())
-            assertEquals(it.first(), jumpData)
-            assertEquals(it.last(), jumpData2)
+            assertEquals(it.first(), jumpData.copy(id = 0))
+            assertEquals(it.last(), jumpData2.copy(id = 1))
         }
         val jumpData3 = JumpData(3, LocalDate.now(), 1)
         val result3 = jdUseCases.upsert(jumpData3)
@@ -49,8 +49,8 @@ class JDUseCasesUT {
         jdUseCases.getData(SortType.Ascending).collectLatest {
             assertNotNull(it.firstOrNull())
             assertNotNull(it.lastOrNull())
-            assertEquals(it.first(), jumpData)
-            assertEquals(it.last(), jumpData3)
+            assertEquals(it.first(), jumpData.copy(id = 0))
+            assertEquals(it.last(), jumpData3.copy(id = 1))
         }
     }
     @Test
@@ -77,7 +77,10 @@ class JDUseCasesUT {
         val jumpData = JumpData(1, LocalDate.now())
         val result = jdUseCases.upsert(jumpData)
         assertEquals(result, JumpStatus.SUCCESS)
-        jdUseCases.delete(jumpData)
+        jdUseCases.getData(SortType.Ascending).collectLatest {
+            assert(it.isNotEmpty())
+        }
+        jdUseCases.delete(jumpData.copy(id = 0))
         jdUseCases.getData(SortType.Ascending).collectLatest {
             assert(it.isEmpty())
         }
