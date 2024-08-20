@@ -39,7 +39,7 @@ fun NavGraphBuilder.byBitScreens(bbVM: ByBitVM, controller: NavHostController) {
     }
 }
 @Composable
-private fun ShowConnectionInfo(getData: () -> Unit, status: ActionStatus) {
+internal fun ShowConnectionInfo(getData: () -> Unit, status: ActionStatus) {
     val tryAgain = stringResource(R.string.tryAgain)
     TextButton(getData, enabled = status == ActionStatus.SUCCESS) {
         Text(
