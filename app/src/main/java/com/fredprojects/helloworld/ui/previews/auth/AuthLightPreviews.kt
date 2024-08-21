@@ -54,7 +54,7 @@ private fun AuthIncorrectPreview() {
 private fun RegistrationCorrectPreview() {
     HelloWorldTheme {
         Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-            Registration(user = null, isDataCorrect = true, goBack = { /*TODO*/ }) { _ ->  }
+            Registration(user = null, isDataCorrect = true, goBack = {  }) { _ ->  }
         }
     }
 }
@@ -68,7 +68,7 @@ private fun RegistrationCorrectPreview() {
 private fun RegistrationIncorrectPreview() {
     HelloWorldTheme {
         Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-            Registration(user = null, isDataCorrect = true, goBack = { /*TODO*/ }) { _ ->  }
+            Registration(user = null, isDataCorrect = true, goBack = {  }) { _ ->  }
         }
     }
 }
@@ -83,7 +83,7 @@ private fun EditUDCorrectPreview() {
     val user = UDPModel("fred", "password", "email@example.com", "fred", "nekrasov")
     HelloWorldTheme {
         Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-            Registration(user = user, isDataCorrect = true, goBack = { /*TODO*/ }) { _ ->  }
+            Registration(user = user, isDataCorrect = true, goBack = {  }) { _ ->  }
         }
     }
 }
@@ -98,7 +98,7 @@ private fun EditUDIncorrectPreview() {
     val user = UDPModel("", "", "", "fred", "nekrasov")
     HelloWorldTheme {
         Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-            Registration(user = user, isDataCorrect = false, goBack = { /*TODO*/ }) { _ ->  }
+            Registration(user = user, isDataCorrect = false, goBack = {  }) { _ ->  }
         }
     }
 }
