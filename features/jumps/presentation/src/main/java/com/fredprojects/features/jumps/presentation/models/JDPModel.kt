@@ -11,7 +11,7 @@ import java.time.LocalDate
  */
 @Stable
 data class JDPModel(
-    val count: Int,
-    val date: LocalDate = LocalDate.now(),
+    val count: Int?,
+    val date: String = LocalDate.now().toString(),
     val id: Int? = null
 )
