@@ -29,7 +29,7 @@ class UpsertUserUseCaseUT {
         userUseCases.upsert(user).apply {
             assert(first == AuthStatus.SUCCESS)
             assert(second != null)
-            assert(second == user)
+            assert(second == user.copy(id = 0))
         }
         userUseCases.auth("username", "password").let {
             assert(it.first == AuthStatus.SUCCESS)

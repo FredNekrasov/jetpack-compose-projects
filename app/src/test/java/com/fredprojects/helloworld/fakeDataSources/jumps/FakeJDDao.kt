@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.flow
 class FakeJDDao: IJDDao {
     private val jdList = mutableListOf<JDEntity>()
     override suspend fun upsert(jdEntity: JDEntity) {
-        if(jdEntity.id == null) jdList.add(jdEntity.copy(id = jdList.size)) else jdList[jdEntity.id!!] = jdEntity
+        jdEntity.id?.let { jdList[it] = jdEntity } ?: jdList.add(jdEntity.copy(id = jdList.size))
     }
     override suspend fun delete(jdEntity: JDEntity) {
         jdList.remove(jdEntity)
