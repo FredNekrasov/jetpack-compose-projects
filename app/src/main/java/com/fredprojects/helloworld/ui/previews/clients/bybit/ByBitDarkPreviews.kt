@@ -1,5 +1,6 @@
 package com.fredprojects.helloworld.ui.previews.clients.bybit
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -27,7 +28,7 @@ import com.fredprojects.helloworld.ui.theme.HelloWorldTheme
 @Composable
 private fun RealProductListNothingAndLoadingPreview() {
     HelloWorldTheme {
-        Column(Modifier.fillMaxSize(), Arrangement.Center, Alignment.CenterHorizontally) {
+        Column(Modifier.fillMaxSize().background(MaterialTheme.colors.background), Arrangement.Center, Alignment.CenterHorizontally) {
             CircularProgressIndicator()
         }
     }

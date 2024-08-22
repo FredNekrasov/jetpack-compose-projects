@@ -68,7 +68,7 @@ private fun RegistrationCorrectPreview() {
 private fun RegistrationIncorrectPreview() {
     HelloWorldTheme {
         Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-            Registration(user = null, isDataCorrect = true, goBack = {  }) { _ ->  }
+            Registration(user = null, isDataCorrect = false, goBack = {  }) { _ ->  }
         }
     }
 }
