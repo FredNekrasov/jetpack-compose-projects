@@ -20,9 +20,6 @@ import com.fredprojects.core.ui.R
 import com.fredprojects.features.jumps.presentation.models.JDPModel
 import com.fredprojects.features.jumps.presentation.vm.JDEvents
 import com.fredprojects.features.jumps.presentation.vm.JDState
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.time.format.DateTimeParseException
 
 @Composable
 fun JDDialog(
@@ -34,7 +31,7 @@ fun JDDialog(
     var date by rememberSaveable { mutableStateOf("") }
     if(jumpDataState.jd != null) {
         countOfJumps = jumpDataState.jd.count.toString()
-        date = jumpDataState.jd.date.toString()
+        date = jumpDataState.jd.date
     }
     Dialog({ onEvent(JDEvents.SwitchingDialog) }) {
         Column(Modifier.fillMaxWidth().background(MaterialTheme.colors.background), Arrangement.Center, Alignment.CenterHorizontally) {
@@ -55,7 +52,7 @@ fun JDDialog(
                     {
                         onEvent(
                             JDEvents.UpsertJD(
-                                JDPModel(countOfJumps.toIntOrNull() ?: 0, date.toLocalDate() ?: LocalDate.now(), jumpDataState.jd?.id)
+                                JDPModel(countOfJumps.toIntOrNull(), date, jumpDataState.jd?.id)
                             )
                         )
                     },
@@ -64,12 +61,4 @@ fun JDDialog(
             }
         }
     }
-}
-private fun String.toLocalDate() = try {
-    if (this.contains(Regex("""^\d{4}-\d{2}-\d{2}$"""))) {
-        val localDate = LocalDate.parse(this, DateTimeFormatter.ofPattern("yyyy-MM-dd"))
-        if (localDate <= LocalDate.now()) localDate else null
-    } else null
-} catch (e: DateTimeParseException) {
-    null
 }

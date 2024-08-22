@@ -1,5 +1,6 @@
 package com.fredprojects.helloworld.ui.previews.clients.bybit
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -43,7 +44,7 @@ private fun RealProductListNothingAndLoadingPreview() {
 private fun ProductListNothingPreview() {
     val state: ConnectionStatus<BBInfo> = ConnectionStatus.Nothing()
     HelloWorldTheme {
-        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+        Surface(Modifier.fillMaxSize().background(MaterialTheme.colors.background), color = MaterialTheme.colors.background) {
             ProductList(list = state.list, onUpdate = { _ -> }) { ProductListNavButtons(state.status) }
         }
     }

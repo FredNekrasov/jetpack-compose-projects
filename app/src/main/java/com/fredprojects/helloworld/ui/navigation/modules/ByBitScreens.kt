@@ -32,7 +32,7 @@ fun NavGraphBuilder.byBitScreens(bbVM: ByBitVM, controller: NavHostController) {
                     FredIconButton({ controller.navigate(Routes.FAV_PRODUCTS) }, Icons.Default.Favorite, tint = MaterialTheme.colors.onBackground)
                 }
             }
-        } else CircularProgressIndicator(color = MaterialTheme.colors.onBackground)
+        } else Box(Modifier.fillMaxSize()) { CircularProgressIndicator(Modifier.align(Alignment.Center), color = MaterialTheme.colors.onBackground) }
     }
     composable(Routes.FAV_PRODUCTS) {
         FavProductList(bbVM.bbState.collectAsState().value.list, bbVM::update, controller::navigateUp)
@@ -41,7 +41,7 @@ fun NavGraphBuilder.byBitScreens(bbVM: ByBitVM, controller: NavHostController) {
 @Composable
 internal fun ShowConnectionInfo(getData: () -> Unit, status: ActionStatus) {
     val tryAgain = stringResource(R.string.tryAgain)
-    TextButton(getData, enabled = status == ActionStatus.SUCCESS) {
+    TextButton(getData, enabled = status != ActionStatus.SUCCESS) {
         Text(
             when(status) {
                 ActionStatus.SUCCESS -> stringResource(R.string.success)

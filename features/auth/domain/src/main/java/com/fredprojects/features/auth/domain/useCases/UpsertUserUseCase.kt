@@ -21,10 +21,11 @@ class UpsertUserUseCase(
         !isPasswordValid(userData.password) -> Pair(AuthStatus.INVALID_PASSWORD, null)
         !isEmailValid(userData.email) -> Pair(AuthStatus.INVALID_EMAIL, null)
         else -> {
-            val user = repository.login(userData.login, userData.password)
-            if(user == null || userData.id != null) {
+            val existingUser = repository.login(userData.login, userData.password)
+            if(existingUser == null || userData.id != null) {
                 repository.upsert(userData)
-                Pair(AuthStatus.SUCCESS, userData)
+                val newUser = repository.login(userData.login, userData.password)
+                Pair(AuthStatus.SUCCESS, newUser)
             } else Pair(AuthStatus.EXISTING_DATA, null)
         }
     }
