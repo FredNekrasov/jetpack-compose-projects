@@ -3,4 +3,5 @@
     <string name="fibMessageHeader">Calculations</string>
     <string name="fibMessageDescription">The answers that were received during the calculations</string>
     <string name="fibServiceError">Error: the service is not responding</string>
+    <string name="permissionGranted">Permissions have been obtained</string>
 </resources>
