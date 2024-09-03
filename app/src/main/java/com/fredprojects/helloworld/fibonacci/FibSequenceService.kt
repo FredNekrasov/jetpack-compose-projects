@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld
+package com.fredprojects.helloworld.fibonacci
 
 import android.Manifest
 import android.app.PendingIntent
@@ -10,6 +10,8 @@ import androidx.core.app.*
 import com.fredprojects.features.fibonacci.api.useCases.FibonacciUseCase
 import com.fredprojects.core.ui.R as PR
 import com.fredprojects.features.fibonacci.impl.FibonacciBinder
+import com.fredprojects.helloworld.MainActivity
+import com.fredprojects.helloworld.R
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
