@@ -3,8 +3,7 @@ package com.fredprojects.features.fibonacci.impl
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -40,6 +39,7 @@ private fun FibSequenceList(fibonacciSequences: List<FibonacciBinder>) {
     LazyColumn {
         items(fibonacciSequences, key = { it.hashCode() }) {
             Spacer(Modifier.height(4.dp))
+            Divider(Modifier.fillMaxWidth(), color = MaterialTheme.colors.onBackground)
             val result = it.result.collectAsState().value
             val text = when(result.first) {
                 CalculationStatus.SUCCESS -> result.second.toString()
