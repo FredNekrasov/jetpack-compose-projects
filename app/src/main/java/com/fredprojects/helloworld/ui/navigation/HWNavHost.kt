@@ -13,6 +13,7 @@ import com.fredprojects.features.jumps.presentation.vm.JDListVM
 import com.fredprojects.features.jumps.presentation.vm.JumpingRopeVM
 import com.fredprojects.features.pws.presentation.vm.PWListVM
 import com.fredprojects.features.pws.presentation.vm.UpsertPWVM
+import com.fredprojects.helloworld.fibonacci.FibonacciVM
 import com.fredprojects.helloworld.ui.navigation.modules.*
 
 @Composable
@@ -28,6 +29,7 @@ fun HWNavHost(
     val jdListVM: JDListVM = hiltViewModel()
     val pwListVM: PWListVM = hiltViewModel()
     val upsertPWVM: UpsertPWVM = hiltViewModel()
+    val fibVM: FibonacciVM = hiltViewModel()
     val bbVM: ByBitVM = hiltViewModel()
     NavHost(navController = controller, startDestination = Routes.AUTH) {
         authModule(userVM, activityContext, controller)
@@ -36,7 +38,7 @@ fun HWNavHost(
         }
         pwsModule(pwListVM, upsertPWVM, activityContext, controller)
         jumpsModule(jdListVM, controller, jumpingRopeVM)
-        fibModule(activityContext, controller::navigateUp)
+        fibModule(fibVM, activityContext, controller::navigateUp)
         byBitScreens(bbVM, controller)
     }
 }

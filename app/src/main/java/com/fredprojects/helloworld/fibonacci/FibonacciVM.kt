@@ -4,7 +4,6 @@ import android.app.Activity.BIND_AUTO_CREATE
 import android.app.Application
 import android.content.*
 import android.os.IBinder
-import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
 import com.fredprojects.features.fibonacci.impl.FibonacciBinder
 import com.fredprojects.helloworld.R
