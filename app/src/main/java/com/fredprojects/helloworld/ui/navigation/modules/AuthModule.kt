@@ -15,13 +15,11 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import com.fredprojects.core.ui.FredIconButton
-import com.fredprojects.core.ui.R
-import com.fredprojects.features.auth.domain.utils.AuthStatus
 import com.fredprojects.features.auth.presentation.*
 import com.fredprojects.features.auth.presentation.vm.UserVM
 import com.fredprojects.helloworld.MainActivity.Companion.DISPLAY_RESULT
-import com.fredprojects.helloworld.ui.displayToast
 import com.fredprojects.helloworld.ui.navigation.Routes
+import com.fredprojects.helloworld.ui.onStatus
 import kotlinx.coroutines.flow.collectLatest
 
 fun NavGraphBuilder.authModule(
@@ -34,18 +32,10 @@ fun NavGraphBuilder.authModule(
             var isDataCorrect by rememberSaveable { mutableStateOf(true) }
             Authorization(isDataCorrect, userVM::onEvent) { controller.navigate(Routes.REGISTRATION) }
             LaunchedEffect(true) {
-                userVM.authStatusSF.collectLatest {
-                    when(it) {
-                        AuthStatus.SUCCESS -> {
-                            isDataCorrect = true
-                            controller.navigate(Routes.PROFILE)
-                        }
-                        AuthStatus.INVALID_DATA -> {
-                            activityContext.displayToast(R.string.error)
-                            isDataCorrect = false
-                        }
-                        AuthStatus.NOTHING -> isDataCorrect = true
-                        else -> isDataCorrect = false
+                userVM.authStatusSF.collectLatest { authStatus ->
+                    authStatus.onStatus(onError = { isDataCorrect = it }, context = activityContext) {
+                        isDataCorrect = true
+                        controller.navigate(Routes.PROFILE)
                     }
                 }
             }
@@ -55,22 +45,10 @@ fun NavGraphBuilder.authModule(
         var isDataCorrect by rememberSaveable { mutableStateOf(true) }
         Registration(userVM.authState, isDataCorrect, controller::navigateUp, userVM::onEvent)
         LaunchedEffect(true) {
-            userVM.authStatusSF.collectLatest {
-                when(it) {
-                    AuthStatus.SUCCESS -> {
-                        isDataCorrect = true
-                        controller.navigate(Routes.PROFILE)
-                    }
-                    AuthStatus.INVALID_DATA -> {
-                        activityContext.displayToast(R.string.error)
-                        isDataCorrect = false
-                    }
-                    AuthStatus.EXISTING_DATA -> {
-                        activityContext.displayToast(R.string.existingUser)
-                        isDataCorrect = false
-                    }
-                    AuthStatus.NOTHING -> isDataCorrect = true
-                    else -> isDataCorrect = false
+            userVM.authStatusSF.collectLatest { authStatus ->
+                authStatus.onStatus(onError = { isDataCorrect = it }, context = activityContext) {
+                    isDataCorrect = true
+                    controller.navigate(Routes.PROFILE)
                 }
             }
         }
