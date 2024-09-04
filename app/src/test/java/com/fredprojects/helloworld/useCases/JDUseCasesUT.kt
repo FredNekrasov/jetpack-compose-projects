@@ -30,10 +30,10 @@ class JDUseCasesUT {
     // upsertJDUseCase & getJDUseCase
     @Test
     fun success() = runTest(UnconfinedTestDispatcher()) {
-        val jumpData = JumpData(1, LocalDate.now())
+        val jumpData = JumpData(1, LocalDate.now().toString())
         val result = jdUseCases.upsert(jumpData)
         assertEquals(result, JumpStatus.SUCCESS)
-        val jumpData2 = JumpData(2, LocalDate.now())
+        val jumpData2 = JumpData(2, LocalDate.now().toString())
         val result2 = jdUseCases.upsert(jumpData2)
         assertEquals(result2, JumpStatus.SUCCESS)
         assertNotSame(jumpData, jumpData2)
@@ -43,7 +43,7 @@ class JDUseCasesUT {
             assertEquals(it.first(), jumpData.copy(id = 0))
             assertEquals(it.last(), jumpData2.copy(id = 1))
         }
-        val jumpData3 = JumpData(3, LocalDate.now(), 1)
+        val jumpData3 = JumpData(3, LocalDate.now().toString(), 1)
         val result3 = jdUseCases.upsert(jumpData3)
         assertEquals(result3, JumpStatus.SUCCESS)
         jdUseCases.getData(SortType.Ascending).collectLatest {
@@ -55,26 +55,26 @@ class JDUseCasesUT {
     }
     @Test
     fun incorrectCount() = runTest(UnconfinedTestDispatcher()) {
-        val jumpData = JumpData(-5, LocalDate.now(), 1)
+        val jumpData = JumpData(-5, LocalDate.now().toString(), 1)
         val result = jdUseCases.upsert(jumpData)
         assertEquals(result, JumpStatus.INCORRECT_COUNT)
     }
     @Test
     fun incorrectDate() = runTest(UnconfinedTestDispatcher()) {
-        val jumpData = JumpData(1, LocalDate.now().plusYears(6L), 1)
+        val jumpData = JumpData(1, LocalDate.now().plusYears(6L).toString(), 1)
         val result = jdUseCases.upsert(jumpData)
         assertEquals(result, JumpStatus.INCORRECT_DATE)
     }
     @Test
     fun incorrectData() = runTest(UnconfinedTestDispatcher()) {
-        val jumpData = JumpData(0, LocalDate.now().plusYears(6L), 1)
+        val jumpData = JumpData(0, LocalDate.now().plusYears(6L).toString(), 1)
         val result = jdUseCases.upsert(jumpData)
         assertEquals(result, JumpStatus.INCORRECT_DATA)
     }
     // deleteJDUseCase & getJDUseCase
     @Test
     fun delete() = runTest(UnconfinedTestDispatcher()) {
-        val jumpData = JumpData(1, LocalDate.now())
+        val jumpData = JumpData(1, LocalDate.now().toString())
         val result = jdUseCases.upsert(jumpData)
         assertEquals(result, JumpStatus.SUCCESS)
         jdUseCases.getData(SortType.Ascending).collectLatest {
