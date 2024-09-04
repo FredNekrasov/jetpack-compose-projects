@@ -22,18 +22,11 @@ fun Registration(
     goBack: Action,
     onRegistration: (AuthEvents) -> Unit
 ) {
-    var userName by rememberSaveable { mutableStateOf("") }
-    var password by rememberSaveable { mutableStateOf("") }
-    var email by rememberSaveable { mutableStateOf("") }
-    var name by rememberSaveable { mutableStateOf("") }
-    var surname by rememberSaveable { mutableStateOf("") }
-    if(user != null) {
-        userName = user.login
-        password = user.password
-        email = user.email
-        name = user.name
-        surname = user.surname
-    }
+    var userName by rememberSaveable { mutableStateOf(user?.login ?: "") }
+    var password by rememberSaveable { mutableStateOf(user?.password ?: "") }
+    var email by rememberSaveable { mutableStateOf(user?.email ?: "") }
+    var name by rememberSaveable { mutableStateOf(user?.name ?: "") }
+    var surname by rememberSaveable { mutableStateOf(user?.surname ?: "") }
     Column(Modifier.fillMaxSize(),Arrangement.Center, Alignment.CenterHorizontally) {
         FredHeaderText(
             if(user == null) stringResource(R.string.registration) else stringResource(R.string.editingData),
