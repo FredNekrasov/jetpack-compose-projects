@@ -8,19 +8,19 @@ object Routes {
     const val REGISTRATION = "registration"
     const val PROFILE = "profile"
 
-    const val MAIN_SCREEN = "main screen"
+    const val MAIN_SCREEN = "mainScreen"
 
     const val FIBONACCI = "fibonacci"
-    const val RESULT_FIB = "result of fibonacci sequence"
+    const val RESULT_FIB = "resultOfFibonacciSequence"
 
-    const val PW_LIST = "list of practical works"
-    const val UPSERT_PW = "upsert a practical work"
+    const val PW_LIST = "listOfPracticalWorks"
+    const val UPSERT_PW = "upsertPracticalWork"
 
     const val JD_LIST = "jumps"
-    const val JUMPING_ROPE = "jumping rope"
+    const val JUMPING_ROPE = "jumpingRope"
 
     const val BYBIT = "bybit"
-    const val FAV_PRODUCTS = "favorite products"
+    const val FAV_PRODUCTS = "favoriteProducts"
 
     val mainScreenItems = mutableStateListOf(R.string.inequality, R.string.math, R.string.astronomyInfo)
 }

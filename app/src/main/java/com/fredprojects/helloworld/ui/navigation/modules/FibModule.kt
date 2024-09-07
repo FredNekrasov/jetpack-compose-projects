@@ -1,41 +1,22 @@
 package com.fredprojects.helloworld.ui.navigation.modules
 
-import android.app.Activity.BIND_AUTO_CREATE
-import android.content.*
-import android.os.IBinder
 import androidx.activity.ComponentActivity
-import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.collectAsState
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.fredprojects.features.fibonacci.impl.*
-import com.fredprojects.helloworld.FibSequenceService
-import com.fredprojects.helloworld.R
-import com.fredprojects.helloworld.ui.displayToast
+import com.fredprojects.features.fibonacci.impl.AnswerFibScreen
+import com.fredprojects.features.fibonacci.impl.FibScreen
+import com.fredprojects.helloworld.fibonacci.FibSequenceService
+import com.fredprojects.helloworld.fibonacci.FibonacciVM
 import com.fredprojects.helloworld.ui.navigation.Routes
-import java.util.UUID
 
 fun NavGraphBuilder.fibModule(
+    fibVM: FibonacciVM,
     activityContext: ComponentActivity,
     goBack: () -> Unit
 ) {
     composable(Routes.FIBONACCI) {
-        var fibSequences by rememberSaveable { mutableStateOf(emptyList<FibonacciBinder>()) }
-        FibScreen(fibSequences, goBack) {
-            activityContext.apply {
-                val intent = Intent(this, FibSequenceService::class.java)
-                intent.action = UUID.randomUUID().toString()
-                intent.putExtra(FibSequenceService.NUMBER, it)
-                val serviceConnection = object : ServiceConnection {
-                    override fun onServiceConnected(p0: ComponentName?, bind: IBinder?) {
-                        val localBinder = bind as? FibonacciBinder
-                        if (localBinder != null) fibSequences += listOf(localBinder)
-                    }
-                    override fun onServiceDisconnected(p0: ComponentName?) = displayToast(R.string.fibServiceError)
-                }
-                bindService(intent, serviceConnection, BIND_AUTO_CREATE)
-            }
-        }
+        FibScreen(fibVM.fibSequencesSF.collectAsState().value, goBack, fibVM::sendNotification)
     }
     composable(Routes.RESULT_FIB) {
         AnswerFibScreen(

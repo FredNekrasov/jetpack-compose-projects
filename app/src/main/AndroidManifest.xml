@@ -27,7 +27,7 @@
                 android:resource="@xml/path_provider" />
         </provider>
         <service
-            android:name=".FibSequenceService"
+            android:name=".fibonacci.FibSequenceService"
             android:enabled="true"
             android:exported="false"/>
         <activity

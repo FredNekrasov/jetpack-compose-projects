@@ -81,3 +81,12 @@ internal fun TakePhotoButton(onTakePhoto: Action) {
         Icon(Icons.Default.Place, Icons.Default.Place.toString())
     }
 }
+// creating copy of sortingPW to be able to change sortType
+private fun SortingPW.copy(sortType: SortType): SortingPW = when(this) {
+    is SortingPW.PW -> SortingPW.PW(sortType)
+    is SortingPW.Student -> SortingPW.Student(sortType)
+    is SortingPW.Variant -> SortingPW.Variant(sortType)
+    is SortingPW.LVL -> SortingPW.LVL(sortType)
+    is SortingPW.Date -> SortingPW.Date(sortType)
+    is SortingPW.Mark -> SortingPW.Mark(sortType)
+}

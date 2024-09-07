@@ -10,6 +10,6 @@ import java.time.LocalDate
  */
 data class JumpData(
     val count: Int,
-    val date: LocalDate = LocalDate.now(),
+    val date: String = LocalDate.now().toString(),
     val id: Int? = null
 )

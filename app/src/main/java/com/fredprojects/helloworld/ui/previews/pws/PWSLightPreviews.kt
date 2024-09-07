@@ -1,12 +1,12 @@
 package com.fredprojects.helloworld.ui.previews.pws
 
+import android.net.Uri
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.core.net.toUri
 import com.fredprojects.features.pws.presentation.*
 import com.fredprojects.features.pws.presentation.models.PWPModel
 import com.fredprojects.features.pws.presentation.vm.PWState
@@ -55,9 +55,7 @@ private fun PWListScreenPreview() {
 private fun UpsertPWScreenPreview() {
     HelloWorldTheme {
         Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-            UpsertPWScreen(UpsertPWState(), goBack = {  }, upsertPW = { _ ->  }) {
-                "https://img.izismile.com/img/img2/20090722/bonus/4/big_cats_18.jpg".toUri()
-            }
+            UpsertPWScreen(UpsertPWState(), goBack = {  }, upsertPW = { _ ->  }) { Uri.EMPTY }
         }
     }
 }

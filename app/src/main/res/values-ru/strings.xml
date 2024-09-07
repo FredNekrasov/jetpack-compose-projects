@@ -4,4 +4,5 @@
     <string name="fibMessageHeader">Расчеты</string>
     <string name="fibMessageDescription">Ответы, которые были получены в ходе расчетов</string>
     <string name="fibServiceError">Ошибка: служба не отвечает</string>
+    <string name="permissionGranted">Разрешения были получены</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.fredprojects.helloworld
+package com.fredprojects.helloworld.fibonacci
 
 import android.Manifest
 import android.app.PendingIntent
@@ -10,6 +10,8 @@ import androidx.core.app.*
 import com.fredprojects.features.fibonacci.api.useCases.FibonacciUseCase
 import com.fredprojects.core.ui.R as PR
 import com.fredprojects.features.fibonacci.impl.FibonacciBinder
+import com.fredprojects.helloworld.MainActivity
+import com.fredprojects.helloworld.R
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
@@ -26,12 +28,14 @@ class FibSequenceService : Service() {
         return fibonacciBinder
     }
     private fun sendResult(fibonacciBinder: FibonacciBinder) {
-        fibonacciBinder.result.onEach { result ->
-            val intent = Intent(this, MainActivity::class.java)
-            intent.action = MainActivity.DISPLAY_RESULT
-            intent.putExtra(RESULT, result.second.toString())
-            sendMessage(intent, result.second.toString())
-        }.launchIn(CoroutineScope(Dispatchers.Default))
+        val intent = Intent(this, MainActivity::class.java)
+        intent.action = MainActivity.DISPLAY_RESULT
+        CoroutineScope(Dispatchers.Default).launch {
+            fibonacciBinder.result.collectLatest {
+                intent.putExtra(RESULT, it.second.toString())
+                sendMessage(intent, it.second.toString())
+            }
+        }
     }
     private fun sendMessage(intent: Intent, result: String) {
         val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_MUTABLE)
