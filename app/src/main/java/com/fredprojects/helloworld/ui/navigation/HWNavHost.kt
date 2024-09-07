@@ -12,7 +12,6 @@ import com.fredprojects.features.inequality.impl.InequalityVM
 import com.fredprojects.features.jumps.presentation.vm.JDListVM
 import com.fredprojects.features.jumps.presentation.vm.JumpingRopeVM
 import com.fredprojects.features.pws.presentation.vm.PWListVM
-import com.fredprojects.features.pws.presentation.vm.UpsertPWVM
 import com.fredprojects.helloworld.fibonacci.FibonacciVM
 import com.fredprojects.helloworld.ui.navigation.modules.*
 
@@ -28,7 +27,6 @@ fun HWNavHost(
     val astronomyInfoVM: AstronomyInfoVM = hiltViewModel()
     val jdListVM: JDListVM = hiltViewModel()
     val pwListVM: PWListVM = hiltViewModel()
-    val upsertPWVM: UpsertPWVM = hiltViewModel()
     val fibVM: FibonacciVM = hiltViewModel()
     val bbVM: ByBitVM = hiltViewModel()
     NavHost(navController = controller, startDestination = Routes.AUTH) {
@@ -36,7 +34,7 @@ fun HWNavHost(
         composable(Routes.MAIN_SCREEN) {
             MainScreen(inequalityVM, mathVM, astronomyInfoVM, controller::navigateUp)
         }
-        pwsModule(pwListVM, upsertPWVM, activityContext, controller)
+        pwsModule(pwListVM, activityContext, controller)
         jumpsModule(jdListVM, controller, jumpingRopeVM)
         fibModule(fibVM, activityContext, controller::navigateUp)
         byBitScreens(bbVM, controller)
