@@ -1,6 +1,5 @@
 package com.fredprojects.helloworld.ui.navigation
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
@@ -14,7 +13,6 @@ import com.fredprojects.features.clients.presentation.math.*
 import com.fredprojects.features.inequality.impl.*
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun MainScreen(
     inequalityVM: InequalityVM,
@@ -43,7 +41,7 @@ fun MainScreen(
     }
 }
 @Composable
-private fun MainScrollableTabRow(currentPage: Int, animateScrollToPage: (Int) -> Unit) {
+private fun MainScrollableTabRow(currentPage: Int, scrollToPage: (Int) -> Unit) {
     ScrollableTabRow(
         selectedTabIndex = currentPage,
         modifier = Modifier.fillMaxWidth(),
@@ -53,7 +51,7 @@ private fun MainScrollableTabRow(currentPage: Int, animateScrollToPage: (Int) ->
         Routes.mainScreenItems.forEachIndexed { i, screenRouteId ->
             Tab(
                 selected = i == currentPage,
-                onClick = { animateScrollToPage(i) },
+                onClick = { scrollToPage(i) },
                 text = { FredText(stringResource(screenRouteId)) },
             )
         }
