@@ -5,12 +5,11 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.os.Build
 import android.os.Bundle
-import androidx.activity.ComponentActivity
+import androidx.activity.*
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
@@ -26,6 +25,7 @@ class MainActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         jumpingRopeVM.registerAccelerometer()
         val channel = NotificationChannel(CHANNEL_ID, getString(R.string.fibMessageHeader), NotificationManager.IMPORTANCE_DEFAULT)
         channel.description = getString(R.string.fibMessageDescription)
@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
         }.launch(arrayOf(Manifest.permission.CAMERA, Manifest.permission.POST_NOTIFICATIONS))
         setContent {
             HelloWorldTheme {
-                Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+                Surface(Modifier.fillMaxSize().padding(WindowInsets.systemBars.asPaddingValues()), color = MaterialTheme.colors.background) {
                     HWNavHost(activityContext = this, jumpingRopeVM)
                 }
             }
