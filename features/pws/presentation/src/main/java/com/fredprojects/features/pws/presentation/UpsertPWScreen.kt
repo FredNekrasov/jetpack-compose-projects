@@ -1,5 +1,6 @@
 package com.fredprojects.features.pws.presentation
 
+import android.net.Uri
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -27,7 +28,7 @@ fun UpsertPWScreen(
     state: UpsertPWState,
     goBack: Action,
     upsertPW: (PWPModel) -> Unit,
-    onTakePicture: () -> Unit
+    onTakePicture: () -> Uri
 ) {
     var pwName by rememberSaveable { mutableStateOf("") }
     var student by rememberSaveable { mutableStateOf("") }
@@ -64,7 +65,7 @@ fun UpsertPWScreen(
             FredNumericTextField(lvl, { lvl = it }, R.string.enterLVL, imeAction = ImeAction.Next)
             FredTextField(date, { date = it }, R.string.enterDate, keyboardType = KeyboardType.Decimal)
             FredNumericTextField(mark, { mark = it }, R.string.enterMark)
-            TakePhotoButton(onTakePicture)
+            TakePhotoButton { photo = onTakePicture().toString() }
             AsyncImage(photo.toUri(), photo, Modifier.fillMaxSize(0.5f).padding(16.dp))
         }
     }

@@ -1,5 +1,6 @@
 package com.fredprojects.helloworld.ui.previews.pws
 
+import android.net.Uri
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -54,7 +55,7 @@ private fun PWListScreenPreview() {
 private fun UpsertPWScreenPreview() {
     HelloWorldTheme {
         Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-            UpsertPWScreen(UpsertPWState(), goBack = {  }, upsertPW = { _ ->  }) {  }
+            UpsertPWScreen(UpsertPWState(), goBack = {  }, upsertPW = { _ ->  }) { Uri.EMPTY }
         }
     }
 }
