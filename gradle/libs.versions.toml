@@ -1,18 +1,18 @@
 [versions]
 # plugins
-agp = "8.6.0"
-kotlin = "2.0.20"
-ksp = "2.0.20-1.0.24"
-dagger = "2.52"
+agp = "8.8.0"
+kotlin = "2.1.10"
+ksp = "2.1.10-1.0.29"
+dagger = "2.55"
 # libraries
 hilt = "1.2.0"
 ## app/presentation
-coreKtx = "1.13.1"
-lifecycleKtx = "2.8.5"
+coreKtx = "1.15.0"
+lifecycleKtx = "2.8.7"
 ### compose
-activityCompose = "1.9.2"
-composeBom = "2024.09.00"
-navigationCompose = "2.8.0"
+activityCompose = "1.10.0"
+composeBom = "2025.01.01"
+navigationCompose = "2.8.6"
 coil = "2.7.0"
 ## test
 junit = "4.13.2"
@@ -22,7 +22,7 @@ espressoCore = "3.6.1"
 room = "2.6.1"
 retrofit = "2.11.0"
 ## domain
-coroutines = "1.9.0-RC.2"
+coroutines = "1.10.1"
 
 [libraries]
 # app/presentation module dependencies
