@@ -29,12 +29,6 @@ include(":features:clients:domain")
 include(":features:clients:data")
 include(":features:clients:presentation")
 
-include(":features:fibonacci:api")
-include(":features:fibonacci:impl")
-
-include(":features:inequality:api")
-include(":features:inequality:impl")
-
 include(":features:pws:domain")
 include(":features:pws:data")
 include(":features:pws:presentation")

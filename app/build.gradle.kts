@@ -67,12 +67,6 @@ dependencies {
     implementation(project(":features:clients:data"))
     implementation(project(":features:clients:presentation"))
 
-    implementation(project(":features:fibonacci:api"))
-    implementation(project(":features:fibonacci:impl"))
-
-    implementation(project(":features:inequality:api"))
-    implementation(project(":features:inequality:impl"))
-
     implementation(project(":features:pws:domain"))
     implementation(project(":features:pws:data"))
     implementation(project(":features:pws:presentation"))
