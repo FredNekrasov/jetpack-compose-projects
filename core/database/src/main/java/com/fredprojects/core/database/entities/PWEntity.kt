@@ -2,10 +2,6 @@ package com.fredprojects.core.database.entities
 
 import androidx.room.*
 
-/**
- * PWEntity is used to store data of the practical works in the database.
- * "practical_works" is the name of the table in the database.
- */
 @Entity(tableName = "practical_works")
 data class PWEntity(
     @ColumnInfo(name = "pw_name")

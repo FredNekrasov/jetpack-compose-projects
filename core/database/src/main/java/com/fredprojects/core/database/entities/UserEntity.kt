@@ -2,10 +2,6 @@ package com.fredprojects.core.database.entities
 
 import androidx.room.*
 
-/**
- * UserEntity is used to store data of the users in the database.
- * "users" is the name of the table in the database.
- */
 @Entity(tableName = "users")
 data class UserEntity(
     @ColumnInfo(name = "username")
