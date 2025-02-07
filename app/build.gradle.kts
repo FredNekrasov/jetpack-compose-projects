@@ -71,10 +71,6 @@ dependencies {
     implementation(project(":features:pws:data"))
     implementation(project(":features:pws:presentation"))
 
-    implementation(project(":features:jumps:domain"))
-    implementation(project(":features:jumps:data"))
-    implementation(project(":features:jumps:presentation"))
-
     implementation(project(":features:auth:domain"))
     implementation(project(":features:auth:data"))
     implementation(project(":features:auth:presentation"))
