@@ -11,18 +11,10 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-/**
- * AstronomyInfoVM is used to get data from the server
- * @param repository the repository used to get data from the server
- */
 @HiltViewModel
 class AstronomyInfoVM @Inject constructor(
     private val repository: IAstronomyRepository
 ) : ViewModel() {
-    /**
-     * @see astronomyInfoMSF is used to emit data to the state flow
-     * @see astronomyInfo is used to display data in the view
-     */
     private val astronomyInfoMSF = MutableStateFlow<ConnectionStatus<AstronomyInfo>>(ConnectionStatus.Nothing())
     val astronomyInfo = astronomyInfoMSF.asStateFlow()
     /**

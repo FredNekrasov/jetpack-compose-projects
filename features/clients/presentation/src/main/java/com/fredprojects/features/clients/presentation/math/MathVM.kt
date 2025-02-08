@@ -11,18 +11,10 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-/**
- * MathVM is used to get data from the server
- * @param repository the repository used to get data from the server
- */
 @HiltViewModel
 class MathVM @Inject constructor(
     private val repository: IMathRepository
 ) : ViewModel() {
-    /**
-     * @see mathInfoMSF is used to emit data to the state flow
-     * @see mathInfo is used to display data in the view
-     */
     private val mathInfoMSF = MutableStateFlow<ConnectionStatus<MathModel>>(ConnectionStatus.Nothing())
     val mathInfo = mathInfoMSF.asStateFlow()
     /**
