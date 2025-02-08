@@ -35,7 +35,8 @@ android {
     }
 }
 composeCompiler {
-    reportsDestination = layout.buildDirectory.dir("compose_compiler")
+    reportsDestination = layout.buildDirectory.dir("composeReports")
+    metricsDestination = layout.buildDirectory.dir("composeMetrics")
 }
 dependencies {
     implementation(project(":core:ui"))
@@ -44,7 +45,6 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.bundles.hilt)
     // default dependencies
-    implementation(libs.bundles.androidx)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.bundles.compose.presentation)
     testImplementation(libs.junit)
