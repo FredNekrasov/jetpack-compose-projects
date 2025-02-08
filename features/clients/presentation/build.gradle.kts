@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.fredprojects.features.clients.presentation"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 29
