@@ -29,10 +29,7 @@ include(":features:clients:domain")
 include(":features:clients:data")
 include(":features:clients:presentation")
 
-include(":features:pws:domain")
-include(":features:pws:data")
-include(":features:pws:presentation")
-
 include(":features:math")
 include(":features:jump")
 include(":features:auth")
+include(":features:pws")
