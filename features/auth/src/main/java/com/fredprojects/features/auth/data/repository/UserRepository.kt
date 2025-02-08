@@ -3,8 +3,11 @@ package com.fredprojects.features.auth.data.repository
 import com.fredprojects.core.database.dao.IUserDao
 import com.fredprojects.features.auth.data.mapper.*
 import com.fredprojects.features.auth.domain.models.User
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class UserRepository(
+@Singleton
+class UserRepository @Inject constructor(
     private val dao: IUserDao
 ) {
     /**

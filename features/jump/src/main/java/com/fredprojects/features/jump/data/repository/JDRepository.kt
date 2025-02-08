@@ -5,12 +5,11 @@ import com.fredprojects.features.jump.data.mapper.*
 import com.fredprojects.features.jump.domain.models.JumpData
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
+import javax.inject.Singleton
 
-/**
- * JumpData repository is used to store and retrieve data from the local database.
- * @see IJDDao
- */
-class JDRepository(
+@Singleton
+class JDRepository @Inject constructor(
     private val dao: IJDDao
 ) {
     /**
