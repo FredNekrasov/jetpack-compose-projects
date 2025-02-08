@@ -1,6 +1,6 @@
 package com.fredprojects.helloworld.useCases.pws
 
-import com.fredprojects.features.pws.data.repositories.PWRepository
+import com.fredprojects.features.pws.data.repository.PWRepository
 import com.fredprojects.features.pws.domain.models.PracticalWork
 import com.fredprojects.features.pws.domain.useCases.PWUseCases
 import com.fredprojects.features.pws.domain.useCases.crud.*

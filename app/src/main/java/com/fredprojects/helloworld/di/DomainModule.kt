@@ -6,7 +6,7 @@ import com.fredprojects.features.jump.data.repository.JDRepository
 import com.fredprojects.features.jump.domain.usecases.*
 import com.fredprojects.features.jump.domain.usecases.crud.*
 import com.fredprojects.features.math.domain.usecases.*
-import com.fredprojects.features.pws.domain.repository.IPWRepository
+import com.fredprojects.features.pws.data.repository.PWRepository
 import com.fredprojects.features.pws.domain.useCases.PWUseCases
 import com.fredprojects.features.pws.domain.useCases.crud.*
 import dagger.Module
@@ -25,7 +25,7 @@ internal object DomainModule {
     fun provideFibonacciUseCase(): FibonacciUseCase = FibonacciUseCase()
 
     @Provides
-    fun providePWUseCase(repository: IPWRepository): PWUseCases = PWUseCases(
+    fun providePWUseCase(repository: PWRepository): PWUseCases = PWUseCases(
         getPWs = GetPWUseCase(repository),
         upsert = UpsertPWUseCase(repository),
         delete = DeletePWUseCase(repository)

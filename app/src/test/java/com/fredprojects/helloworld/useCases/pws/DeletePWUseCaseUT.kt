@@ -1,12 +1,12 @@
 package com.fredprojects.helloworld.useCases.pws
 
-import com.fredprojects.features.pws.data.repositories.PWRepository
+import com.fredprojects.features.pws.data.repository.PWRepository
 import com.fredprojects.features.pws.domain.models.PracticalWork
 import com.fredprojects.features.pws.domain.useCases.PWUseCases
 import com.fredprojects.features.pws.domain.useCases.crud.*
 import com.fredprojects.features.pws.domain.utils.*
 import com.fredprojects.helloworld.fakeDataSources.pws.FakePWDao
-import junit.framework.TestCase.*
+import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
