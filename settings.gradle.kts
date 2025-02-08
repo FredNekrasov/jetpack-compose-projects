@@ -33,9 +33,6 @@ include(":features:pws:domain")
 include(":features:pws:data")
 include(":features:pws:presentation")
 
-include(":features:auth:domain")
-include(":features:auth:data")
-include(":features:auth:presentation")
-
 include(":features:math")
 include(":features:jump")
+include(":features:auth")
