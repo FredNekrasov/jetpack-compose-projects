@@ -1,7 +1,7 @@
 package com.fredprojects.features.math.presentation.inequality
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -23,12 +23,12 @@ fun InequalityScreen(
     var a by rememberSaveable { mutableStateOf("") }
     var b by rememberSaveable { mutableStateOf("") }
     Column(Modifier.fillMaxSize(), Arrangement.Center, Alignment.CenterHorizontally) {
-        FredHeaderText("ax + b < 0", textStyle =  MaterialTheme.typography.h5)
+        FredHeaderText("ax + b < 0", textStyle =  MaterialTheme.typography.titleSmall)
         Spacer(Modifier.height(8.dp))
         InequalityTextField(a, { a = it }, "a", ImeAction.Next)
         InequalityTextField(b, { b = it }, "b", ImeAction.Done)
         Spacer(Modifier.height(8.dp))
-        FredHeaderText(if(state is Int) stringResource(state) else state.toString(), MaterialTheme.typography.subtitle1)
+        FredHeaderText(if(state is Int) stringResource(state) else state.toString(), MaterialTheme.typography.bodyMedium)
         Spacer(Modifier.height(8.dp))
         FredButton(
             onClick = { calculate(a.toFloatOrNull(), b.toFloatOrNull()) },

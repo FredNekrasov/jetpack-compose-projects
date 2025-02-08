@@ -2,7 +2,7 @@ package com.fredprojects.features.clients.presentation.bybit
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -18,21 +18,21 @@ internal fun ProductListItem(
     modifier: Modifier = Modifier
 ) {
     Box(modifier) {
-        FredCard(Modifier.matchParentSize(), MaterialTheme.colors.onBackground, MaterialTheme.colors.background, cutCornerSize = 0.dp)
+        FredCard(Modifier.matchParentSize(), MaterialTheme.colorScheme.onBackground, MaterialTheme.colorScheme.background, cutCornerSize = 0.dp)
         Column(Modifier.fillMaxSize().padding(16.dp)) {
-            FredHeaderText(bbInfo.title, MaterialTheme.typography.h5, color = MaterialTheme.colors.background)
+            FredHeaderText(bbInfo.title, MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.background)
             Spacer(modifier = Modifier.height(8.dp))
-            FredText(bbInfo.description, color = MaterialTheme.colors.background)
+            FredText(bbInfo.description, color = MaterialTheme.colorScheme.background)
             Spacer(modifier = Modifier.height(8.dp))
-            FredText("${bbInfo.type.title}: ${bbInfo.type.key}", color = MaterialTheme.colors.background)
+            FredText("${bbInfo.type.title}: ${bbInfo.type.key}", color = MaterialTheme.colorScheme.background)
             Spacer(modifier = Modifier.height(8.dp))
             LazyRow(Modifier.fillMaxWidth()) {
                 items(bbInfo.tags) {
-                    FredText(it, color = MaterialTheme.colors.background)
+                    FredText(it, color = MaterialTheme.colorScheme.background)
                     Spacer(Modifier.width(2.dp))
                 }
             }
-            FredText(bbInfo.url, color = MaterialTheme.colors.background)
+            FredText(bbInfo.url, color = MaterialTheme.colorScheme.background)
             FavCheckBox(isFavorite, onFavouriteChange)
         }
     }

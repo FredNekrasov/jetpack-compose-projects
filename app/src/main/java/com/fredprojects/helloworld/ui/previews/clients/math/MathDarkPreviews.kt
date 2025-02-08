@@ -1,8 +1,8 @@
 package com.fredprojects.helloworld.ui.previews.clients.math
 
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -21,7 +21,7 @@ import com.fredprojects.helloworld.ui.theme.HelloWorldTheme
 @Composable
 private fun MathInfoNothingScreenPreview() {
     HelloWorldTheme {
-        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             MathInfoScreen(state = ConnectionStatus.Nothing()) { _ -> }
         }
     }
@@ -35,7 +35,7 @@ private fun MathInfoNothingScreenPreview() {
 @Composable
 private fun MathInfoLoadingScreenPreview() {
     HelloWorldTheme {
-        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             MathInfoScreen(state = ConnectionStatus.Loading(emptyList())) { _ -> }
         }
     }
@@ -50,7 +50,7 @@ private fun MathInfoLoadingScreenPreview() {
 private fun MathInfoSuccessScreenPreview() {
     val list = listOf(MathModel("1 + 1", "2"))
     HelloWorldTheme {
-        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             MathInfoScreen(state = ConnectionStatus.Success(list)) { _ -> }
         }
     }
@@ -64,7 +64,7 @@ private fun MathInfoSuccessScreenPreview() {
 @Composable
 private fun MathInfoConnectionErrorScreenPreview() {
     HelloWorldTheme {
-        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             MathInfoScreen(
                 state = ConnectionStatus.Error(emptyList(), ActionStatus.CONNECTION_ERROR)
             ) { _ -> }
@@ -80,7 +80,7 @@ private fun MathInfoConnectionErrorScreenPreview() {
 @Composable
 private fun MathInfoNoInternetErrorScreenPreview() {
     HelloWorldTheme {
-        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             MathInfoScreen(
                 state = ConnectionStatus.Error(emptyList(), ActionStatus.NO_INTERNET)
             ) { _ -> }
@@ -96,7 +96,7 @@ private fun MathInfoNoInternetErrorScreenPreview() {
 @Composable
 private fun MathInfoNoDataErrorScreenPreview() {
     HelloWorldTheme {
-        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             MathInfoScreen(
                 state = ConnectionStatus.Error(emptyList(), ActionStatus.NO_DATA)
             ) { _ -> }
@@ -112,7 +112,7 @@ private fun MathInfoNoDataErrorScreenPreview() {
 @Composable
 private fun MathInfoSerializationErrorScreenPreview() {
     HelloWorldTheme {
-        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             MathInfoScreen(
                 state = ConnectionStatus.Error(emptyList(), ActionStatus.SERIALIZATION_ERROR)
             ) { _ -> }
@@ -128,7 +128,7 @@ private fun MathInfoSerializationErrorScreenPreview() {
 @Composable
 private fun MathInfoUnknownErrorScreenPreview() {
     HelloWorldTheme {
-        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             MathInfoScreen(
                 state = ConnectionStatus.Error(emptyList(), ActionStatus.UNKNOWN)
             ) { _ -> }

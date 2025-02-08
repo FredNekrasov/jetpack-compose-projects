@@ -7,8 +7,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.fredprojects.features.pws.domain.models.PracticalWork
 import com.fredprojects.features.pws.presentation.*
-import com.fredprojects.features.pws.presentation.models.PWPModel
 import com.fredprojects.features.pws.presentation.vm.PWState
 import com.fredprojects.features.pws.presentation.vm.UpsertPWState
 import com.fredprojects.helloworld.ui.theme.HelloWorldTheme
@@ -36,8 +36,8 @@ private fun PWEmptyListScreenPreview() {
 @Composable
 private fun PWListScreenPreview() {
     val list = listOf(
-        PWPModel("oop", "fred", 1, 9, "11.11.2020", 5, "https://img.izismile.com/img/img2/20090722/bonus/4/big_cats_18.jpg"),
-        PWPModel("oop", "alex", 1, 9, "11.11.2020", 5, "https://img.izismile.com/img/img2/20090722/bonus/4/big_cats_18.jpg")
+        PracticalWork("oop", "fred", 1, 9, "11.11.2020", 5, "https://img.izismile.com/img/img2/20090722/bonus/4/big_cats_18.jpg"),
+        PracticalWork("oop", "alex", 1, 9, "11.11.2020", 5, "https://img.izismile.com/img/img2/20090722/bonus/4/big_cats_18.jpg")
     )
     HelloWorldTheme {
         Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {

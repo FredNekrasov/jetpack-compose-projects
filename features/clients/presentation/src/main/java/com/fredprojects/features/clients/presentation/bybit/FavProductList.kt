@@ -3,8 +3,8 @@ package com.fredprojects.features.clients.presentation.bybit
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -20,7 +20,7 @@ fun FavProductList(
 ) {
     Scaffold(topBar = { FredTopBar(goBack) }) { innerPadding ->
         Column(Modifier.fillMaxSize().padding(innerPadding), Arrangement.Center, Alignment.CenterHorizontally) {
-            FredHeaderText(stringResource(R.string.favourites), MaterialTheme.typography.h4)
+            FredHeaderText(stringResource(R.string.favourites), MaterialTheme.typography.titleSmall)
             Spacer(Modifier.height(8.dp))
             LazyColumn(Modifier.fillMaxSize()) {
                 items(list) { bbInfo ->

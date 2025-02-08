@@ -3,7 +3,7 @@ package com.fredprojects.features.clients.presentation.astronomy
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -49,7 +49,7 @@ private fun AstronomyInfoScreenTextFields(onSearch: (String, String, String) -> 
         ImeAction.Done,
         KeyboardType.Decimal
     )
-    if(!isValuesCorrect) FredText(stringResource(R.string.error), color = MaterialTheme.colors.error)
+    if(!isValuesCorrect) FredText(stringResource(R.string.error), color = MaterialTheme.colorScheme.error)
     Spacer(Modifier.height(4.dp))
     FredButton(
         {
