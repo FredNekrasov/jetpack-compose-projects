@@ -2,7 +2,7 @@ package com.fredprojects.helloworld.ui.previews.clients.bybit
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.Favorite
@@ -44,7 +44,7 @@ private fun RealProductListNothingAndLoadingPreview() {
 private fun ProductListNothingPreview() {
     val state: ConnectionStatus<BBInfo> = ConnectionStatus.Nothing()
     HelloWorldTheme {
-        Surface(Modifier.fillMaxSize().background(MaterialTheme.colors.background), color = MaterialTheme.colors.background) {
+        Surface(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background), color = MaterialTheme.colorScheme.background) {
             ProductList(list = state.list, onUpdate = { _ -> }) { ProductListNavButtons(state.status) }
         }
     }
@@ -59,7 +59,7 @@ private fun ProductListNothingPreview() {
 private fun ProductListLoadingPreview() {
     val state: ConnectionStatus<BBInfo> = ConnectionStatus.Loading(emptyList())
     HelloWorldTheme {
-        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             ProductList(list = state.list, onUpdate = { _ -> }) { ProductListNavButtons(state.status) }
         }
     }
@@ -75,7 +75,7 @@ private fun ProductListSuccessPreview() {
     val list = listOf(BBInfo("title", BBType("key", "title"), "dateTime", "description", "endDateTime", "startDateTime", listOf("tag"), "url", false, 0))
     val state: ConnectionStatus<BBInfo> = ConnectionStatus.Success(list)
     HelloWorldTheme {
-        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             ProductList(list = state.list, onUpdate = { _ -> }) { ProductListNavButtons(state.status) }
         }
     }
@@ -90,7 +90,7 @@ private fun ProductListSuccessPreview() {
 private fun ProductListConnectionErrorPreview() {
     val state: ConnectionStatus<BBInfo> = ConnectionStatus.Error(emptyList(), ActionStatus.CONNECTION_ERROR)
     HelloWorldTheme {
-        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             ProductList(list = state.list, onUpdate = { _ -> }) { ProductListNavButtons(state.status) }
         }
     }
@@ -105,7 +105,7 @@ private fun ProductListConnectionErrorPreview() {
 private fun ProductListNoDataErrorPreview() {
     val state: ConnectionStatus<BBInfo> = ConnectionStatus.Error(emptyList(), ActionStatus.NO_DATA)
     HelloWorldTheme {
-        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             ProductList(list = state.list, onUpdate = { _ -> }) { ProductListNavButtons(state.status) }
         }
     }
@@ -120,7 +120,7 @@ private fun ProductListNoDataErrorPreview() {
 private fun ProductListNoInternetErrorPreview() {
     val state: ConnectionStatus<BBInfo> = ConnectionStatus.Error(emptyList(), ActionStatus.NO_INTERNET)
     HelloWorldTheme {
-        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             ProductList(list = state.list, onUpdate = { _ -> }) { ProductListNavButtons(state.status) }
         }
     }
@@ -135,7 +135,7 @@ private fun ProductListNoInternetErrorPreview() {
 private fun ProductListSerializationErrorPreview() {
     val state: ConnectionStatus<BBInfo> = ConnectionStatus.Error(emptyList(), ActionStatus.SERIALIZATION_ERROR)
     HelloWorldTheme {
-        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             ProductList(list = state.list, onUpdate = { _ -> }) { ProductListNavButtons(state.status) }
         }
     }
@@ -150,7 +150,7 @@ private fun ProductListSerializationErrorPreview() {
 private fun ProductListUnknownPreview() {
     val state: ConnectionStatus<BBInfo> = ConnectionStatus.Error(emptyList(), ActionStatus.UNKNOWN)
     HelloWorldTheme {
-        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             ProductList(list = state.list, onUpdate = { _ -> }) { ProductListNavButtons(state.status) }
         }
     }
@@ -158,9 +158,9 @@ private fun ProductListUnknownPreview() {
 @Composable
 private fun ProductListNavButtons(status: ActionStatus) {
     Row(Modifier.fillMaxWidth(), Arrangement.SpaceEvenly, Alignment.CenterVertically) {
-        FredIconButton({  }, Icons.AutoMirrored.Default.KeyboardArrowLeft, tint = MaterialTheme.colors.onBackground)
+        FredIconButton({  }, Icons.AutoMirrored.Default.KeyboardArrowLeft, tint = MaterialTheme.colorScheme.onBackground)
         ShowConnectionInfo({  }, status)
-        FredIconButton({  }, Icons.Default.Favorite, tint = MaterialTheme.colors.onBackground)
+        FredIconButton({  }, Icons.Default.Favorite, tint = MaterialTheme.colorScheme.onBackground)
     }
 }
 @Preview(
@@ -176,7 +176,7 @@ private fun FavProductListPreview() {
         BBInfo("title", BBType("key", "title"), "dateTime", "description", "endDateTime", "startDateTime", listOf("tag"), "url", false)
     )
     HelloWorldTheme {
-        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             FavProductList(list, onUpdate = { _ -> }, goBack = {})
         }
     }
@@ -190,7 +190,7 @@ private fun FavProductListPreview() {
 @Composable
 private fun EmptyFavProductListPreview() {
     HelloWorldTheme {
-        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             FavProductList(emptyList(), onUpdate = { _ -> }, goBack = {})
         }
     }

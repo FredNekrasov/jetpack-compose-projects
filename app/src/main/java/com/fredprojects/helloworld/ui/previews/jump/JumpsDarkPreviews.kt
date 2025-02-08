@@ -1,14 +1,15 @@
-package com.fredprojects.helloworld.ui.previews.jumps
+package com.fredprojects.helloworld.ui.previews.jump
 
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.fredprojects.features.jumps.presentation.*
-import com.fredprojects.features.jumps.presentation.models.JDPModel
-import com.fredprojects.features.jumps.presentation.vm.JDState
+import com.fredprojects.features.jump.domain.models.JumpData
+import com.fredprojects.features.jump.presentation.jump.*
+import com.fredprojects.features.jump.presentation.menu.*
+import com.fredprojects.features.jump.presentation.menu.vm.JDState
 import com.fredprojects.helloworld.ui.theme.HelloWorldTheme
 
 @Preview(
@@ -20,7 +21,7 @@ import com.fredprojects.helloworld.ui.theme.HelloWorldTheme
 @Composable
 private fun JumpingRopeDialogPreview() {
     HelloWorldTheme {
-        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             JumpingRopeDialog(countOfJumps = 9) {}
         }
     }
@@ -34,7 +35,7 @@ private fun JumpingRopeDialogPreview() {
 @Composable
 private fun JDDialogTruePreview() {
     HelloWorldTheme {
-        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             JDDialog(JDState(), { _ ->  }, true)
         }
     }
@@ -48,7 +49,7 @@ private fun JDDialogTruePreview() {
 @Composable
 private fun JDDialogFalsePreview() {
     HelloWorldTheme {
-        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             JDDialog(JDState(), { _ ->  }, false)
         }
     }
@@ -62,7 +63,7 @@ private fun JDDialogFalsePreview() {
 @Composable
 private fun EmptyJDListScreenPreview() {
     HelloWorldTheme {
-        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             JDListScreen(state = JDState(), onEvent = { _ -> }, goBack = {  }) {}
         }
     }
@@ -75,9 +76,9 @@ private fun EmptyJDListScreenPreview() {
 )
 @Composable
 private fun JDListScreenPreview() {
-    val list = listOf(JDPModel(9))
+    val list = listOf(JumpData(9))
     HelloWorldTheme {
-        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+        Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             JDListScreen(state = JDState(jds = list), onEvent = { _ -> }, goBack = {  }) {}
         }
     }

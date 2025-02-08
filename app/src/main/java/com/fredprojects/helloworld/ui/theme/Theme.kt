@@ -1,15 +1,15 @@
 package com.fredprojects.helloworld.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 
-private val DarkColorScheme = darkColors(
-    primary = Purple80, secondary = PurpleGrey80, primaryVariant = Pink80
+private val DarkColorScheme = darkColorScheme(
+    primary = Purple80, secondary = PurpleGrey80, tertiary = Pink80
 )
 
-private val LightColorScheme = lightColors(
-    primary = Purple40, secondary = PurpleGrey40, primaryVariant = Pink40
+private val LightColorScheme = lightColorScheme(
+    primary = Purple40, secondary = PurpleGrey40, tertiary = Pink40
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -31,6 +31,6 @@ fun HelloWorldTheme(
         else -> LightColorScheme
     }
     MaterialTheme(
-        colors = colorScheme, typography = Typography, content = content
+        colorScheme = colorScheme, typography = Typography, content = content
     )
 }

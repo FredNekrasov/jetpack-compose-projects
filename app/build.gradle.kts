@@ -63,6 +63,10 @@ dependencies {
     implementation(project(":core:database"))
     implementation(project(":core:ui"))
 
+    implementation(project(":features:jump"))
+    implementation(project(":features:math"))
+    implementation(project(":features:auth"))
+
     implementation(project(":features:clients:domain"))
     implementation(project(":features:clients:data"))
     implementation(project(":features:clients:presentation"))
@@ -70,8 +74,4 @@ dependencies {
     implementation(project(":features:pws:domain"))
     implementation(project(":features:pws:data"))
     implementation(project(":features:pws:presentation"))
-
-    implementation(project(":features:auth:domain"))
-    implementation(project(":features:auth:data"))
-    implementation(project(":features:auth:presentation"))
 }

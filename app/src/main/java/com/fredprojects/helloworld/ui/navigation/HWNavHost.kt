@@ -8,9 +8,9 @@ import com.fredprojects.features.auth.presentation.vm.UserVM
 import com.fredprojects.features.clients.presentation.astronomy.AstronomyInfoVM
 import com.fredprojects.features.clients.presentation.bybit.ByBitVM
 import com.fredprojects.features.clients.presentation.math.MathVM
-import com.fredprojects.features.inequality.impl.InequalityVM
-import com.fredprojects.features.jumps.presentation.vm.JDListVM
-import com.fredprojects.features.jumps.presentation.vm.JumpingRopeVM
+import com.fredprojects.features.math.presentation.inequality.InequalityVM
+import com.fredprojects.features.jump.presentation.menu.vm.JDListVM
+import com.fredprojects.features.jump.presentation.jump.JumpingRopeVM
 import com.fredprojects.features.pws.presentation.vm.PWListVM
 import com.fredprojects.helloworld.fibonacci.FibonacciVM
 import com.fredprojects.helloworld.ui.navigation.modules.*

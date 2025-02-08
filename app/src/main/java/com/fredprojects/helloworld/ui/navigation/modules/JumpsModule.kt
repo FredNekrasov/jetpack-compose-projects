@@ -11,9 +11,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import com.fredprojects.core.ui.*
 import com.fredprojects.core.ui.R
-import com.fredprojects.features.jumps.domain.utils.JumpStatus
-import com.fredprojects.features.jumps.presentation.*
-import com.fredprojects.features.jumps.presentation.vm.*
+import com.fredprojects.features.jump.domain.utils.JumpStatus
+import com.fredprojects.features.jump.presentation.jump.*
+import com.fredprojects.features.jump.presentation.menu.*
+import com.fredprojects.features.jump.presentation.menu.vm.*
 import com.fredprojects.helloworld.ui.navigation.Routes
 import kotlinx.coroutines.flow.collectLatest
 
@@ -46,9 +47,6 @@ fun NavGraphBuilder.jumpsModule(
         var isShowDialog by rememberSaveable { mutableStateOf(false) }
         val numberOfJumps by jumpingRopeVM.resultSF.collectAsState()
         Column(Modifier.fillMaxSize(), Arrangement.Center, Alignment.CenterHorizontally) {
-            FredText("x: ${jumpingRopeVM.xSF.collectAsState().value}")
-            FredText("y: ${jumpingRopeVM.ySF.collectAsState().value}")
-            FredText("z: ${jumpingRopeVM.zSF.collectAsState().value}")
             FredText("${stringResource(R.string.count)}: $numberOfJumps")
             FredButton(jumpingRopeVM::insertJD, stringResource(R.string.save))
             FredButton({ isShowDialog = !isShowDialog }, stringResource(R.string.jump))
