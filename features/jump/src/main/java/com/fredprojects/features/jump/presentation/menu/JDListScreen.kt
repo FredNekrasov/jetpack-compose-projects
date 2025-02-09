@@ -40,7 +40,8 @@ fun JDListScreen(
             }
         },
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
-        floatingActionButton = { FredFloatingActionButton(Icons.Default.Add, toJumpingRope) }
+        floatingActionButton = { FredFloatingActionButton(Icons.Default.Add, toJumpingRope) },
+        contentWindowInsets = WindowInsets.captionBar
     ) { innerPadding ->
         Column(Modifier.fillMaxSize().padding(innerPadding), horizontalAlignment = Alignment.CenterHorizontally) {
             AnimatedVisibility(

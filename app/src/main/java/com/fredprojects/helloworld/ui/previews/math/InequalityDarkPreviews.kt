@@ -20,7 +20,7 @@ import com.fredprojects.helloworld.ui.theme.HelloWorldTheme
 private fun ErrorInequalityScreenPreview() {
     HelloWorldTheme {
         Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-            InequalityScreen(state = R.string.error) { _, _ -> }
+            InequalityScreen(result = R.string.error) { _, _ -> }
         }
     }
 }
@@ -34,7 +34,7 @@ private fun ErrorInequalityScreenPreview() {
 private fun InequalityHasNoSolutionsPreview() {
     HelloWorldTheme {
         Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-            InequalityScreen(state = R.string.inequalityHasNoSolutions) { _, _ -> }
+            InequalityScreen(result = R.string.inequalityHasNoSolutions) { _, _ -> }
         }
     }
 }
@@ -48,7 +48,7 @@ private fun InequalityHasNoSolutionsPreview() {
 private fun ResultInequalityScreenPreview() {
     HelloWorldTheme {
         Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-            InequalityScreen(state = "Result") { _, _ -> }
+            InequalityScreen(result = "Result") { _, _ -> }
         }
     }
 }

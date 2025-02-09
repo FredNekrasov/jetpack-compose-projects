@@ -20,7 +20,7 @@ internal fun ProductListItem(
     Box(modifier) {
         FredCard(Modifier.matchParentSize(), MaterialTheme.colorScheme.onBackground, MaterialTheme.colorScheme.background, cutCornerSize = 0.dp)
         Column(Modifier.fillMaxSize().padding(16.dp)) {
-            FredHeaderText(bbInfo.title, MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.background)
+            FredHeaderText(bbInfo.title, MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.background)
             Spacer(modifier = Modifier.height(8.dp))
             FredText(bbInfo.description, color = MaterialTheme.colorScheme.background)
             Spacer(modifier = Modifier.height(8.dp))

@@ -22,13 +22,11 @@ fun Authorization(
     var userName by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
     Column(Modifier.fillMaxSize(), Arrangement.Center, Alignment.CenterHorizontally) {
-        FredHeaderText(text = stringResource(R.string.authorization), textStyle = MaterialTheme.typography.titleSmall)
+        FredHeaderText(text = stringResource(R.string.authorization), textStyle = MaterialTheme.typography.headlineMedium)
         Spacer(Modifier.height(32.dp))
-        FredTextField(userName, { userName = it }, R.string.enterUN, isDataCorrect)
-        if (!isDataCorrect) FredText(stringResource(R.string.incorrectUserName), color = MaterialTheme.colorScheme.error)
+        FredTextField(userName, { userName = it }, R.string.enterUN, isDataCorrect, errorString = stringResource(R.string.incorrectUserName))
         Spacer(Modifier.height(4.dp))
         PasswordTextField(password, { password = it }, isDataCorrect, ImeAction.Done)
-        if (!isDataCorrect) FredText(stringResource(R.string.incorrectPassword), color = MaterialTheme.colorScheme.error)
         Spacer(Modifier.height(16.dp))
         FredButton({ onAuth(AuthEvents.Authorization(userName, password)) }, stringResource(R.string.logIn))
         Spacer(Modifier.height(8.dp))

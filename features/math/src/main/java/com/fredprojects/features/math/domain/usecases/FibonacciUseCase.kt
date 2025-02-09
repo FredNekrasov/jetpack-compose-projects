@@ -8,11 +8,11 @@ import java.math.BigInteger
 class FibonacciUseCase {
     suspend operator fun invoke(number: Int): Pair<CalculationStatus, BigInteger> {
         if(number <= 0) return Pair(CalculationStatus.ERROR, BigInteger.ZERO)
-        var result = BigInteger.ONE
         val fibonacciNumber = generateSequence(0 to 1) {
             it.second to it.first + it.second
         }.map { it.first }.take(number + 1).lastOrNull()
         if(fibonacciNumber == null) return Pair(CalculationStatus.ERROR, BigInteger.ZERO)
+        var result = BigInteger.ONE
         for (i in 1..fibonacciNumber) {
             yield()
             result = result.multiply(BigInteger.valueOf(3L))

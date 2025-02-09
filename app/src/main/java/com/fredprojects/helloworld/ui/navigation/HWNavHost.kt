@@ -2,6 +2,7 @@ package com.fredprojects.helloworld.ui.navigation
 
 import androidx.activity.ComponentActivity
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.*
 import com.fredprojects.features.auth.presentation.vm.UserVM
@@ -18,7 +19,8 @@ import com.fredprojects.helloworld.ui.navigation.modules.*
 @Composable
 fun HWNavHost(
     activityContext: ComponentActivity,
-    jumpingRopeVM: JumpingRopeVM
+    jumpingRopeVM: JumpingRopeVM,
+    modifier: Modifier
 ) {
     val controller = rememberNavController()
     val userVM: UserVM = hiltViewModel()
@@ -29,7 +31,7 @@ fun HWNavHost(
     val pwListVM: PWListVM = hiltViewModel()
     val fibVM: FibonacciVM = hiltViewModel()
     val bbVM: ByBitVM = hiltViewModel()
-    NavHost(navController = controller, startDestination = Routes.AUTH) {
+    NavHost(navController = controller, startDestination = Routes.AUTH, modifier = modifier) {
         authModule(userVM, activityContext, controller)
         composable(Routes.MAIN_SCREEN) {
             MainScreen(inequalityVM, mathVM, astronomyInfoVM, controller::navigateUp)

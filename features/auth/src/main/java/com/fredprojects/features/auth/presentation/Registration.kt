@@ -30,20 +30,17 @@ fun Registration(
     Column(Modifier.fillMaxSize(),Arrangement.Center, Alignment.CenterHorizontally) {
         FredHeaderText(
             if(user == null) stringResource(R.string.registration) else stringResource(R.string.editingData),
-            MaterialTheme.typography.titleSmall
+            MaterialTheme.typography.headlineMedium
         )
         Spacer(Modifier.height(32.dp))
 
-        FredTextField(userName, { userName = it }, R.string.enterUN, isDataCorrect)
-        if(!isDataCorrect) FredText(stringResource(R.string.incorrectUserName), color = MaterialTheme.colorScheme.error)
+        FredTextField(userName, { userName = it }, R.string.enterUN, isDataCorrect, errorString = stringResource(R.string.incorrectUserName))
         Spacer(Modifier.height(4.dp))
 
         PasswordTextField(password, { password = it }, isDataCorrect)
-        if(!isDataCorrect) FredText(stringResource(R.string.incorrectPassword), color = MaterialTheme.colorScheme.error)
         Spacer(Modifier.height(4.dp))
 
-        FredTextField(email, { email = it }, R.string.enterEmail, isDataCorrect, keyboardType = KeyboardType.Email)
-        if(!isDataCorrect) FredText(stringResource(R.string.incorrectEmail), color = MaterialTheme.colorScheme.error)
+        FredTextField(email, { email = it }, R.string.enterEmail, isDataCorrect, keyboardType = KeyboardType.Email, errorString = stringResource(R.string.incorrectEmail))
         Spacer(Modifier.height(4.dp))
 
         FredTextField(name, { name = it }, R.string.enterName)

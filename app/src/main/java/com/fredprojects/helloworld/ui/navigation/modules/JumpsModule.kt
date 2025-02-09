@@ -25,7 +25,7 @@ fun NavGraphBuilder.jumpsModule(
 ) {
     composable(Routes.JD_LIST) {
         val jdState = jdListVM.jdState.collectAsState().value
-        var isValuesCorrect by remember { mutableStateOf(true) }
+        var isValuesCorrect by rememberSaveable { mutableStateOf(true) }
         JDListScreen(jdState, jdListVM::onEvent, controller::navigateUp) {
             controller.navigate(Routes.JUMPING_ROPE)
         }

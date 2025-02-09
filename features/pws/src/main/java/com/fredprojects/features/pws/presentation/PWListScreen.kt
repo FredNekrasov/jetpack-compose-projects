@@ -9,9 +9,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.outlined.Add
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -29,7 +27,7 @@ fun PWListScreen(
     goBack: Action,
     toUpsertPWScreen: (Int?) -> Unit
 ) {
-    val snackbarHostState = rememberSaveable { SnackbarHostState() }
+    val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
     val deleteMessage = stringResource(R.string.deletedRecord)
     val cancel = stringResource(R.string.cancel)
@@ -38,12 +36,11 @@ fun PWListScreen(
         snackbarHost = { SnackbarHost(snackbarHostState) },
         topBar = {
             FredTopBar(goBack) {
-                if(!state.isSortingSectionVisible) {
-                    FredIconButton({ onEvent(PWEvents.ToggleSortSection) }, Icons.Default.KeyboardArrowDown)
-                } else FredIconButton({ onEvent(PWEvents.ToggleSortSection) }, Icons.Default.KeyboardArrowUp)
+                FredIconButton({ onEvent(PWEvents.ToggleSortSection) }, if(!state.isSortingSectionVisible) Icons.Default.KeyboardArrowDown else Icons.Default.KeyboardArrowUp)
             }
         },
-        floatingActionButton = { FredFloatingActionButton(Icons.Outlined.Add) { toUpsertPWScreen(null) } }
+        floatingActionButton = { FredFloatingActionButton(Icons.Outlined.Add) { toUpsertPWScreen(null) } },
+        contentWindowInsets = WindowInsets.captionBar
     ) { innerPadding ->
         Column(Modifier.fillMaxSize().padding(innerPadding), horizontalAlignment = Alignment.CenterHorizontally) {
             AnimatedVisibility(
@@ -51,6 +48,7 @@ fun PWListScreen(
                 enter = fadeIn() + slideInVertically(),
                 exit = fadeOut() + slideOutVertically()
             ) { SortingSection(state.sortingPW) { onEvent(PWEvents.Sort(it)) } }
+
             Spacer(Modifier.height(4.dp))
             PWSearchBar { onEvent(PWEvents.SearchPW(it)) }
             Spacer(Modifier.height(4.dp))

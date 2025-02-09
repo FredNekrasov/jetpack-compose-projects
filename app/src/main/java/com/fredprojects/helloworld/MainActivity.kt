@@ -10,8 +10,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
+import androidx.compose.material3.*
 import androidx.compose.ui.Modifier
 import com.fredprojects.features.jump.presentation.jump.JumpingRopeVM
 import com.fredprojects.helloworld.ui.displayToast
@@ -36,8 +35,8 @@ class MainActivity : ComponentActivity() {
         }.launch(arrayOf(Manifest.permission.CAMERA, Manifest.permission.POST_NOTIFICATIONS))
         setContent {
             HelloWorldTheme {
-                Surface(Modifier.fillMaxSize().padding(WindowInsets.systemBars.asPaddingValues()), color = MaterialTheme.colorScheme.background) {
-                    HWNavHost(activityContext = this, jumpingRopeVM)
+                Scaffold {
+                    HWNavHost(activityContext = this, jumpingRopeVM, Modifier.padding(it))
                 }
             }
         }

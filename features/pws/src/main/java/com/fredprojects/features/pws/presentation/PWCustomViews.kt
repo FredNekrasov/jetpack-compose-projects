@@ -19,26 +19,27 @@ import com.fredprojects.core.ui.*
 import com.fredprojects.core.ui.R
 import com.fredprojects.features.pws.domain.utils.SortType
 import com.fredprojects.features.pws.domain.utils.SortingPW
+import com.fredprojects.features.pws.domain.utils.SortingPW.*
 
 @Composable
 internal fun SortingSection(
-    sortingPW: SortingPW = SortingPW.Date(SortType.Descending),
+    sortingPW: SortingPW = Date(SortType.Descending),
     onSortingChange: (SortingPW) -> Unit
 ) {
     Column(Modifier.fillMaxWidth()) {
         LazyRow(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
             item {
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly, verticalAlignment = Alignment.CenterVertically) {
-                    FredRadioButton(stringResource(R.string.pw), sortingPW is SortingPW.PW) { onSortingChange(SortingPW.PW(sortingPW.sortType)) }
-                    FredRadioButton(stringResource(R.string.student), sortingPW is SortingPW.Student) { onSortingChange(SortingPW.Student(sortingPW.sortType)) }
-                    FredRadioButton(stringResource(R.string.variant), sortingPW is SortingPW.Variant) { onSortingChange(SortingPW.Variant(sortingPW.sortType)) }
+                    FredRadioButton(stringResource(R.string.pw), sortingPW is PW) { onSortingChange(PW(sortingPW.sortType)) }
+                    FredRadioButton(stringResource(R.string.student), sortingPW is Student) { onSortingChange(Student(sortingPW.sortType)) }
+                    FredRadioButton(stringResource(R.string.variant), sortingPW is Variant) { onSortingChange(Variant(sortingPW.sortType)) }
                 }
             }
             item {
                 Row(Modifier.fillMaxWidth(),horizontalArrangement = Arrangement.SpaceEvenly, verticalAlignment = Alignment.CenterVertically) {
-                    FredRadioButton(stringResource(R.string.lvl), sortingPW is SortingPW.LVL) { onSortingChange(SortingPW.LVL(sortingPW.sortType)) }
-                    FredRadioButton(stringResource(R.string.date), sortingPW is SortingPW.Date) { onSortingChange(SortingPW.Date(sortingPW.sortType)) }
-                    FredRadioButton(stringResource(R.string.mark), sortingPW is SortingPW.Mark) { onSortingChange(SortingPW.Mark(sortingPW.sortType)) }
+                    FredRadioButton(stringResource(R.string.lvl), sortingPW is LVL) { onSortingChange(LVL(sortingPW.sortType)) }
+                    FredRadioButton(stringResource(R.string.date), sortingPW is Date) { onSortingChange(Date(sortingPW.sortType)) }
+                    FredRadioButton(stringResource(R.string.mark), sortingPW is Mark) { onSortingChange(Mark(sortingPW.sortType)) }
                 }
             }
         }
@@ -59,6 +60,7 @@ internal fun PWSearchBar(onSearch: (String) -> Unit) {
         trailingIcon = { Icon(Icons.Default.Search, stringResource(R.string.search)) },
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
         keyboardActions = KeyboardActions(onSearch = { onSearch(query) }),
+        colors = OutlinedTextFieldDefaults.colors()
     )
 }
 @Composable
@@ -71,13 +73,4 @@ internal fun TakePhotoButton(onTakePhoto: Action) {
         Spacer(Modifier.width(2.dp))
         Icon(Icons.Default.Place, Icons.Default.Place.toString())
     }
-}
-// creating copy of sortingPW to be able to change sortType
-private fun SortingPW.copy(sortType: SortType): SortingPW = when(this) {
-    is SortingPW.PW -> SortingPW.PW(sortType)
-    is SortingPW.Student -> SortingPW.Student(sortType)
-    is SortingPW.Variant -> SortingPW.Variant(sortType)
-    is SortingPW.LVL -> SortingPW.LVL(sortType)
-    is SortingPW.Date -> SortingPW.Date(sortType)
-    is SortingPW.Mark -> SortingPW.Mark(sortType)
 }

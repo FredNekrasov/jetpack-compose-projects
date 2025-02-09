@@ -53,11 +53,12 @@ fun UpsertPWScreen(
             FredFloatingActionButton(Icons.Default.Done) {
                 upsertPW(PracticalWork(pwName, student, variant.toIntOrNull() ?: 0, lvl.toIntOrNull() ?: 0, date, mark.toIntOrNull() ?: 0, photo, state.pw?.id))
             }
-        }
+        },
+        contentWindowInsets = WindowInsets.captionBar
     ) { paddingValues ->
         Column(Modifier.fillMaxWidth().padding(paddingValues).verticalScroll(rememberScrollState()), horizontalAlignment = Alignment.CenterHorizontally) {
             Spacer(Modifier.height(8.dp))
-            FredHeaderText(stringResource(R.string.upsert), textStyle = MaterialTheme.typography.titleSmall)
+            FredHeaderText(stringResource(R.string.upsert), textStyle = MaterialTheme.typography.headlineMedium)
             Spacer(Modifier.height(8.dp))
             FredTextField(pwName, { pwName = it }, R.string.enterPW)
             FredTextField(student, { student = it }, R.string.enterStudent)

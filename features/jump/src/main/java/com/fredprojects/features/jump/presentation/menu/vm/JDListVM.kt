@@ -4,7 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fredprojects.features.jump.domain.models.JumpData
 import com.fredprojects.features.jump.domain.usecases.JDUseCases
-import com.fredprojects.features.jump.domain.utils.*
+import com.fredprojects.features.jump.domain.utils.JumpStatus
+import com.fredprojects.features.jump.domain.utils.SortType
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*

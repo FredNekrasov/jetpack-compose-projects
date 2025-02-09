@@ -17,18 +17,18 @@ import com.fredprojects.core.ui.R
  */
 @Composable
 fun InequalityScreen(
-    state: Any,
+    result: Any,
     calculate: (Float?, Float?) -> Unit
 ) {
     var a by rememberSaveable { mutableStateOf("") }
     var b by rememberSaveable { mutableStateOf("") }
     Column(Modifier.fillMaxSize(), Arrangement.Center, Alignment.CenterHorizontally) {
-        FredHeaderText("ax + b < 0", textStyle =  MaterialTheme.typography.titleSmall)
+        FredHeaderText("ax + b < 0", textStyle =  MaterialTheme.typography.headlineMedium)
         Spacer(Modifier.height(8.dp))
         InequalityTextField(a, { a = it }, "a", ImeAction.Next)
         InequalityTextField(b, { b = it }, "b", ImeAction.Done)
         Spacer(Modifier.height(8.dp))
-        FredHeaderText(if(state is Int) stringResource(state) else state.toString(), MaterialTheme.typography.bodyMedium)
+        FredHeaderText(if(result is Int) stringResource(result) else result.toString(), MaterialTheme.typography.bodyLarge)
         Spacer(Modifier.height(8.dp))
         FredButton(
             onClick = { calculate(a.toFloatOrNull(), b.toFloatOrNull()) },

@@ -54,6 +54,8 @@ private fun MainScrollableTabRow(currentPage: Int, scrollToPage: (Int) -> Unit) 
                 selected = i == currentPage,
                 onClick = { scrollToPage(i) },
                 text = { FredText(stringResource(screenRouteId)) },
+                selectedContentColor = MaterialTheme.colorScheme.onBackground,
+                unselectedContentColor = MaterialTheme.colorScheme.onBackground
             )
         }
     }

@@ -13,7 +13,7 @@ internal fun AstronomyInfoListItem(info: AstronomyInfo, modifier: Modifier) {
     Box(modifier) {
         FredCard(Modifier.matchParentSize(), MaterialTheme.colorScheme.primary, MaterialTheme.colorScheme.primaryContainer)
         Column(Modifier.fillMaxWidth().padding(16.dp)) {
-            FredHeaderText(info.name, textStyle = MaterialTheme.typography.titleSmall)
+            FredHeaderText(info.name, textStyle = MaterialTheme.typography.headlineMedium)
             Spacer(Modifier.height(4.dp))
             FredText(info.references)
             Spacer(Modifier.height(2.dp))

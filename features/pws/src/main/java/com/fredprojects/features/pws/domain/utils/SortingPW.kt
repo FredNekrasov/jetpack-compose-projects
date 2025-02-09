@@ -17,4 +17,13 @@ sealed class SortingPW(val sortType: SortType) {
     class LVL(sortType: SortType) : SortingPW(sortType)
     class Date(sortType: SortType) : SortingPW(sortType)
     class Mark(sortType: SortType) : SortingPW(sortType)
+
+    fun copy(sortType: SortType): SortingPW = when(this) {
+        is Date -> Date(sortType)
+        is LVL -> LVL(sortType)
+        is Mark -> Mark(sortType)
+        is PW -> PW(sortType)
+        is Student -> Student(sortType)
+        is Variant -> Variant(sortType)
+    }
 }

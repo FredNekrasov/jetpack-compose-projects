@@ -20,7 +20,7 @@ class InequalityVM @Inject constructor(
     fun solveTheInequality(a: Float?, b: Float?) {
         viewModelScope.launch {
             val result = when(inequalityUseCase(a, b)) {
-                InequalityStatus.ERROR -> R.string.error
+                InequalityStatus.ERROR -> R.string.inequalityError
                 InequalityStatus.NO_SOLUTION -> R.string.inequalityHasNoSolutions
                 InequalityStatus.FIRST_SOLUTION -> "$b < 0\nx = (− ∞ , + ∞)"
                 InequalityStatus.SECOND_SOLUTION -> "x > ${-b!!/a!!}\nx = (${-b/a}, + ∞)"

@@ -34,7 +34,7 @@ class BBRepository(
      * If there is internet connection, it gets data from the remote server. If it fails, it gets data from the local database.
      * @return a flow of ConnectionStatus
      */
-    override suspend fun getData(): Flow<ConnectionStatus<BBInfo>> = flow {
+    override fun getData(): Flow<ConnectionStatus<BBInfo>> = flow {
         val bbInfoList = dao.getAll().map { it.toDomain(bbTypeParser) }
         emit(Loading(bbInfoList))
         val remoteData = api.getProductInfo()

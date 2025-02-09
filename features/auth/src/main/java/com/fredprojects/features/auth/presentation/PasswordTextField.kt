@@ -22,6 +22,7 @@ internal fun PasswordTextField(
         isError = !isValueCorrect,
         visualTransformation = PasswordVisualTransformation('*'),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password, imeAction = imeAction),
-        colors = TextFieldDefaults.colors()
+        supportingText = { if (!isValueCorrect) FredText(stringResource(R.string.incorrectPassword)) },
+        colors = OutlinedTextFieldDefaults.colors()
     )
 }

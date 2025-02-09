@@ -43,7 +43,7 @@ private fun PortraitPWListItemContent(pw: PracticalWork) {
         FredText("${stringResource(R.string.date)}: ${pw.date}", color = MaterialTheme.colorScheme.background)
         Spacer(modifier = Modifier.height(2.dp))
         FredText("${stringResource(R.string.mark)}: ${pw.mark}", color = MaterialTheme.colorScheme.background)
-        AsyncImage(pw.image.toUri(), pw.image, Modifier.fillMaxWidth(0.5f))
+        AsyncImage(pw.image.toUri(), pw.image, Modifier.fillMaxWidth().aspectRatio(1f))
     }
 }
 @Composable
@@ -62,6 +62,6 @@ private fun LandscapePWListItemContent(pw: PracticalWork) {
             Spacer(modifier = Modifier.height(2.dp))
             FredText("${stringResource(R.string.mark)}: ${pw.mark}", color = MaterialTheme.colorScheme.background)
         }
-        AsyncImage(pw.image.toUri(), pw.image, Modifier.fillMaxWidth(0.5f).padding(16.dp))
+        AsyncImage(pw.image.toUri(), pw.image, Modifier.fillMaxWidth().aspectRatio(1f).padding(16.dp))
     }
 }

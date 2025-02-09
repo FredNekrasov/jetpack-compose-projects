@@ -20,8 +20,7 @@ fun FibScreen(fibonacciSequences: List<FibonacciBinder>, goBack: Action, calcula
     var isNumberCorrect by rememberSaveable { mutableStateOf(true) }
     Scaffold(Modifier.fillMaxSize(), topBar = { FredTopBar(goBack) }) { innerPadding ->
         Column(Modifier.fillMaxSize().padding(innerPadding), Arrangement.Center, Alignment.CenterHorizontally) {
-            FredNumericTextField(number, { number = it }, R.string.fibEnterNumber)
-            if(!isNumberCorrect) FredText(stringResource(R.string.error), color = MaterialTheme.colorScheme.error)
+            FredNumericTextField(number, { number = it }, R.string.fibEnterNumber, isNumberCorrect)
             Spacer(Modifier.height(4.dp))
             FredButton(
                 {
@@ -30,6 +29,7 @@ fun FibScreen(fibonacciSequences: List<FibonacciBinder>, goBack: Action, calcula
                 },
                 stringResource(R.string.displayResult)
             )
+            HorizontalDivider()
             FibSequenceList(fibonacciSequences)
         }
     }
@@ -47,7 +47,7 @@ private fun FibSequenceList(fibonacciSequences: List<FibonacciBinder>) {
                 CalculationStatus.ERROR -> stringResource(R.string.fibCalculationsCanceled)
             }
             Row(verticalAlignment = Alignment.CenterVertically) {
-                FredText(text, Modifier.padding(start = 8.dp, end = 8.dp))
+                FredText(text, Modifier.padding(horizontal = 8.dp))
                 if (result.first == CalculationStatus.INIT) FredButton({ it.cancel() }, stringResource(R.string.cancel))
             }
         }

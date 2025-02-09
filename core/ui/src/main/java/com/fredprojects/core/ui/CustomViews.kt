@@ -1,12 +1,11 @@
 package com.fredprojects.core.ui
 
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -63,14 +62,17 @@ fun FredNumericTextField(
     labelId: Int,
     isValueCorrect: Boolean = true,
     imeAction: ImeAction = ImeAction.Done,
-    keyboardType: KeyboardType = KeyboardType.NumberPassword
+    keyboardType: KeyboardType = KeyboardType.NumberPassword,
+    errorString: String = stringResource(R.string.error)
 ) {
     TextField(
         value,
         { if(((it.toIntOrNull() != null) && (it.toInt() >= 0)) || (it == "")) onValueChange(it) },
         label = { FredText(stringResource(labelId)) },
         isError = !isValueCorrect,
-        keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = imeAction)
+        keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = imeAction),
+        supportingText = { if (!isValueCorrect) FredText(errorString, color = MaterialTheme.colorScheme.error) },
+        colors = OutlinedTextFieldDefaults.colors()
     )
 }
 @Composable
@@ -80,7 +82,8 @@ fun FredTextField(
     labelId: Int,
     isValueCorrect: Boolean = true,
     imeAction: ImeAction = ImeAction.Next,
-    keyboardType: KeyboardType = KeyboardType.Text
+    keyboardType: KeyboardType = KeyboardType.Text,
+    errorString: String = stringResource(R.string.error)
 ) {
     TextField(
         value,
@@ -88,7 +91,9 @@ fun FredTextField(
         label = { FredText(stringResource(labelId))},
         isError = !isValueCorrect,
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = imeAction),
-        shape = MaterialTheme.shapes.small
+        supportingText = { if (!isValueCorrect) FredText(errorString, color = MaterialTheme.colorScheme.error) },
+        shape = MaterialTheme.shapes.small,
+        colors = OutlinedTextFieldDefaults.colors()
     )
 }
 // buttons
@@ -167,6 +172,7 @@ fun FredTopBar(
         title = { FredHeaderText(stringResource(R.string.app_name), textStyle = MaterialTheme.typography.headlineSmall) },
         navigationIcon = { FredIconButton(goBack, Icons.AutoMirrored.Default.KeyboardArrowLeft) },
         actions = action,
+        windowInsets = WindowInsets.captionBar,
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = MaterialTheme.colorScheme.onBackground,
             titleContentColor = MaterialTheme.colorScheme.background,

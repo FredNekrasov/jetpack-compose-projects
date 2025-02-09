@@ -36,24 +36,18 @@ fun JDDialog(
     }
     Dialog({ onEvent(JDEvents.SwitchingDialog) }) {
         Column(Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.background), Arrangement.Center, Alignment.CenterHorizontally) {
-            FredHeaderText(stringResource(R.string.update), textStyle = MaterialTheme.typography.titleSmall)
+            FredHeaderText(stringResource(R.string.update), textStyle = MaterialTheme.typography.headlineMedium)
             Spacer(Modifier.height(4.dp))
+
             FredNumericTextField(countOfJumps, { countOfJumps = it }, R.string.enterCount, isValuesCorrect, ImeAction.Next)
-            FredTextField(date, { date = it }, R.string.enterDate, isValuesCorrect, ImeAction.Done, KeyboardType.Phone)
-            if(!isValuesCorrect) {
-                FredHeaderText(
-                    "${stringResource(R.string.error)}\n${stringResource(R.string.incorrectDate)}",
-                    textStyle = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.error
-                )
-            }
+            FredTextField(date, { date = it }, R.string.enterDate, isValuesCorrect, ImeAction.Done, KeyboardType.Phone, stringResource(R.string.incorrectDate))
             Spacer(Modifier.height(4.dp))
+
             Row(Modifier.fillMaxWidth(), Arrangement.SpaceBetween, Alignment.CenterVertically) {
                 JDIconButton(Icons.AutoMirrored.Default.KeyboardArrowLeft) { onEvent(JDEvents.SwitchingDialog) }
                 JDIconButton(Icons.Default.Done) {
                     onEvent(
-                        JDEvents.UpsertJD(
-                            JumpData(countOfJumps.toIntOrNull() ?: 0, date, jumpDataState.jd?.id)
-                        )
+                        JDEvents.UpsertJD(JumpData(countOfJumps.toIntOrNull() ?: 0, date, jumpDataState.jd?.id))
                     )
                 }
             }

@@ -27,7 +27,6 @@ fun MathInfoScreen(
     var isExpressionCorrect by rememberSaveable { mutableStateOf(true) }
     Column(Modifier.fillMaxSize(), Arrangement.Center, Alignment.CenterHorizontally) {
         FredTextField(expression, { expression = it }, R.string.enterExpression, isExpressionCorrect, ImeAction.Done)
-        if(!isExpressionCorrect) FredText(stringResource(R.string.error), color = MaterialTheme.colorScheme.error)
         Spacer(Modifier.height(4.dp))
         FredButton(
             {
