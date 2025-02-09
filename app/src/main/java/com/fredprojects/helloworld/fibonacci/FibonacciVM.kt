@@ -5,7 +5,7 @@ import android.app.Application
 import android.content.*
 import android.os.IBinder
 import androidx.lifecycle.ViewModel
-import com.fredprojects.features.fibonacci.impl.FibonacciBinder
+import com.fredprojects.features.math.presentation.fib.FibonacciBinder
 import com.fredprojects.helloworld.R
 import com.fredprojects.helloworld.ui.displayToast
 import dagger.hilt.android.lifecycle.HiltViewModel

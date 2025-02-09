@@ -7,9 +7,9 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.IBinder
 import androidx.core.app.*
-import com.fredprojects.features.fibonacci.api.useCases.FibonacciUseCase
+import com.fredprojects.features.math.domain.usecases.FibonacciUseCase
+import com.fredprojects.features.math.presentation.fib.FibonacciBinder
 import com.fredprojects.core.ui.R as PR
-import com.fredprojects.features.fibonacci.impl.FibonacciBinder
 import com.fredprojects.helloworld.MainActivity
 import com.fredprojects.helloworld.R
 import dagger.hilt.android.AndroidEntryPoint

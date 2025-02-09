@@ -63,7 +63,7 @@ private fun LocalUpsertPWScreen(
             when(it.status) {
                 PWStatus.SUCCESS -> goBack()
                 PWStatus.INCORRECT_PW_NAME -> activityContext.displayToast(R.string.incorrectPW)
-                PWStatus.INCORRECT_STUDENT -> activityContext.displayToast(R.string.incorrectStudent)
+                PWStatus.INCORRECT_STUDENT -> activityContext.displayToast(R.string.incorrectStudentPatronymic)
                 PWStatus.INCORRECT_LEVEL -> activityContext.displayToast(R.string.incorrectLVL)
                 PWStatus.INCORRECT_VARIANT -> activityContext.displayToast(R.string.incorrectVariant)
                 PWStatus.INCORRECT_DATE -> activityContext.displayToast(R.string.incorrectDate)

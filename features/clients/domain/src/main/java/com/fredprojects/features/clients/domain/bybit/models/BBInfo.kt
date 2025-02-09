@@ -10,7 +10,7 @@ package com.fredprojects.features.clients.domain.bybit.models
  * @param startDateTime the start date and time of the product
  * @param tags the tags of the product
  * @param url the url of the product
- * @param favorite the favorite status of the product
+ * @param isFav the favorite status of the product
  * @param id the id of the product
  */
 data class BBInfo(
@@ -22,6 +22,6 @@ data class BBInfo(
     val startDateTime: String,
     val tags: List<String>,
     val url: String,
-    var favorite: Boolean = false,
+    var isFav: Boolean = false,
     val id: Int? = null
 )

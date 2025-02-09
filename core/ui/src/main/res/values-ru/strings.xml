@@ -29,7 +29,7 @@
     <string name="enterPWDate">Введите дату завершения (дд.мм.гггг)</string>
     <string name="enterMark">Введите оценку практической работы</string>
     <string name="incorrectPW">Наименование практической работы не должно быть пустым</string>
-    <string name="incorrectStudent">Имя студента не должно быть пустым</string>
+    <string name="incorrectStudentPatronymic">Имя студента не должно быть пустым</string>
     <string name="incorrectVariant">Вариант не должен быть пустым</string>
     <string name="incorrectLVL">Уровень не должен быть пустым</string>
     <string name="incorrectPWDate">Дата должна быть меньше, чем сейчас. Минимальный год: 2020</string>
@@ -43,7 +43,7 @@
     <string name="deletedRecord">Запись была удалена</string>
     <string name="date">Дата</string>
     <string name="wait">Дождитесь результата</string>
-    <string name="error">Ошибка: Значения являются пустыми или неверными</string>
+    <string name="error">Ошибка: это значение пустое или неверное</string>
     <string name="success">Данные были успешно получены</string>
     <string name="empty">" "</string>
     <string name="noInternet">нет подключения к Интернету</string>
@@ -81,4 +81,5 @@
     <string name="astronomyInfo">информация об астрономии</string>
     <string name="math">Математика</string>
     <string name="inequality">Неравенства</string>
+    <string name="inequalityError">эти значения пустые или неправильные</string>
 </resources>

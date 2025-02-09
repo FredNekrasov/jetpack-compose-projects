@@ -1,7 +1,7 @@
 package com.fredprojects.helloworld.ui.navigation.modules
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.Favorite
@@ -27,12 +27,12 @@ fun NavGraphBuilder.byBitScreens(bbVM: ByBitVM, controller: NavHostController) {
         if(!state.status.isLoading()) {
             ProductList(list = state.list, onUpdate = bbVM::update) {
                 Row(Modifier.fillMaxWidth(), Arrangement.SpaceEvenly, Alignment.CenterVertically) {
-                    FredIconButton(controller::navigateUp, Icons.AutoMirrored.Default.KeyboardArrowLeft, tint = MaterialTheme.colors.onBackground)
+                    FredIconButton(controller::navigateUp, Icons.AutoMirrored.Default.KeyboardArrowLeft, tint = MaterialTheme.colorScheme.onBackground)
                     ShowConnectionInfo(bbVM::getData, state.status)
-                    FredIconButton({ controller.navigate(Routes.FAV_PRODUCTS) }, Icons.Default.Favorite, tint = MaterialTheme.colors.onBackground)
+                    FredIconButton({ controller.navigate(Routes.FAV_PRODUCTS) }, Icons.Default.Favorite, tint = MaterialTheme.colorScheme.onBackground)
                 }
             }
-        } else Box(Modifier.fillMaxSize()) { CircularProgressIndicator(Modifier.align(Alignment.Center), color = MaterialTheme.colors.onBackground) }
+        } else Box(Modifier.fillMaxSize()) { CircularProgressIndicator(Modifier.align(Alignment.Center), color = MaterialTheme.colorScheme.onBackground) }
     }
     composable(Routes.FAV_PRODUCTS) {
         FavProductList(bbVM.bbState.collectAsState().value.list, bbVM::update, controller::navigateUp)

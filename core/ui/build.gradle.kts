@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.fredprojects.core.ui"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 29
@@ -33,7 +33,8 @@ android {
     }
 }
 composeCompiler {
-    reportsDestination = layout.buildDirectory.dir("compose_compiler")
+    reportsDestination = layout.buildDirectory.dir("composeReports")
+    metricsDestination = layout.buildDirectory.dir("composeMetrics")
 }
 dependencies {
     implementation(platform(libs.androidx.compose.bom))

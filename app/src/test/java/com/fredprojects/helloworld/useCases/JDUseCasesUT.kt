@@ -1,10 +1,10 @@
 package com.fredprojects.helloworld.useCases
 
-import com.fredprojects.features.jumps.data.repositories.JDRepository
-import com.fredprojects.features.jumps.domain.models.JumpData
-import com.fredprojects.features.jumps.domain.useCases.JDUseCases
-import com.fredprojects.features.jumps.domain.useCases.crud.*
-import com.fredprojects.features.jumps.domain.utils.*
+import com.fredprojects.features.jump.data.repository.JDRepository
+import com.fredprojects.features.jump.domain.models.JumpData
+import com.fredprojects.features.jump.domain.usecases.JDUseCases
+import com.fredprojects.features.jump.domain.usecases.crud.*
+import com.fredprojects.features.jump.domain.utils.*
 import com.fredprojects.helloworld.fakeDataSources.jumps.FakeJDDao
 import junit.framework.TestCase.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi

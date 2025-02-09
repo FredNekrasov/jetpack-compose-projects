@@ -14,7 +14,7 @@ interface IBBRepository {
      *
      * @return the flow of data received from the server
      */
-    suspend fun getData(): Flow<ConnectionStatus<BBInfo>>
+    fun getData(): Flow<ConnectionStatus<BBInfo>>
     /**
      * updateRecord is used to update a record in the database.
      *

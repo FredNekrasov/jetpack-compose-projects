@@ -1,7 +1,7 @@
 package com.fredprojects.helloworld.useCases
 
-import com.fredprojects.features.fibonacci.api.useCases.FibonacciUseCase
-import com.fredprojects.features.fibonacci.api.utils.CalculationStatus.*
+import com.fredprojects.features.math.domain.usecases.FibonacciUseCase
+import com.fredprojects.features.math.domain.utils.CalculationStatus.*
 import junit.framework.TestCase.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.*

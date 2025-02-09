@@ -3,7 +3,6 @@ package com.fredprojects.features.clients.presentation.math
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.*
-import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -27,7 +26,6 @@ fun MathInfoScreen(
     var isExpressionCorrect by rememberSaveable { mutableStateOf(true) }
     Column(Modifier.fillMaxSize(), Arrangement.Center, Alignment.CenterHorizontally) {
         FredTextField(expression, { expression = it }, R.string.enterExpression, isExpressionCorrect, ImeAction.Done)
-        if(!isExpressionCorrect) FredText(stringResource(R.string.error), color = MaterialTheme.colors.error)
         Spacer(Modifier.height(4.dp))
         FredButton(
             {
@@ -37,7 +35,7 @@ fun MathInfoScreen(
             stringResource(R.string.search)
         )
         FredText(stringResource(state.status.getString()))
-        if(LocalConfiguration.current.orientation == Configuration.ORIENTATION_PORTRAIT) MathScreenContent(state.list) else MathScreenContent(state.list, 2)
+        MathScreenContent(state.list, if(LocalConfiguration.current.orientation == Configuration.ORIENTATION_PORTRAIT) 1 else 2)
     }
 }
 @Composable

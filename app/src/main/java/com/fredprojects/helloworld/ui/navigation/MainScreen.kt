@@ -3,14 +3,15 @@ package com.fredprojects.helloworld.ui.navigation
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.util.fastForEachIndexed
 import com.fredprojects.core.ui.*
 import com.fredprojects.features.clients.presentation.astronomy.*
 import com.fredprojects.features.clients.presentation.math.*
-import com.fredprojects.features.inequality.impl.*
+import com.fredprojects.features.math.presentation.inequality.*
 import kotlinx.coroutines.launch
 
 @Composable
@@ -45,14 +46,16 @@ private fun MainScrollableTabRow(currentPage: Int, scrollToPage: (Int) -> Unit) 
     ScrollableTabRow(
         selectedTabIndex = currentPage,
         modifier = Modifier.fillMaxWidth(),
-        backgroundColor = MaterialTheme.colors.background,
-        contentColor = MaterialTheme.colors.onBackground
+        containerColor = MaterialTheme.colorScheme.background,
+        contentColor = MaterialTheme.colorScheme.onBackground
     ) {
-        Routes.mainScreenItems.forEachIndexed { i, screenRouteId ->
+        Routes.mainScreenItems.fastForEachIndexed { i, screenRouteId ->
             Tab(
                 selected = i == currentPage,
                 onClick = { scrollToPage(i) },
                 text = { FredText(stringResource(screenRouteId)) },
+                selectedContentColor = MaterialTheme.colorScheme.onBackground,
+                unselectedContentColor = MaterialTheme.colorScheme.onBackground
             )
         }
     }

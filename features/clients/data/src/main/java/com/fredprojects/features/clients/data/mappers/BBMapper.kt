@@ -41,7 +41,7 @@ internal fun BBInfoEntity.toDomain(bbTypeParser: BBTypeParser) = BBInfo(
     startDateTime = startDateTime,
     tags = tags.split(", "),
     url = url,
-    favorite = favorite,
+    isFav = favorite,
     id = id
 )
 internal fun BBInfo.toEntity(bbTypeParser: BBTypeParser) = BBInfoEntity(
@@ -53,7 +53,7 @@ internal fun BBInfo.toEntity(bbTypeParser: BBTypeParser) = BBInfoEntity(
     startDateTime = startDateTime,
     tags = tags.joinToString(", "),
     url = url,
-    favorite = favorite,
+    favorite = isFav,
     id = id
 )
 private fun Long.toLocalDateTime(): LocalDateTime = Instant.ofEpochSecond(this).atZone(ZoneId.systemDefault()).toLocalDateTime()

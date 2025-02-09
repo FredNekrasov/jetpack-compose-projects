@@ -29,7 +29,7 @@
     <string name="enterPWDate">Enter the completion date (dd.mm.yyyy)</string>
     <string name="enterMark">Enter the mark of the practical work</string>
     <string name="incorrectPW">The pwName should not be empty</string>
-    <string name="incorrectStudent">The student name should not be empty</string>
+    <string name="incorrectStudentPatronymic">The student name should not be empty</string>
     <string name="incorrectVariant">The variant must not be an empty</string>
     <string name="incorrectLVL">The level must not be an empty</string>
     <string name="incorrectPWDate">The date should be less than now. Min year: 2020</string>
@@ -43,7 +43,7 @@
     <string name="deletedRecord">The record has been deleted</string>
     <string name="date">Date</string>
     <string name="wait">Wait for the result</string>
-    <string name="error">Error: The values are empty or incorrect</string>
+    <string name="error">Error: This value is empty or incorrect</string>
     <string name="success">The data was successfully received</string>
     <string name="empty">" "</string>
     <string name="noInternet">there is no internet connection</string>
@@ -81,4 +81,5 @@
     <string name="astronomyInfo">information about astronomy</string>
     <string name="math">Math</string>
     <string name="inequality">Inequality</string>
+    <string name="inequalityError">these values are empty or incorrect</string>
 </resources>

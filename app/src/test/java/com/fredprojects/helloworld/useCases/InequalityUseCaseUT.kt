@@ -1,7 +1,7 @@
 package com.fredprojects.helloworld.useCases
 
-import com.fredprojects.features.inequality.api.useCases.InequalityUseCase
-import com.fredprojects.features.inequality.api.utils.InequalityStatus
+import com.fredprojects.features.math.domain.usecases.InequalityUseCase
+import com.fredprojects.features.math.domain.utils.InequalityStatus
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertNotSame
 import org.junit.Test

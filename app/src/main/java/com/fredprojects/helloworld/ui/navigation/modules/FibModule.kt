@@ -4,8 +4,7 @@ import androidx.activity.ComponentActivity
 import androidx.compose.runtime.collectAsState
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.fredprojects.features.fibonacci.impl.AnswerFibScreen
-import com.fredprojects.features.fibonacci.impl.FibScreen
+import com.fredprojects.features.math.presentation.fib.*
 import com.fredprojects.helloworld.fibonacci.FibSequenceService
 import com.fredprojects.helloworld.fibonacci.FibonacciVM
 import com.fredprojects.helloworld.ui.navigation.Routes

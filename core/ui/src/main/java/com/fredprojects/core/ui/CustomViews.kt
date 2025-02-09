@@ -1,12 +1,11 @@
 package com.fredprojects.core.ui
 
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -63,7 +62,8 @@ fun FredNumericTextField(
     labelId: Int,
     isValueCorrect: Boolean = true,
     imeAction: ImeAction = ImeAction.Done,
-    keyboardType: KeyboardType = KeyboardType.NumberPassword
+    keyboardType: KeyboardType = KeyboardType.NumberPassword,
+    errorString: String = stringResource(R.string.error)
 ) {
     TextField(
         value,
@@ -71,15 +71,8 @@ fun FredNumericTextField(
         label = { FredText(stringResource(labelId)) },
         isError = !isValueCorrect,
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = imeAction),
-        colors = TextFieldDefaults.outlinedTextFieldColors(
-            textColor = MaterialTheme.colors.onBackground,
-            backgroundColor = MaterialTheme.colors.background,
-            cursorColor = MaterialTheme.colors.onBackground,
-            focusedBorderColor = MaterialTheme.colors.onBackground,
-            unfocusedBorderColor = MaterialTheme.colors.onBackground,
-            focusedLabelColor = MaterialTheme.colors.onBackground,
-            unfocusedLabelColor = MaterialTheme.colors.onBackground
-        )
+        supportingText = { if (!isValueCorrect) FredText(errorString, color = MaterialTheme.colorScheme.error) },
+        colors = OutlinedTextFieldDefaults.colors()
     )
 }
 @Composable
@@ -89,7 +82,8 @@ fun FredTextField(
     labelId: Int,
     isValueCorrect: Boolean = true,
     imeAction: ImeAction = ImeAction.Next,
-    keyboardType: KeyboardType = KeyboardType.Text
+    keyboardType: KeyboardType = KeyboardType.Text,
+    errorString: String = stringResource(R.string.error)
 ) {
     TextField(
         value,
@@ -97,16 +91,9 @@ fun FredTextField(
         label = { FredText(stringResource(labelId))},
         isError = !isValueCorrect,
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = imeAction),
+        supportingText = { if (!isValueCorrect) FredText(errorString, color = MaterialTheme.colorScheme.error) },
         shape = MaterialTheme.shapes.small,
-        colors = TextFieldDefaults.outlinedTextFieldColors(
-            textColor = MaterialTheme.colors.onBackground,
-            backgroundColor = MaterialTheme.colors.background,
-            cursorColor = MaterialTheme.colors.onBackground,
-            focusedBorderColor = MaterialTheme.colors.onBackground,
-            unfocusedBorderColor = MaterialTheme.colors.onBackground,
-            focusedLabelColor = MaterialTheme.colors.onBackground,
-            unfocusedLabelColor = MaterialTheme.colors.onBackground
-        )
+        colors = OutlinedTextFieldDefaults.colors()
     )
 }
 // buttons
@@ -115,7 +102,7 @@ fun FredButton(onClick: Action, text: String, modifier: Modifier = Modifier) {
     Button(
         onClick,
         modifier,
-        colors = ButtonDefaults.buttonColors(MaterialTheme.colors.onBackground, MaterialTheme.colors.background)
+        colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.onBackground, MaterialTheme.colorScheme.background)
     ) { FredText(text) }
 }
 @Composable
@@ -124,7 +111,7 @@ fun FredRadioButton(text: String, selected: Boolean, onSelect: Action) {
         RadioButton(
             selected = selected,
             onClick = onSelect,
-            colors = RadioButtonDefaults.colors(MaterialTheme.colors.primary, MaterialTheme.colors.onBackground)
+            colors = RadioButtonDefaults.colors(MaterialTheme.colorScheme.primary, MaterialTheme.colorScheme.onBackground)
         )
         FredText(text)
     }
@@ -134,7 +121,7 @@ fun FredIconButton(
     onClick: Action,
     icon: ImageVector,
     modifier: Modifier = Modifier,
-    tint: Color = MaterialTheme.colors.background
+    tint: Color = MaterialTheme.colorScheme.background
 ) {
     IconButton(onClick, modifier) { Icon(icon, icon.toString(), tint = tint) }
 }
@@ -142,8 +129,8 @@ fun FredIconButton(
 fun FredFloatingActionButton(icon: ImageVector, onClick: Action) {
     FloatingActionButton(
         onClick,
-        backgroundColor = MaterialTheme.colors.onBackground,
-        contentColor = MaterialTheme.colors.background
+        containerColor = MaterialTheme.colorScheme.onBackground,
+        contentColor = MaterialTheme.colorScheme.background
     ) {
         Icon(icon, icon.toString())
     }
@@ -175,16 +162,22 @@ fun FredCard(
         }
     }
 }
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FredTopBar(
     goBack: Action,
     action: @Composable (RowScope.() -> Unit) = {}
 ) {
     TopAppBar(
-        title = { FredHeaderText(stringResource(R.string.app_name), textStyle = MaterialTheme.typography.h5) },
+        title = { FredHeaderText(stringResource(R.string.app_name), textStyle = MaterialTheme.typography.headlineSmall) },
         navigationIcon = { FredIconButton(goBack, Icons.AutoMirrored.Default.KeyboardArrowLeft) },
         actions = action,
-        backgroundColor = MaterialTheme.colors.onBackground,
-        contentColor = MaterialTheme.colors.background
+        windowInsets = WindowInsets.captionBar,
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = MaterialTheme.colorScheme.onBackground,
+            titleContentColor = MaterialTheme.colorScheme.background,
+            navigationIconContentColor = MaterialTheme.colorScheme.background,
+            actionIconContentColor = MaterialTheme.colorScheme.background
+        )
     )
 }

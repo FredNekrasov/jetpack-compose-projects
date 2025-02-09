@@ -7,12 +7,12 @@ plugins {
 }
 android {
     namespace = "com.fredprojects.helloworld"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.fredprojects.helloworld"
         minSdk = 29
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -44,7 +44,8 @@ android {
     }
 }
 composeCompiler {
-    reportsDestination = layout.buildDirectory.dir("compose_compiler")
+    reportsDestination = layout.buildDirectory.dir("composeReports")
+    metricsDestination = layout.buildDirectory.dir("composeMetrics")
 }
 dependencies {
     // DI Dagger-Hilt
@@ -63,25 +64,12 @@ dependencies {
     implementation(project(":core:database"))
     implementation(project(":core:ui"))
 
+    implementation(project(":features:auth"))
+    implementation(project(":features:pws"))
+    implementation(project(":features:jump"))
+    implementation(project(":features:math"))
+
     implementation(project(":features:clients:domain"))
     implementation(project(":features:clients:data"))
     implementation(project(":features:clients:presentation"))
-
-    implementation(project(":features:fibonacci:api"))
-    implementation(project(":features:fibonacci:impl"))
-
-    implementation(project(":features:inequality:api"))
-    implementation(project(":features:inequality:impl"))
-
-    implementation(project(":features:pws:domain"))
-    implementation(project(":features:pws:data"))
-    implementation(project(":features:pws:presentation"))
-
-    implementation(project(":features:jumps:domain"))
-    implementation(project(":features:jumps:data"))
-    implementation(project(":features:jumps:presentation"))
-
-    implementation(project(":features:auth:domain"))
-    implementation(project(":features:auth:data"))
-    implementation(project(":features:auth:presentation"))
 }
